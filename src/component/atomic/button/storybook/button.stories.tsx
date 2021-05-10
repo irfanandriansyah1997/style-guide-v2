@@ -1,16 +1,14 @@
 import type { Story } from '@storybook/react/types-6-0';
 
-import { Button } from '@/button';
-import { IButtonProps } from '@/button/interface';
+import { Button } from '@/component/atomic/button';
+import { IButtonProps } from '@/component/atomic/button/interface';
 
 export default {
   argTypes: {
-    // assigns the argTypes to the Colors category
     backgroundColor: {
       control: `color`,
       table: {
         category: `Colors`,
-        // assigns the argTypes to a specific subcategory
         subcategory: `Button colors`
       }
     },
@@ -20,7 +18,6 @@ export default {
         subcategory: `Button contents`
       }
     },
-    // assigns the argType to the Events category
     onClick: {
       table: {
         category: `Events`,
@@ -34,7 +31,7 @@ export default {
         subcategory: `Button style`
       }
     },
-    // assigns the argType to the Sizes category
+
     size: {
       table: {
         category: `Sizes`

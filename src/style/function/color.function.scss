@@ -1,0 +1,22 @@
+@function get-color($color) {
+  @if map_has_key($color-general, $color) {
+    @return map_get($color-general, $color);
+  }
+
+  @return $color;
+}
+
+@function get-color-transparent($color, $transparent) {
+  @if map_has_key($color-general, $color) {
+    @if map_has_key($transparent-general, $transparent) {
+      @return rgba(
+        map_get($color-general, $color),
+        map_get($transparent-general, $transparent)
+      );
+    }
+
+    @return rgba(map_get($color-general, $color), $transparent);
+  }
+
+  @return rgba($color, $transparent);
+}
