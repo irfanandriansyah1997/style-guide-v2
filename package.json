@@ -57,21 +57,5 @@
     "build-storybook": "build-storybook",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write"
-  },
-  "babel": {
-    "plugins": [
-      [
-        "@babel/plugin-proposal-class-properties",
-        {
-          "loose": true
-        }
-      ],
-      [
-        "@babel/plugin-proposal-private-property-in-object",
-        {
-          "loose": true
-        }
-      ]
-    ]
   }
 }
