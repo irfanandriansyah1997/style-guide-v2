@@ -1,7 +1,5 @@
 const path = require("path");
 
-import '../src/style/global.scss';
-
 module.exports = {
   stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [

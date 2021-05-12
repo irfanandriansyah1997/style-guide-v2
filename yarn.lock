@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@99/helper@0.3.0":
+  version "0.3.0"
+  resolved "https://packages.99iddev.net/@99%2fhelper/-/helper-0.3.0.tgz#4b7a62f41b6a73a6a01ebdaf2af9a72509f27646"
+  integrity sha512-uKu7Uogp3tT6uc1XpjKbhgScaLOJpSInnBd35Jarbz7j+T0QWaQCk6T0ieKey1NN548RjuDhgjyQNIIBUNQUFA==
+  dependencies:
+    react "^17.0.2"
+    react-dom "^17.0.2"
+
 "@babel/code-frame@7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.4.tgz#168da1a36e90da68ae8d49c0f1b48c7c6249213a"

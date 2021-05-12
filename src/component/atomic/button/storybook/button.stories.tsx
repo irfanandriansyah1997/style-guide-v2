@@ -2,45 +2,50 @@ import type { Story } from '@storybook/react/types-6-0';
 
 import { Button } from '@/component/atomic/button';
 import { IButtonProps } from '@/component/atomic/button/interface';
+import Builder from '@/utils/modules/storybook';
 
-export default {
-  argTypes: {
-    backgroundColor: {
-      control: `color`,
-      table: {
-        category: `Colors`,
-        subcategory: `Button colors`
-      }
-    },
-    label: {
-      table: {
-        category: `Text`,
-        subcategory: `Button contents`
-      }
-    },
-    onClick: {
+export default new Builder()
+  .setModuleName(`Button`)
+  .setType(`atomic`)
+  .setComponent(Button)
+  .setArgs({
+    argsName: `backgroundColor`,
+    control: `color`,
+    table: {
+      category: `Colors`,
+      subcategory: `Button colors`
+    }
+  })
+  .setArgs({
+    argsName: `label`,
+    table: {
+      category: `Text`,
+      subcategory: `Button contents`
+    }
+  })
+  .setMultipleArgs([
+    {
+      argsName: `onClick`,
       table: {
         category: `Events`,
         subcategory: `Button Events`
       }
     },
-
-    primary: {
+    {
+      argsName: `primary`,
       table: {
         category: `Colors`,
         subcategory: `Button style`
       }
     },
-
-    size: {
+    {
+      argsName: `size`,
       table: {
         category: `Sizes`
       }
     }
-  },
-  component: Button,
-  title: `Atomic/Button`
-};
+  ])
+  .execute();
 
 /**
  * Templates Storybook
