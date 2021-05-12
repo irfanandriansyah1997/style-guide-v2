@@ -1,6 +1,4 @@
-import { objToString, verifiedIsNotEmpty } from '@99/helper';
-import { createElement } from 'react';
-
+import BasicTextComponent from './section/basic.component';
 import {
   Heading1Component,
   Heading2Component,
@@ -11,7 +9,6 @@ import {
 } from './section/heading.component';
 import ParagraphComponent from './section/paragraph.component';
 import SpanComponent from './section/span.component';
-import style from './style/style.module.scss';
 import { ITextExportDefault } from './interface';
 
 /**
@@ -19,32 +16,7 @@ import { ITextExportDefault } from './interface';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-const TextComponent: ITextExportDefault = ({
-  className,
-  color,
-  fontFamily,
-  fontSize,
-  fontWeight,
-  tag,
-  textAlign,
-  textDecoration,
-  ...res
-}) =>
-  createElement(tag, {
-    ...res,
-    className: objToString({
-      [`${style[`ui-atomic-text`]}`]: true,
-      [`${className}`]: verifiedIsNotEmpty(className)
-    }),
-    style: {
-      color,
-      fontFamily,
-      fontSize,
-      fontWeight,
-      textAlign,
-      textDecoration
-    }
-  });
+const TextComponent: ITextExportDefault = BasicTextComponent as ITextExportDefault;
 
 TextComponent.H1 = Heading1Component;
 

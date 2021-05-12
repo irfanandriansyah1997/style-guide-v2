@@ -1,11 +1,12 @@
 import { FC } from 'react';
 
-import TextComponent from '@/component/atomic/text';
 import {
   ITextHeadingType as Tag,
   ITextProps,
   ITextWithTagsProps
 } from '@/component/atomic/text/interface';
+
+import BasicTextComponent from './basic.component';
 
 /**
  * Heading Component
@@ -13,7 +14,7 @@ import {
  * @since 2021.05.12
  */
 const GenerateComponent: FC<ITextProps> = (props) => (
-  <TextComponent {...props} />
+  <BasicTextComponent {...props} />
 );
 
 /**

@@ -1,10 +1,11 @@
 import { FC } from 'react';
 
-import TextComponent from '@/component/atomic/text';
 import {
   ITextParagraphType as Tag,
   ITextWithTagsProps
 } from '@/component/atomic/text/interface';
+
+import BasicTextComponent from './basic.component';
 
 /**
  * Paragraph Component
@@ -12,7 +13,7 @@ import {
  * @since 2021.05.12
  */
 const ParagraphComponent: FC<ITextWithTagsProps<Tag>> = (props) => (
-  <TextComponent tag="p" {...props} />
+  <BasicTextComponent tag="p" {...props} />
 );
 
 export default ParagraphComponent;

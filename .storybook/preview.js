@@ -1,3 +1,6 @@
+import '@/style/global.scss';
+import '@/style/storybook.scss';
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   backgrounds: {
@@ -5,7 +8,7 @@ export const parameters = {
     values: [
       {
         name: 'light',
-        value: '#f0f0f0',
+        value: '#fafafa',
       },
       {
         name: 'dark',

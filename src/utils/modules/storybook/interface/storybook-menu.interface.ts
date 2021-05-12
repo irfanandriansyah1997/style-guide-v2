@@ -11,6 +11,7 @@ export interface IStorybookArgsItem {
   defaultValue?: any;
   description?: string;
   table?: Partial<IStorybookArgsTable>;
+  type?: Partial<IStorybookArgsType>;
 }
 
 /**
@@ -20,7 +21,19 @@ export interface IStorybookArgsItem {
  */
 export interface IStorybookArgsTable {
   category: string;
+  defaultValue: { summary: string };
   subcategory: string;
+  type: { [key: string]: any };
+}
+
+/**
+ * Storybook Args Type Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.05.12
+ */
+export interface IStorybookArgsType {
+  name: string;
+  required: boolean;
 }
 
 export type IStorybookComponent = FC<any> | ComponentClass<any>;
