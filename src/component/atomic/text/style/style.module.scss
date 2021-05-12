@@ -1,0 +1,9 @@
+@import '@/style/import.scss';
+
+.ui-atomic-text {
+  @include margin(all, 0);
+}
+
+.text {
+  font-size: 10px;
+}

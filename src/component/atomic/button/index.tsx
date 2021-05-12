@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { FC, Validator } from 'react';
 
 import './style/style.scss';
+import TextComponent from '../text';
 import { IButtonProps } from './interface';
 
 /**
@@ -26,7 +27,7 @@ export const Button: FC<IButtonProps> = ({
       style={backgroundColor ? { backgroundColor } : undefined}
       {...props}
     >
-      {label}
+      <TextComponent.Span>{label}</TextComponent.Span>
     </button>
   );
 };

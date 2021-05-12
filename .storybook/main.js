@@ -24,11 +24,18 @@ module.exports = {
   },
   webpackFinal: async (config) => {
     config.module.rules.push({
-      test: /\.s[ac]ss$/i,
+      test: /\.scss$/,
+      exclude: /node_modules/,
       use: [
-        "style-loader",
-        "css-loader",
-        "sass-loader",
+        'style-loader',
+        'css-loader',
+        {
+          loader: 'sass-loader',
+          options: {
+              sourceMap: true
+          }
+        },
+        'postcss-loader'
       ]
     });
 

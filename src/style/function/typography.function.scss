@@ -26,7 +26,7 @@
   }
 }
 
-@mixin line-height($height) {
+@function line-height($height) {
   @if map_has_key($line-height-general, $height) {
     @return map_get($line-height-general, $height);
   }
