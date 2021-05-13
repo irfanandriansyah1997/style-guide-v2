@@ -1,4 +1,4 @@
-import { IStorybookArgsItem } from '@/utils/modules/storybook/interface';
+import { IStorybookArgsItem } from '@/modules/storybook/interface';
 
 export const CUSTOM_ARGS_TEXT_COMPONENT: IStorybookArgsItem[] = [
   {

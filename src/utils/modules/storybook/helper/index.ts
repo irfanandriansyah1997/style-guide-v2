@@ -1,11 +1,11 @@
 import { verifiedIsNotEmpty } from '@99/helper';
 
-import { NullAble } from '@/utils/interface/general';
+import { NullAble } from '@/interface/general';
 import {
   IStorybookArgsItem,
   IStorybookGeneratedArgs,
   IStorybookType
-} from '@/utils/modules/storybook/interface';
+} from '@/modules/storybook/interface';
 
 /**
  * Generate Args Modules

@@ -41,12 +41,15 @@ module.exports = {
 
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@/helper": path.resolve(__dirname, "../src/library/helper/"),
-      "@/modules": path.resolve(__dirname, "../src/library/modules/"),
+      "@/atomic": path.resolve(__dirname, "../src/component/atomic/"),
+      "@/molecules": path.resolve(__dirname, "../src/component/molecules/"),
+      "@/organism": path.resolve(__dirname, "../src/component/organism/"),
+      "@/helper": path.resolve(__dirname, "../src/utils/helper/"),
+      "@/modules": path.resolve(__dirname, "../src/utils/modules/"),
+      "@/constant": path.resolve(__dirname, "../src/utils/constant/"),
+      "@/interface": path.resolve(__dirname, "../src/utils/interface/"),
       "@/assets": path.resolve(__dirname, "../src/assets/"),
-      "@/library": path.resolve(__dirname, "../src/library/"),
-      "@/pages": path.resolve(__dirname, "../src/pages/"),
-      "@/routing": path.resolve(__dirname, "../src/routing/"),
+      "@/utils": path.resolve(__dirname, "../src/utils/"),
       "@/style": path.resolve(__dirname, "../src/style/"),
       "@": path.resolve(__dirname, "../src/")
     };

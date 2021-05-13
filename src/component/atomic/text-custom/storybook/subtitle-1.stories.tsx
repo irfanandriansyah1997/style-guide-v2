@@ -1,11 +1,11 @@
 import type { Story } from '@storybook/react/types-6-0';
 
-import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/component/atomic/text/constant';
-import TextCustom from '@/component/atomic/text-custom';
-import { ICaptionProps } from '@/component/atomic/text-custom/interface';
-import { STYLE_GUIDE_COLOR } from '@/utils/constant/color';
-import { STYLE_GUIDE_FONT_WEIGHT } from '@/utils/constant/typography';
-import Builder from '@/utils/modules/storybook';
+import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/atomic/text/constant';
+import TextCustom from '@/atomic/text-custom';
+import { ICaptionProps } from '@/atomic/text-custom/interface';
+import { STYLE_GUIDE_COLOR } from '@/constant/color';
+import { STYLE_GUIDE_FONT_WEIGHT } from '@/constant/typography';
+import Builder from '@/modules/storybook';
 
 TextCustom.Subtitle1.displayName = `TextCustom.Subtitle1`;
 

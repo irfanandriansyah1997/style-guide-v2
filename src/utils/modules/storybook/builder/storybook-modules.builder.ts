@@ -1,16 +1,16 @@
 import { bind, bulkVerifiedIsNotEmpty } from '@99/helper';
 
-import { NullAble } from '@/utils/interface/general';
+import { NullAble } from '@/interface/general';
 import {
   generateArgsModules,
   generateTitleModules
-} from '@/utils/modules/storybook/helper';
+} from '@/modules/storybook/helper';
 import {
   IStorybookArgsItem,
   IStorybookComponent,
   IStorybookGenerated,
   IStorybookType
-} from '@/utils/modules/storybook/interface';
+} from '@/modules/storybook/interface';
 
 /**
  * Storybook Modules Builder

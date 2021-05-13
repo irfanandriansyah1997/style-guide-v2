@@ -2,8 +2,8 @@ import { objToString, verifiedIsNotEmpty } from '@99/helper';
 import PropTypes from 'prop-types';
 import { createElement, FC } from 'react';
 
-import { ITextProps, ITextType } from '@/component/atomic/text/interface';
-import style from '@/component/atomic/text/style/style.module.scss';
+import { ITextProps, ITextType } from '@/atomic/text/interface';
+import style from '@/atomic/text/style/style.module.scss';
 
 /**
  * Basic Text Component

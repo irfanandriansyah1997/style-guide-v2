@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import Text from '@/component/atomic/text';
-import { ISubtitleProps } from '@/component/atomic/text-custom/interface';
+import Text from '@/atomic/text';
+import { ISubtitleProps } from '@/atomic/text-custom/interface';
 import {
   STYLE_GUIDE_FONT_SIZE,
   STYLE_GUIDE_LINE_HEIGHT
-} from '@/utils/constant/typography';
+} from '@/constant/typography';
 
 /**
  * Subtitle 1 Component

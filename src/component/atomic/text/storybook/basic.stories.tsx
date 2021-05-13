@@ -1,15 +1,15 @@
 import type { Story } from '@storybook/react/types-6-0';
 
-import Text from '@/component/atomic/text';
-import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/component/atomic/text/constant';
-import { ITextProps } from '@/component/atomic/text/interface';
-import { STYLE_GUIDE_COLOR } from '@/utils/constant/color';
+import Text from '@/atomic/text';
+import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/atomic/text/constant';
+import { ITextProps } from '@/atomic/text/interface';
+import { STYLE_GUIDE_COLOR } from '@/constant/color';
 import {
   STYLE_GUIDE_FONT_SIZE,
   STYLE_GUIDE_FONT_WEIGHT,
   STYLE_GUIDE_LINE_HEIGHT
-} from '@/utils/constant/typography';
-import Builder from '@/utils/modules/storybook';
+} from '@/constant/typography';
+import Builder from '@/modules/storybook';
 
 export default new Builder()
   .setParentModuleName(`Text Component`)

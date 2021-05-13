@@ -1,8 +1,8 @@
 import type { Story } from '@storybook/react/types-6-0';
 
-import { Button } from '@/component/atomic/button';
-import { IButtonProps } from '@/component/atomic/button/interface';
-import Builder from '@/utils/modules/storybook';
+import { Button } from '@/atomic/button';
+import { IButtonProps } from '@/atomic/button/interface';
+import Builder from '@/modules/storybook';
 
 export default new Builder()
   .setModuleName(`Button`)

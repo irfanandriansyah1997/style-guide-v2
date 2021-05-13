@@ -3,7 +3,7 @@ import { FC } from 'react';
 import {
   ITextParagraphType as Tag,
   ITextWithTagsProps
-} from '@/component/atomic/text/interface';
+} from '@/atomic/text/interface';
 
 import BasicText from './basic.component';
 

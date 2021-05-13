@@ -4,7 +4,7 @@ import {
   ITextHeadingType as Tag,
   ITextProps,
   ITextWithTagsProps
-} from '@/component/atomic/text/interface';
+} from '@/atomic/text/interface';
 
 import BasicTextComponent from './basic.component';
 

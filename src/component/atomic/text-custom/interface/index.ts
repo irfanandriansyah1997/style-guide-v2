@@ -3,7 +3,7 @@ import {
   ITextHeadingType,
   ITextParagraphType,
   ITextSpanType
-} from '@/component/atomic/text/interface';
+} from '@/atomic/text/interface';
 
 /**
  * Caption Props Interface

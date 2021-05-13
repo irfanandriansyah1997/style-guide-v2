@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import Text from '@/component/atomic/text';
-import { IHeadlineProps } from '@/component/atomic/text-custom/interface';
+import Text from '@/atomic/text';
+import { IHeadlineProps } from '@/atomic/text-custom/interface';
 import {
   STYLE_GUIDE_FONT_SIZE,
   STYLE_GUIDE_LINE_HEIGHT
-} from '@/utils/constant/typography';
+} from '@/constant/typography';
 
 /**
  * Headline 1 Component

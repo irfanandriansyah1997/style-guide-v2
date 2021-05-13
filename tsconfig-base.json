@@ -3,15 +3,17 @@
     "experimentalDecorators": true,
     "baseUrl": "./",
     "paths": {
-      "@/helper/*": ["src/library/helper/*"],
-      "@/helper": ["src/library/helper/index.ts"],
-      "@/modules/*": ["src/library/modules/*"],
+      "@/atomic/*": ["src/component/atomic/*"],
+      "@/molecules/*": ["src/component/molecules/*"],
+      "@/organism/*": ["src/component/organism/*"],
+      "@/helper/*": ["src/utils/helper/*"],
+      "@/modules/*": ["src/utils/modules/*"],
+      "@/constant/*": ["src/utils/constant/*"],
+      "@/interface/*": ["src/utils/interface/*"],
       "@/assets/*": ["src/assets/*"],
-      "@/library/*": ["src/library/*"],
-      "@/pages/*": ["src/pages/*"],
-      "@/routing/*": ["src/routing/*"],
+      "@/utils/*": ["src/utils/*"],
       "@/style/*": ["src/style/*"],
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
     }
   }
 }
