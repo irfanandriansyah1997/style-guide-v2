@@ -1,0 +1,102 @@
+@import '@/style/import.scss';
+
+.a-button {
+  cursor: pointer;
+  outline: 0;
+  text-decoration: none;
+
+  @include no-border();
+  @include rounded(4px);
+  @include background-color(transparent);
+
+  /**
+   * Button Size Styling
+   */
+  &--size-default {
+    height: 32px;
+
+    @include padding(all, 0 10px);
+
+    .a-button__text {
+      @include font-size(paragraph-1);
+      @include line-height(paragraph-1);
+    }
+  }
+
+  &--size-big {
+    height: 40px;
+
+    @include padding(all, 0 12px);
+
+    .a-button__text {
+      @include font-size(headline-5);
+      @include line-height(headline-5);
+    }
+  }
+
+  &--size-small {
+    height: 24px;
+
+    @include padding(all, 0 8px);
+
+    .a-button__text {
+      @include font-size(label);
+      @include line-height(label);
+    }
+  }
+
+  /**
+   * Button Theme Styling
+   */
+  &--theme-dark {
+    @include background-color(dark400);
+
+    .a-button__text {
+      @include font-color(white);
+    }
+  }
+
+  &--theme-light {
+    @include background-color(light400);
+
+    .a-button__text {
+      @include font-color(dark800);
+    }
+  }
+
+  /**
+   * Button Customize
+   */
+  &--outline {
+    @include border(all, 2px, solid, get-color(dark400));
+
+    .a-button__text {
+      @include font-color(dark500);
+    }
+
+    &:hover {
+      @include background-color(dark400);
+
+      .a-button__text {
+        @include font-color(white);
+      }
+    }
+  }
+
+  &--with-icon {
+    .a-button__icon {
+      @include margin-right(10px);
+    }
+
+    &.a-button--rtl {
+      .a-button__icon {
+        @include margin-left(10px);
+        @include margin-right(0);
+      }
+    }
+  }
+
+  &--rounded {
+    @include rounded(30px);
+  }
+}

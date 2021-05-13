@@ -1,3 +1,4 @@
+import '@/style/app.scss';
 import '@/style/global.scss';
 import '@/style/storybook.scss';
 

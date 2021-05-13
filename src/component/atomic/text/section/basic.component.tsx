@@ -25,7 +25,7 @@ const BasicText: FC<ITextProps> = ({
   createElement(tag, {
     ...res,
     className: objToString({
-      [`${style[`ui-atomic-text`]}`]: true,
+      [`${style[`a-text`]}`]: true,
       [`${className}`]: verifiedIsNotEmpty(className)
     }),
     style: {

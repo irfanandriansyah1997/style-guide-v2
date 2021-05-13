@@ -71,7 +71,7 @@ $type-transform: (
 }
 
 @mixin line-height($height) {
-  line-height: $height + px;
+  line-height: get-line-height($height);
 }
 
 @mixin letter-spacing($range) {

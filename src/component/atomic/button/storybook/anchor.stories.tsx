@@ -2,17 +2,17 @@
 import type { Story } from '@storybook/react/types-6-0';
 
 import Button from '@/atomic/button';
-import { IButtonTagProps } from '@/atomic/button/interface';
+import { IAnchorTagProps } from '@/atomic/button/interface';
 import { STYLE_GUIDE_COLOR } from '@/constant/color';
 import Builder from '@/modules/storybook';
 
-Button.Default.displayName = `Button.Default`;
+Button.Anchor.displayName = `Button.Anchor`;
 
 export default new Builder()
-  .setModuleName(`Tag Button`)
+  .setModuleName(`Tag Anchor`)
   .setParentModuleName(`Button Component`)
   .setType(`atomic`)
-  .setComponent(Button.Default)
+  .setComponent(Button.Anchor)
   .execute();
 
 /**
@@ -20,62 +20,52 @@ export default new Builder()
  * @param {IButtonProps} args - args props
  * @returns {ReactNode}
  */
-const Template: Story<IButtonTagProps> = (args) => <Button.Default {...args} />;
+const Template: Story<IAnchorTagProps> = (args) => <Button.Anchor {...args} />;
 
 export const NormalButton = Template.bind({});
 
 NormalButton.args = {
-  ...Button.Default.defaultProps,
-  children: `Button Text`,
+  ...Button.Anchor.defaultProps,
+  children: `Anchor Text`,
+  href: `https://www.google.com/`,
+  target: `_blank`,
   theme: `light`
 };
 
 export const ButtonDark = Template.bind({});
 
 ButtonDark.args = {
-  ...Button.Default.defaultProps,
-  children: `Button Text`,
+  ...Button.Anchor.defaultProps,
+  children: `Anchor Text`,
+  href: `https://www.google.com/`,
+  target: `_blank`,
   theme: `dark`
 };
 
 export const LargeButton = Template.bind({});
 
 LargeButton.args = {
-  ...Button.Default.defaultProps,
-  children: `Button Text`,
-  size: `big`
+  ...Button.Anchor.defaultProps,
+  children: `Anchor Text`,
+  href: `https://www.google.com/`,
+  size: `big`,
+  target: `_blank`
 };
 
 export const SmallButton = Template.bind({});
 
 SmallButton.args = {
-  ...Button.Default.defaultProps,
-  children: `Button Text`,
+  ...Button.Anchor.defaultProps,
+  children: `Anchor Text`,
   size: `small`
 };
 
 export const ButtonWithIcon = Template.bind({});
 
 ButtonWithIcon.args = {
-  ...Button.Default.defaultProps,
-  children: `Button Text`,
-  icon: (
-    <div
-      style={{
-        backgroundColor: STYLE_GUIDE_COLOR.warning500,
-        borderRadius: `50%`,
-        height: 18,
-        width: 18
-      }}
-    />
-  )
-};
-
-export const ImplementRTLOnButton = Template.bind({});
-
-ImplementRTLOnButton.args = {
-  ...Button.Default.defaultProps,
-  children: `Button Text`,
+  ...Button.Anchor.defaultProps,
+  children: `Anchor Text`,
+  href: `https://www.google.com/`,
   icon: (
     <div
       style={{
@@ -86,14 +76,35 @@ ImplementRTLOnButton.args = {
       }}
     />
   ),
-  rtl: true
+  target: `_blank`
+};
+
+export const ImplementRTLOnButton = Template.bind({});
+
+ImplementRTLOnButton.args = {
+  ...Button.Anchor.defaultProps,
+  children: `Anchor Text`,
+  href: `https://www.google.com/`,
+  icon: (
+    <div
+      style={{
+        backgroundColor: STYLE_GUIDE_COLOR.warning500,
+        borderRadius: `50%`,
+        height: 18,
+        width: 18
+      }}
+    />
+  ),
+  rtl: true,
+  target: `_blank`
 };
 
 export const OutlineButton = Template.bind({});
 
 OutlineButton.args = {
-  ...Button.Default.defaultProps,
-  children: `Button Text`,
+  ...Button.Anchor.defaultProps,
+  children: `Anchor Text`,
+  href: `https://www.google.com/`,
   icon: (
     <div
       style={{
@@ -105,14 +116,16 @@ OutlineButton.args = {
     />
   ),
   outline: true,
-  rtl: true
+  rtl: true,
+  target: `_blank`
 };
 
 export const OutlineAndRoundedButton = Template.bind({});
 
 OutlineAndRoundedButton.args = {
-  ...Button.Default.defaultProps,
-  children: `Button Text`,
+  ...Button.Anchor.defaultProps,
+  children: `Anchor Text`,
+  href: `https://www.google.com/`,
   icon: (
     <div
       style={{
@@ -126,20 +139,23 @@ OutlineAndRoundedButton.args = {
   outline: true,
   rounded: true,
   rtl: true,
-  size: `big`
+  size: `big`,
+  target: `_blank`
 };
 
 export const WithCustomClassName = Template.bind({});
 
 WithCustomClassName.args = {
-  ...Button.Default.defaultProps,
-  children: `Button Text`,
+  ...Button.Anchor.defaultProps,
+  children: `Anchor Text`,
   className: {
     content: `a-r123-button__content`,
     icon: `a-r123-button__icon`,
     text: `a-r123-button__text`,
     wrapper: `a-r123-button`
   },
+  href: `https://www.google.com/`,
   rtl: true,
+  target: `_blank`,
   theme: `dark`
 };

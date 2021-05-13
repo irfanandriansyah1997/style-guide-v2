@@ -47,7 +47,10 @@ export type ITextHeadingType = Omit<
   'style'
 >;
 
-export type ITextParagraphType = HTMLAttributes<HTMLParagraphElement>;
+export type ITextParagraphType = Omit<
+  HTMLAttributes<HTMLParagraphElement>,
+  'style'
+>;
 
 /**
  * Text Props Interface
@@ -59,7 +62,7 @@ export type ITextProps = Partial<IBasicTextProps> &
     tag: ITextType;
   };
 
-export type ITextSpanType = HTMLAttributes<HTMLSpanElement>;
+export type ITextSpanType = Omit<HTMLAttributes<HTMLSpanElement>, 'style'>;
 
 export type ITextType = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span';
 
