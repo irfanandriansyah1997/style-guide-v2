@@ -1,6 +1,6 @@
 import type { Story } from '@storybook/react/types-6-0';
 
-import TextComponent from '@/component/atomic/text';
+import Text from '@/component/atomic/text';
 import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/component/atomic/text/constant';
 import {
   ITextParagraphType,
@@ -14,7 +14,7 @@ import {
 } from '@/utils/constant/typography';
 import Builder from '@/utils/modules/storybook';
 
-TextComponent.Paragraph.displayName = `TextComponent.Paragraph`;
+Text.Paragraph.displayName = `Text.Paragraph`;
 
 /**
  * Templates Storybook
@@ -22,14 +22,14 @@ TextComponent.Paragraph.displayName = `TextComponent.Paragraph`;
  * @returns {ReactNode}
  */
 const Template: Story<ITextWithTagsProps<ITextParagraphType>> = (args) => (
-  <TextComponent.Paragraph {...args} />
+  <Text.Paragraph {...args} />
 );
 
 export default new Builder()
   .setParentModuleName(`Text Component`)
   .setModuleName(`With Tag Paragraph`)
   .setType(`atomic`)
-  .setComponent(TextComponent.Paragraph)
+  .setComponent(Text.Paragraph)
   .setMultipleArgs(CUSTOM_ARGS_TEXT_COMPONENT)
   .execute();
 

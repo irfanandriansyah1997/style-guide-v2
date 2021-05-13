@@ -1,6 +1,6 @@
 import type { Story } from '@storybook/react/types-6-0';
 
-import TextComponent from '@/component/atomic/text';
+import Text from '@/component/atomic/text';
 import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/component/atomic/text/constant';
 import { ITextProps } from '@/component/atomic/text/interface';
 import { STYLE_GUIDE_COLOR } from '@/utils/constant/color';
@@ -15,7 +15,7 @@ export default new Builder()
   .setParentModuleName(`Text Component`)
   .setModuleName(`Basic Usage`)
   .setType(`atomic`)
-  .setComponent(TextComponent)
+  .setComponent(Text)
   .setMultipleArgs(CUSTOM_ARGS_TEXT_COMPONENT)
   .setArgs({
     argsName: `tag`,
@@ -45,7 +45,9 @@ export default new Builder()
  * @param {IButtonProps} args - args props
  * @returns {ReactNode}
  */
-const Template: Story<ITextProps> = (args) => <TextComponent {...args} />;
+const Template: Story<ITextProps> = (args) => <Text {...args} />;
+
+Text.displayName = `Text`;
 
 export const TextWithTagHeading = Template.bind({});
 

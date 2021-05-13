@@ -1,14 +1,14 @@
-import BasicTextComponent from './section/basic.component';
+import BasicText from './section/basic.component';
 import {
-  Heading1Component,
-  Heading2Component,
-  Heading3Component,
-  Heading4Component,
-  Heading5Component,
-  Heading6Component
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6
 } from './section/heading.component';
-import ParagraphComponent from './section/paragraph.component';
-import SpanComponent from './section/span.component';
+import Paragraph from './section/paragraph.component';
+import Span from './section/span.component';
 import { ITextExportDefault } from './interface';
 
 /**
@@ -16,22 +16,22 @@ import { ITextExportDefault } from './interface';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-const TextComponent: ITextExportDefault = BasicTextComponent as ITextExportDefault;
+const Text: ITextExportDefault = BasicText as ITextExportDefault;
 
-TextComponent.H1 = Heading1Component;
+Text.H1 = Heading1;
 
-TextComponent.H2 = Heading2Component;
+Text.H2 = Heading2;
 
-TextComponent.H3 = Heading3Component;
+Text.H3 = Heading3;
 
-TextComponent.H4 = Heading4Component;
+Text.H4 = Heading4;
 
-TextComponent.H5 = Heading5Component;
+Text.H5 = Heading5;
 
-TextComponent.H6 = Heading6Component;
+Text.H6 = Heading6;
 
-TextComponent.Paragraph = ParagraphComponent;
+Text.Paragraph = Paragraph;
 
-TextComponent.Span = SpanComponent;
+Text.Span = Span;
 
-export default TextComponent;
+export default Text;

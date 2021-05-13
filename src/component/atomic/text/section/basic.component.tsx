@@ -6,11 +6,11 @@ import { ITextProps, ITextType } from '@/component/atomic/text/interface';
 import style from '@/component/atomic/text/style/style.module.scss';
 
 /**
- * Text Component
+ * Basic Text Component
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-const TextComponent: FC<ITextProps> = ({
+const BasicText: FC<ITextProps> = ({
   className,
   color,
   fontFamily,
@@ -41,7 +41,7 @@ const TextComponent: FC<ITextProps> = ({
     }
   });
 
-TextComponent.propTypes = {
+BasicText.propTypes = {
   tag: PropTypes.oneOf<ITextType>([
     `h1`,
     `h2`,
@@ -54,4 +54,4 @@ TextComponent.propTypes = {
   ]).isRequired
 };
 
-export default TextComponent;
+export default BasicText;

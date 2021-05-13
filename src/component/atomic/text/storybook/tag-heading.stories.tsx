@@ -1,6 +1,6 @@
 import type { Story } from '@storybook/react/types-6-0';
 
-import TextComponent from '@/component/atomic/text';
+import Text from '@/component/atomic/text';
 import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/component/atomic/text/constant';
 import {
   ITextHeadingType,
@@ -18,16 +18,16 @@ export default new Builder()
   .setParentModuleName(`Text Component`)
   .setModuleName(`With Tag Heading`)
   .setType(`atomic`)
-  .setComponent(TextComponent.H1)
+  .setComponent(Text.H1)
   .setMultipleArgs(CUSTOM_ARGS_TEXT_COMPONENT)
   .execute();
 
-TextComponent.H1.displayName = `TextComponent.H1`;
-TextComponent.H2.displayName = `TextComponent.H2`;
-TextComponent.H3.displayName = `TextComponent.H3`;
-TextComponent.H4.displayName = `TextComponent.H4`;
-TextComponent.H5.displayName = `TextComponent.H5`;
-TextComponent.H6.displayName = `TextComponent.H6`;
+Text.H1.displayName = `Text.H1`;
+Text.H2.displayName = `Text.H2`;
+Text.H3.displayName = `Text.H3`;
+Text.H4.displayName = `Text.H4`;
+Text.H5.displayName = `Text.H5`;
+Text.H6.displayName = `Text.H6`;
 
 /**
  * Templates H1 Storybook
@@ -35,7 +35,7 @@ TextComponent.H6.displayName = `TextComponent.H6`;
  * @returns {ReactNode}
  */
 const TemplateH1: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
-  <TextComponent.H1 {...args} />
+  <Text.H1 {...args} />
 );
 
 /**
@@ -44,7 +44,7 @@ const TemplateH1: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
  * @returns {ReactNode}
  */
 const TemplateH2: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
-  <TextComponent.H2 {...args} />
+  <Text.H2 {...args} />
 );
 
 /**
@@ -53,7 +53,7 @@ const TemplateH2: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
  * @returns {ReactNode}
  */
 const TemplateH3: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
-  <TextComponent.H3 {...args} />
+  <Text.H3 {...args} />
 );
 
 /**
@@ -62,7 +62,7 @@ const TemplateH3: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
  * @returns {ReactNode}
  */
 const TemplateH4: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
-  <TextComponent.H4 {...args} />
+  <Text.H4 {...args} />
 );
 
 /**
@@ -71,7 +71,7 @@ const TemplateH4: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
  * @returns {ReactNode}
  */
 const TemplateH5: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
-  <TextComponent.H5 {...args} />
+  <Text.H5 {...args} />
 );
 
 /**
@@ -80,7 +80,7 @@ const TemplateH5: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
  * @returns {ReactNode}
  */
 const TemplateH6: Story<ITextWithTagsProps<ITextHeadingType>> = (args) => (
-  <TextComponent.H6 {...args} />
+  <Text.H6 {...args} />
 );
 
 export const TagHeading1 = TemplateH1.bind({});

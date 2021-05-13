@@ -5,15 +5,15 @@ import {
   ITextWithTagsProps
 } from '@/component/atomic/text/interface';
 
-import BasicTextComponent from './basic.component';
+import BasicText from './basic.component';
 
 /**
  * Span Component
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-const SpanComponent: FC<ITextWithTagsProps<Tag>> = (props) => (
-  <BasicTextComponent tag="span" {...props} />
+const Span: FC<ITextWithTagsProps<Tag>> = (props) => (
+  <BasicText tag="span" {...props} />
 );
 
-export default SpanComponent;
+export default Span;

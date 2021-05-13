@@ -13,17 +13,15 @@ import BasicTextComponent from './basic.component';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-const GenerateComponent: FC<ITextProps> = (props) => (
-  <BasicTextComponent {...props} />
-);
+const Generate: FC<ITextProps> = (props) => <BasicTextComponent {...props} />;
 
 /**
  * Heading 1 Component
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Heading1Component: FC<ITextWithTagsProps<Tag>> = (props) => (
-  <GenerateComponent tag="h1" {...props} />
+export const Heading1: FC<ITextWithTagsProps<Tag>> = (props) => (
+  <Generate tag="h1" {...props} />
 );
 
 /**
@@ -31,8 +29,8 @@ export const Heading1Component: FC<ITextWithTagsProps<Tag>> = (props) => (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Heading2Component: FC<ITextWithTagsProps<Tag>> = (props) => (
-  <GenerateComponent tag="h2" {...props} />
+export const Heading2: FC<ITextWithTagsProps<Tag>> = (props) => (
+  <Generate tag="h2" {...props} />
 );
 
 /**
@@ -40,8 +38,8 @@ export const Heading2Component: FC<ITextWithTagsProps<Tag>> = (props) => (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Heading3Component: FC<ITextWithTagsProps<Tag>> = (props) => (
-  <GenerateComponent tag="h3" {...props} />
+export const Heading3: FC<ITextWithTagsProps<Tag>> = (props) => (
+  <Generate tag="h3" {...props} />
 );
 
 /**
@@ -49,8 +47,8 @@ export const Heading3Component: FC<ITextWithTagsProps<Tag>> = (props) => (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Heading4Component: FC<ITextWithTagsProps<Tag>> = (props) => (
-  <GenerateComponent tag="h4" {...props} />
+export const Heading4: FC<ITextWithTagsProps<Tag>> = (props) => (
+  <Generate tag="h4" {...props} />
 );
 
 /**
@@ -58,8 +56,8 @@ export const Heading4Component: FC<ITextWithTagsProps<Tag>> = (props) => (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Heading5Component: FC<ITextWithTagsProps<Tag>> = (props) => (
-  <GenerateComponent tag="h5" {...props} />
+export const Heading5: FC<ITextWithTagsProps<Tag>> = (props) => (
+  <Generate tag="h5" {...props} />
 );
 
 /**
@@ -67,6 +65,6 @@ export const Heading5Component: FC<ITextWithTagsProps<Tag>> = (props) => (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Heading6Component: FC<ITextWithTagsProps<Tag>> = (props) => (
-  <GenerateComponent tag="h6" {...props} />
+export const Heading6: FC<ITextWithTagsProps<Tag>> = (props) => (
+  <Generate tag="h6" {...props} />
 );

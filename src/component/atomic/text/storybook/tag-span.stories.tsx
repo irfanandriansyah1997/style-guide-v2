@@ -1,6 +1,6 @@
 import type { Story } from '@storybook/react/types-6-0';
 
-import TextComponent from '@/component/atomic/text';
+import Text from '@/component/atomic/text';
 import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/component/atomic/text/constant';
 import {
   ITextParagraphType,
@@ -14,7 +14,7 @@ import {
 } from '@/utils/constant/typography';
 import Builder from '@/utils/modules/storybook';
 
-TextComponent.Span.displayName = `TextComponent.Span`;
+Text.Span.displayName = `Text.Span`;
 
 /**
  * Templates Storybook
@@ -22,14 +22,14 @@ TextComponent.Span.displayName = `TextComponent.Span`;
  * @returns {ReactNode}
  */
 const Template: Story<ITextWithTagsProps<ITextParagraphType>> = (args) => (
-  <TextComponent.Span {...args} />
+  <Text.Span {...args} />
 );
 
 export default new Builder()
   .setParentModuleName(`Text Component`)
   .setModuleName(`With Tag Span`)
   .setType(`atomic`)
-  .setComponent(TextComponent.Span)
+  .setComponent(Text.Span)
   .setMultipleArgs(CUSTOM_ARGS_TEXT_COMPONENT)
   .execute();
 

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import TextComponent from '@/component/atomic/text';
+import Text from '@/component/atomic/text';
 import { IHeadlineProps } from '@/component/atomic/text-custom/interface';
 import {
   STYLE_GUIDE_FONT_SIZE,
@@ -12,8 +12,8 @@ import {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Headline1Component: FC<IHeadlineProps> = (props) => (
-  <TextComponent.H1
+export const Headline1: FC<IHeadlineProps> = (props) => (
+  <Text.H1
     fontSize={STYLE_GUIDE_FONT_SIZE[`headline-1`]}
     lineHeight={STYLE_GUIDE_LINE_HEIGHT[`headline-1`]}
     {...props}
@@ -25,8 +25,8 @@ export const Headline1Component: FC<IHeadlineProps> = (props) => (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Headline2Component: FC<IHeadlineProps> = (props) => (
-  <TextComponent.H2
+export const Headline2: FC<IHeadlineProps> = (props) => (
+  <Text.H2
     fontSize={STYLE_GUIDE_FONT_SIZE[`headline-2`]}
     lineHeight={STYLE_GUIDE_LINE_HEIGHT[`headline-2`]}
     {...props}
@@ -38,8 +38,8 @@ export const Headline2Component: FC<IHeadlineProps> = (props) => (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Headline3Component: FC<IHeadlineProps> = (props) => (
-  <TextComponent.H3
+export const Headline3: FC<IHeadlineProps> = (props) => (
+  <Text.H3
     fontSize={STYLE_GUIDE_FONT_SIZE[`headline-3`]}
     lineHeight={STYLE_GUIDE_LINE_HEIGHT[`headline-3`]}
     {...props}
@@ -51,8 +51,8 @@ export const Headline3Component: FC<IHeadlineProps> = (props) => (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Headline4Component: FC<IHeadlineProps> = (props) => (
-  <TextComponent.H4
+export const Headline4: FC<IHeadlineProps> = (props) => (
+  <Text.H4
     fontSize={STYLE_GUIDE_FONT_SIZE[`headline-4`]}
     lineHeight={STYLE_GUIDE_LINE_HEIGHT[`headline-4`]}
     {...props}
@@ -64,8 +64,8 @@ export const Headline4Component: FC<IHeadlineProps> = (props) => (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Headline5Component: FC<IHeadlineProps> = (props) => (
-  <TextComponent.H5
+export const Headline5: FC<IHeadlineProps> = (props) => (
+  <Text.H5
     fontSize={STYLE_GUIDE_FONT_SIZE[`headline-5`]}
     lineHeight={STYLE_GUIDE_LINE_HEIGHT[`headline-5`]}
     {...props}
@@ -77,8 +77,8 @@ export const Headline5Component: FC<IHeadlineProps> = (props) => (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.05.12
  */
-export const Headline6Component: FC<IHeadlineProps> = (props) => (
-  <TextComponent.H6
+export const Headline6: FC<IHeadlineProps> = (props) => (
+  <Text.H6
     fontSize={STYLE_GUIDE_FONT_SIZE[`headline-6`]}
     lineHeight={STYLE_GUIDE_LINE_HEIGHT[`headline-6`]}
     {...props}
