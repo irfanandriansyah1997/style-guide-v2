@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test text component Render text component without line height 1`] = `"<div><p class=\\"a-text test\\" style=\\"font-size: 12px; font-weight: 300;\\">Hello</p></div>"`;
+
+exports[`Test text component Testing With Mock 1`] = `"<div><p class=\\"a-text\\" style=\\"color: rgb(255, 232, 214); font-family: a; font-size: 12px; font-weight: 900; line-height: 16px; text-align: center; text-decoration: underline;\\">Hello</p></div>"`;
+
+exports[`Test text component Testing With Mock 2`] = `"<div><span class=\\"a-text\\" style=\\"color: rgb(255, 247, 209); font-family: b; font-size: 12px; font-weight: 300; line-height: 16px;\\">Hello</span></div>"`;
+
+exports[`Test text component Testing With Mock 3`] = `"<div><h1 class=\\"a-text\\" style=\\"color: rgb(255, 247, 209); font-family: b; line-height: 16px;\\">Hello</h1></div>"`;
