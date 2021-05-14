@@ -3,6 +3,7 @@ import type { Story } from '@storybook/react/types-6-0';
 
 import Button from '@/atomic/button';
 import { IAnchorTagProps } from '@/atomic/button/interface';
+import { CUSTOM_ARGS_BUTTON_COMPONENT } from '@/component/atomic/button/constant';
 import { STYLE_GUIDE_COLOR } from '@/constant/color';
 import Builder from '@/modules/storybook';
 
@@ -13,6 +14,7 @@ export default new Builder()
   .setParentModuleName(`Button Component`)
   .setType(`atomic`)
   .setComponent(Button.Anchor)
+  .setMultipleArgs(CUSTOM_ARGS_BUTTON_COMPONENT)
   .execute();
 
 /**

@@ -67,16 +67,27 @@ ButtonTag.propTypes = {
   outline: PropTypes.bool,
   rtl: PropTypes.bool,
   size: PropTypes.oneOf<IButtonSize>([`big`, `default`, `small`]),
-  theme: PropTypes.oneOf<IButtonThemeOption>([`dark`, `light`])
+  theme: PropTypes.oneOf<IButtonThemeOption>([`dark`, `light`]),
+  type: PropTypes.oneOf<'submit' | 'reset' | 'button'>([
+    `submit`,
+    `reset`,
+    `button`
+  ])
 };
 
 ButtonTag.defaultProps = {
-  className: {},
+  className: {
+    content: undefined,
+    icon: undefined,
+    text: undefined,
+    wrapper: undefined
+  },
   icon: undefined,
   outline: false,
   rtl: false,
   size: `default`,
-  theme: `light`
+  theme: `light`,
+  type: `button`
 };
 
 export default ButtonTag;

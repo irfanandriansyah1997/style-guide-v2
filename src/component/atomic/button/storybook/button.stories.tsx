@@ -3,6 +3,7 @@ import type { Story } from '@storybook/react/types-6-0';
 
 import Button from '@/atomic/button';
 import { IButtonTagProps } from '@/atomic/button/interface';
+import { CUSTOM_ARGS_BUTTON_COMPONENT } from '@/component/atomic/button/constant';
 import { STYLE_GUIDE_COLOR } from '@/constant/color';
 import Builder from '@/modules/storybook';
 
@@ -12,6 +13,7 @@ export default new Builder()
   .setModuleName(`Tag Button`)
   .setParentModuleName(`Button Component`)
   .setType(`atomic`)
+  .setMultipleArgs(CUSTOM_ARGS_BUTTON_COMPONENT)
   .setComponent(Button.Default)
   .execute();
 
@@ -27,7 +29,8 @@ export const NormalButton = Template.bind({});
 NormalButton.args = {
   ...Button.Default.defaultProps,
   children: `Button Text`,
-  theme: `light`
+  theme: `light`,
+  type: `button`
 };
 
 export const ButtonDark = Template.bind({});
@@ -35,7 +38,8 @@ export const ButtonDark = Template.bind({});
 ButtonDark.args = {
   ...Button.Default.defaultProps,
   children: `Button Text`,
-  theme: `dark`
+  theme: `dark`,
+  type: `button`
 };
 
 export const LargeButton = Template.bind({});
@@ -43,7 +47,8 @@ export const LargeButton = Template.bind({});
 LargeButton.args = {
   ...Button.Default.defaultProps,
   children: `Button Text`,
-  size: `big`
+  size: `big`,
+  type: `button`
 };
 
 export const SmallButton = Template.bind({});
@@ -51,7 +56,8 @@ export const SmallButton = Template.bind({});
 SmallButton.args = {
   ...Button.Default.defaultProps,
   children: `Button Text`,
-  size: `small`
+  size: `small`,
+  type: `button`
 };
 
 export const ButtonWithIcon = Template.bind({});
@@ -68,7 +74,8 @@ ButtonWithIcon.args = {
         width: 18
       }}
     />
-  )
+  ),
+  type: `button`
 };
 
 export const ImplementRTLOnButton = Template.bind({});
@@ -86,7 +93,8 @@ ImplementRTLOnButton.args = {
       }}
     />
   ),
-  rtl: true
+  rtl: true,
+  type: `button`
 };
 
 export const OutlineButton = Template.bind({});
@@ -105,7 +113,8 @@ OutlineButton.args = {
     />
   ),
   outline: true,
-  rtl: true
+  rtl: true,
+  type: `button`
 };
 
 export const OutlineAndRoundedButton = Template.bind({});
@@ -126,7 +135,8 @@ OutlineAndRoundedButton.args = {
   outline: true,
   rounded: true,
   rtl: true,
-  size: `big`
+  size: `big`,
+  type: `button`
 };
 
 export const WithCustomClassName = Template.bind({});
@@ -141,5 +151,6 @@ WithCustomClassName.args = {
     wrapper: `a-r123-button`
   },
   rtl: true,
-  theme: `dark`
+  theme: `dark`,
+  type: `button`
 };

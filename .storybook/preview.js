@@ -23,4 +23,14 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  html: {
+    removeEmptyComments: true,
+    highlighter: {
+      showLineNumbers: true,
+    },
+    prettier: {
+      tabWidth: 2,
+      useTabs: false,
+    },
+  }
 }
