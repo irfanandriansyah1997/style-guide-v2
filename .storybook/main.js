@@ -11,18 +11,19 @@ module.exports = {
     "storybook-dark-mode",
     "@storybook/addon-viewport"
   ],
-  typescript: {
-    reactDocgen: "react-docgen-typescript",
-    reactDocgenTypescriptOptions: {
-      compilerOptions: {
-        allowSyntheticDefaultImports: false,
-        esModuleInterop: false,
-      },
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
-    },
-  },
+  // disable react docgen for reduce compile time
+  // typescript: {
+  //   reactDocgen: "react-docgen-typescript",
+  //   reactDocgenTypescriptOptions: {
+  //     compilerOptions: {
+  //       allowSyntheticDefaultImports: false,
+  //       esModuleInterop: false,
+  //     },
+  //     shouldExtractLiteralValuesFromEnum: true,
+  //     propFilter: (prop) =>
+  //       prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+  //   },
+  // },
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.scss$/,
@@ -36,7 +37,8 @@ module.exports = {
               sourceMap: true
           }
         },
-        'postcss-loader'
+        // disable it for reduce compile time
+        // 'postcss-loader'
       ]
     });
 

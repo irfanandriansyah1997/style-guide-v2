@@ -7,6 +7,8 @@ import {
 } from '@/constant/typography';
 import { IUnitTestingFixture } from '@/interface/unit-test';
 
+test.skip(`Skip Testing Just Mock`, () => undefined);
+
 interface IOutputTextFixture {
   color: string;
   fontFamily: string;

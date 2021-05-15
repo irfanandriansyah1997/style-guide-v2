@@ -8,7 +8,9 @@ module.exports = {
     '!lib/**/*.js',
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.mock.{js,jsx,ts,tsx}',
+    '!src/**/interface/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.stories.{js,jsx,ts,tsx}',
+    '!src/component/**/constant/*.{js,jsx,ts,tsx}',
     '!src/**/*.constant.{js,jsx,ts,tsx}',
     '!.rollup.cache'
   ],

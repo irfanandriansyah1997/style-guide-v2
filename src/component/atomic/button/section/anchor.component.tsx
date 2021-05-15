@@ -71,12 +71,7 @@ AnchorTag.propTypes = {
 };
 
 AnchorTag.defaultProps = {
-  className: {
-    content: undefined,
-    icon: undefined,
-    text: undefined,
-    wrapper: undefined
-  },
+  className: undefined,
   icon: undefined,
   outline: false,
   rounded: false,

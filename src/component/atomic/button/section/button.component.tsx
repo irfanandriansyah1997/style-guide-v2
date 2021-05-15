@@ -76,12 +76,7 @@ ButtonTag.propTypes = {
 };
 
 ButtonTag.defaultProps = {
-  className: {
-    content: undefined,
-    icon: undefined,
-    text: undefined,
-    wrapper: undefined
-  },
+  className: undefined,
   icon: undefined,
   outline: false,
   rtl: false,
