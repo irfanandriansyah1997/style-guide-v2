@@ -27,7 +27,6 @@
       "typings"
     ],
     "exclude": [
-      "src/component/**/storybook",
       "src/**/__tests__",
       "typings"
     ]

@@ -7,25 +7,11 @@ import { FC, memo, ReactNode } from 'react';
 
 import {
   IBasicButtonProps,
-  IButtonClassnameList
+  IButtonClassnameList as List
 } from '@/atomic/button/interface';
 import styles from '@/atomic/button/style/style.module.scss';
 import Text from '@/atomic/text';
-
-/**
- * Check Classname Available
- * @param {Partial<IButtonClassnameList>} className - class name list on button component
- * @param {string} key - key on IButtonClassnameList interface
- * @returns {boolean}
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.05.13
- */
-const checkClassnameAvailable = (
-  className: Partial<IButtonClassnameList> | undefined,
-  key: keyof IButtonClassnameList
-): boolean =>
-  verifiedIsNotEmpty(className) &&
-  verifiedIsNotEmpty((className as IButtonClassnameList)[key]);
+import { checkClassnameAvailable } from '@/helper/component.helper';
 
 /**
  * Basic Button Component
@@ -43,10 +29,9 @@ const component: FC<Partial<IBasicButtonProps> & { children?: ReactNode }> = ({
       flex: true,
       'flex-align-center': true,
       'flex-row-reverse': verifiedIsNotFalse(rtl),
-      [`${className ? className.content : undefined}`]: checkClassnameAvailable(
-        className,
-        `content`
-      )
+      [`${
+        className ? className.content : undefined
+      }`]: checkClassnameAvailable<List>(className, `content`)
     })}
   >
     {icon && (
@@ -55,7 +40,7 @@ const component: FC<Partial<IBasicButtonProps> & { children?: ReactNode }> = ({
           [styles[`a-button__icon`]]: true,
           [`${
             className ? className.icon : undefined
-          }`]: checkClassnameAvailable(className, `icon`)
+          }`]: checkClassnameAvailable<List>(className, `icon`)
         })}
       >
         {icon}
@@ -64,10 +49,9 @@ const component: FC<Partial<IBasicButtonProps> & { children?: ReactNode }> = ({
     <Text.Span
       className={objToString({
         [styles[`a-button__text`]]: true,
-        [`${className ? className.text : undefined}`]: checkClassnameAvailable(
-          className,
-          `text`
-        )
+        [`${
+          className ? className.text : undefined
+        }`]: checkClassnameAvailable<List>(className, `text`)
       })}
     >
       {children}
@@ -119,8 +103,7 @@ export const generateButtonClassName = (
     'flex-align-center': true,
     'flex-justify-content': true,
     'inline-flex': tag === `a`,
-    [`${className ? className.wrapper : undefined}`]: checkClassnameAvailable(
-      className,
-      `wrapper`
-    )
+    [`${
+      className ? className.wrapper : undefined
+    }`]: checkClassnameAvailable<List>(className, `wrapper`)
   });

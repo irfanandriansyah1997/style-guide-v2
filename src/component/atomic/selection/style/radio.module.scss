@@ -1,0 +1,17 @@
+@import '../../../../style/import.scss';
+
+.a-radio {
+  @include margin(all, 0);
+
+  &--active {
+    // todo
+  }
+
+  &__toggle {
+    // todo
+  }
+
+  &__text {
+    // todo
+  }
+}

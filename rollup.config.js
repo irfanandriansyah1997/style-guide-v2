@@ -46,6 +46,7 @@ export default {
     resolve(),
     commonjs(),
     typescript({
+      tsconfig: 'tsconfig-build.json',
       typescript: require('typescript')
     }),
     postcss({
