@@ -1,12 +1,11 @@
 import { objToString, verifiedIsNotFalse } from '@99/helper';
 import { FC } from 'react';
 
+import style from '@/atomic/radio/style/style.module.scss';
 import { IRadioProps } from '@/atomic/selection/interface';
-import style from '@/atomic/selection/style/radio.module.scss';
+import BasicSelection from '@/atomic/selection/section/basic.component';
 import { checkClassnameAvailable } from '@/helper/component.helper';
 import { IToggleClassnameList } from '@/interface/selection';
-
-import BasicSelection from './section/basic.component';
 
 /**
  * Radio Component

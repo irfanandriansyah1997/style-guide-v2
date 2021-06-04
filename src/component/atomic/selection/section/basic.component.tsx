@@ -1,6 +1,6 @@
 import { objToString } from '@99/helper';
 import PropTypes from 'prop-types';
-import { FC, Validator } from 'react';
+import { FC, memo, Validator } from 'react';
 
 import { ISelectionProps } from '@/atomic/selection/interface';
 import Text from '@/atomic/text';
@@ -13,7 +13,7 @@ import { IToggleClassnameList } from '@/interface/selection';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.04
  */
-const BasicSelection: FC<ISelectionProps> = ({
+const component: FC<ISelectionProps> = ({
   children,
   className,
   labelTag,
@@ -58,7 +58,7 @@ const BasicSelection: FC<ISelectionProps> = ({
   </div>
 );
 
-BasicSelection.propTypes = {
+component.propTypes = {
   className: PropTypes.shape({
     label: PropTypes.string,
     selector: PropTypes.string,
@@ -78,9 +78,11 @@ BasicSelection.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
 };
 
-BasicSelection.defaultProps = {
+component.defaultProps = {
   labelTag: `p`,
   onChangeSelection: undefined
 };
+
+const BasicSelection = memo(component);
 
 export default BasicSelection;

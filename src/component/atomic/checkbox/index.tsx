@@ -1,12 +1,11 @@
 import { objToString, verifiedIsNotFalse } from '@99/helper';
 import { FC } from 'react';
 
+import style from '@/atomic/checkbox/style/style.module.scss';
 import { ICheckboxProps } from '@/atomic/selection/interface';
-import style from '@/atomic/selection/style/checkbox.module.scss';
+import BasicSelection from '@/atomic/selection/section/basic.component';
 import { checkClassnameAvailable } from '@/helper/component.helper';
 import { IToggleClassnameList } from '@/interface/selection';
-
-import BasicSelection from './section/basic.component';
 
 /**
  * Checkbox Component
