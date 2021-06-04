@@ -12,6 +12,7 @@
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
       "strict": true,
+      "declaration": true,
       "forceConsistentCasingInFileNames": true,
       "noFallthroughCasesInSwitch": true,
       "module": "esnext",
@@ -23,6 +24,11 @@
     },
     "include": [
       "src",
+      "typings"
+    ],
+    "exclude": [
+      "src/component/**/storybook",
+      "src/**/__tests__",
       "typings"
     ]
   }
