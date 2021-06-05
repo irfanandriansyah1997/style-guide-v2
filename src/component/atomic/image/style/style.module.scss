@@ -1,0 +1,35 @@
+@import '../../../../style/import.scss';
+
+.a-image {
+  height: auto;
+  position: relative;
+  width: auto;
+
+  @include rounded(0);
+
+  &--type {
+    &-circle {
+      @include rounded(50%);
+    }
+
+    &-rounded {
+      @include rounded(12px);
+    }
+
+    &-rounded-bottom {
+      @include rounded(0 0 12px 12px);
+    }
+
+    &-rounded-left {
+      @include rounded(12px 0 0 12px);
+    }
+
+    &-rounded-top {
+      @include rounded(12px 12px 0 0);
+    }
+
+    &-rounded-right {
+      @include rounded(0 12px 12px 0);
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import { verifiedIsNotEmpty } from '@99/helper';
 
+import { IDefaultText } from '@/interface/general';
+
 /**
  * Check Classname Available
  * @param {Partial<IButtonClassnameList>} className - class name list on button component
@@ -16,4 +18,23 @@ export function checkClassnameAvailable<Props>(
     verifiedIsNotEmpty(className) &&
     verifiedIsNotEmpty((className as Props)[key])
   );
+}
+
+/**
+ * Getter Size
+ * @param {IDefaultText} key - key param will be contains key of object on sizePreset parameter or random string and number
+ * @param {Record<P, IDefaultText>} sizePrest - size preset param is object who collect key of size preset
+ * @returns {IDefaultText}
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.06.05
+ */
+export function getterSize<P extends string>(
+  key: IDefaultText,
+  sizePreset: Record<P, IDefaultText>
+): IDefaultText {
+  if (Object.prototype.hasOwnProperty.call(sizePreset, key)) {
+    return sizePreset[key as P];
+  }
+
+  return key;
 }

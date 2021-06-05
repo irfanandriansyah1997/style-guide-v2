@@ -1,0 +1,7 @@
+@import '../../../../style/import.scss';
+
+.a-avatar {
+  overflow: hidden;
+
+  @include rounded(50%);
+}
