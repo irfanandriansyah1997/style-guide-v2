@@ -1,17 +1,61 @@
 @import '../../../../style/import.scss';
 
 .a-checkbox {
+  $c: &;
+
+  cursor: pointer;
+
   @include margin(all, 0);
 
-  &--active {
-    // todo
+  &:hover {
+    #{$c}__toggle {
+      @include background-color(rgba(get-color(dark300), 0.5));
+    }
+  }
+
+  &--active,
+  &--active:hover {
+    #{$c}__toggle {
+      @include background-color(dark300);
+
+      &::before {
+        opacity: 1;
+      }
+    }
   }
 
   &__toggle {
-    // todo
+    box-sizing: border-box;
+    height: 14px;
+    min-width: 14px;
+    width: 14px;
+
+    @include rounded(3px);
+    @include border(all, 2px, solid, dark300);
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+    }
+
+    &::before {
+      border-bottom: 2px solid #fff;
+      border-right: 2px solid #fff;
+      height: 8px;
+      left: 2.5px;
+      opacity: 0;
+      top: calc(50% - 5.5px);
+      transition: 0.31s cubic-bezier(0.7, 0.3, 0, 1);
+      width: 5px;
+      z-index: 1;
+
+      @include transform-rotate(45);
+    }
   }
 
   &__text {
-    // todo
+    @include margin-left(8px);
   }
 }

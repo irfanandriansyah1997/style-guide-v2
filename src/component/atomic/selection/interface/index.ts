@@ -21,7 +21,7 @@ interface IBaseProps extends IBaseItemSelection {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.04
  */
-export interface ICheckboxProps extends IBaseItemSelection {
+export interface ICheckboxProps extends IBaseProps {
   className?: Partial<IToggleClassnameList>;
 }
 
@@ -30,7 +30,7 @@ export interface ICheckboxProps extends IBaseItemSelection {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.04
  */
-export interface IRadioProps extends IBaseItemSelection {
+export interface IRadioProps extends IBaseProps {
   className?: Partial<IToggleClassnameList>;
 }
 

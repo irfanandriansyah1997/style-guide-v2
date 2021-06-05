@@ -28,26 +28,26 @@ const component: FC<ISelectionProps> = ({
         className ? className.wrapper : undefined
       }`]: checkClassnameAvailable<IToggleClassnameList>(className, `wrapper`)
     })}
+    role="button"
+    tabIndex={0}
+    onKeyDown={undefined}
+    onClick={() => onChangeSelection?.(value)}
   >
     <div
       className={objToString({
         [`${
-          className ? className.wrapper : undefined
+          className ? className.selector : undefined
         }`]: checkClassnameAvailable<IToggleClassnameList>(
           className,
           `selector`
         )
       })}
-      role="button"
-      tabIndex={0}
-      aria-hidden="true"
-      onClick={() => onChangeSelection?.(value)}
     />
     {children && (
       <Text
         className={objToString({
           [`${
-            className ? className.wrapper : undefined
+            className ? className.label : undefined
           }`]: checkClassnameAvailable<IToggleClassnameList>(className, `label`)
         })}
         tag={labelTag as ITextType}

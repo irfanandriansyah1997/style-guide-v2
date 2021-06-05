@@ -1,4 +1,5 @@
 import { objToString, verifiedIsNotFalse } from '@99/helper';
+import PropTypes from 'prop-types';
 import { FC } from 'react';
 
 import style from '@/atomic/radio/style/style.module.scss';
@@ -19,13 +20,14 @@ const Radio: FC<IRadioProps> = ({ active, className, ...props }) => (
       label: objToString({
         [`${style[`a-radio__text`]}`]: true,
         [`${
-          className ? className.wrapper : undefined
+          className ? className.label : undefined
         }`]: checkClassnameAvailable<IToggleClassnameList>(className, `label`)
       }),
       selector: objToString({
+        relative: true,
         [`${style[`a-radio__toggle`]}`]: true,
         [`${
-          className ? className.wrapper : undefined
+          className ? className.selector : undefined
         }`]: checkClassnameAvailable<IToggleClassnameList>(
           className,
           `selector`
@@ -41,5 +43,19 @@ const Radio: FC<IRadioProps> = ({ active, className, ...props }) => (
     }}
   />
 );
+
+Radio.propTypes = {
+  active: PropTypes.bool,
+  className: PropTypes.shape({})
+};
+
+Radio.defaultProps = {
+  active: false,
+  className: {
+    label: undefined,
+    selector: undefined,
+    wrapper: undefined
+  }
+};
 
 export default Radio;

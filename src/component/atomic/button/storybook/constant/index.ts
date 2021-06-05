@@ -89,23 +89,6 @@ export const CUSTOM_ARGS_BUTTON_COMPONENT: IStorybookArgsItem[] = [
     }
   },
   {
-    argsName: `size`,
-    control: {
-      options: [`big`, `default`, `small`],
-      type: `inline-radio`
-    },
-    description: `Set button size, eg. \`big\` \`default\` \`small\``,
-    table: {
-      category: `Styling`,
-      defaultValue: {
-        summary: `default`
-      },
-      type: {
-        summary: `IButtonSize`
-      }
-    }
-  },
-  {
     argsName: `theme`,
     control: {
       options: [`light`, `dark`],

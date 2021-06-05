@@ -1,17 +1,51 @@
 @import '../../../../style/import.scss';
 
 .a-radio {
+  $c: &;
+
+  cursor: pointer;
+
   @include margin(all, 0);
 
+  &:hover {
+    #{$c}__toggle {
+      &::before {
+        @include background-color(rgba(get-color(dark300), 0.5));
+      }
+    }
+  }
+
   &--active {
-    // todo
+    #{$c}__toggle {
+      &::before {
+        @include background-color(dark300);
+      }
+    }
   }
 
   &__toggle {
-    // todo
+    box-sizing: border-box;
+    height: 14px;
+    width: 14px;
+
+    @include rounded(50%);
+    @include border(all, 2px, solid, dark300);
+
+    &::before {
+      content: '';
+      display: block;
+      height: 8px;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      width: 8px;
+
+      @include rounded(50%);
+      @include transform-translate(-50%, -50%);
+    }
   }
 
   &__text {
-    // todo
+    @include margin-left(8px);
   }
 }
