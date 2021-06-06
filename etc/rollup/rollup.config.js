@@ -2,24 +2,27 @@ import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import cleaner from 'rollup-plugin-cleaner';
+import multiInput from 'rollup-plugin-multi-input';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 
-import pkg from './package.json';
+import pkg from '../../package.json';
 
-export default {
+const DEFAULT_CONFIG = {
   external: [...Object.keys(pkg.dependencies || {})],
   input: './src/component/atomic/text/index.tsx',
   output: [
     {
-      file: 'lib/index.es.js',
+      chunkFileNames: 'chunks/[name]-[hash].js',
+      dir: 'lib',
       format: 'esm',
       sourcemap: true
     }
   ],
   plugins: [
+    multiInput({ relative: 'src/' }),
     cleaner({
       targets: ['./lib/']
     }),
@@ -56,3 +59,8 @@ export default {
     })
   ]
 };
+
+export default ({ customPath }) => ({
+  ...DEFAULT_CONFIG,
+  input: customPath.split('\n')
+});
