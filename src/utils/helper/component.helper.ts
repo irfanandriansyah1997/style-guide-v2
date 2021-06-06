@@ -1,4 +1,12 @@
-import { verifiedIsNotEmpty } from '@99/helper';
+import { verifiedIsNotEmpty, verifiedKeyIsExist } from '@99/helper';
+import {
+  Children,
+  JSXElementConstructor,
+  ReactElement,
+  ReactNode,
+  ReactNodeArray,
+  ReactPortal
+} from 'react';
 
 import { IDefaultText } from '@/interface/general';
 
@@ -37,4 +45,40 @@ export function getterSize<P extends string>(
   }
 
   return key;
+}
+
+/**
+ * Transform Children Props To Array
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @param {ReactNode} children - children props
+ * @return {Output}
+ * @description the result this method is array depends on criteria / condition callback parameter when mapping children props
+ * @since 2021.06.06
+ */
+export function transformChildrenToArray<Output>(children: ReactNode) {
+  return (
+    callback: (
+      child:
+        | string
+        | number
+        | boolean
+        | Record<string, any>
+        | ReactElement<any, string | JSXElementConstructor<any>>
+        | ReactNodeArray
+        | ReactPortal
+        | null
+        | undefined
+    ) => Output | undefined
+  ): Output[] => {
+    const result = Children.map(children, callback)?.filter(verifiedIsNotEmpty);
+
+    if (
+      typeof result === `object` &&
+      verifiedKeyIsExist(result as Record<string, any>, `length`)
+    ) {
+      return result;
+    }
+
+    return [];
+  };
 }

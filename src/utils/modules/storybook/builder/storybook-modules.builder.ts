@@ -28,6 +28,8 @@ export class StorybookModulesBuilder {
 
   private component?: IStorybookComponent = undefined;
 
+  private subComponent: Record<string, IStorybookComponent> = {};
+
   /**
    * Setter Module Name Storybook Modules
    * @param {string} name - storybook modules name
@@ -73,6 +75,19 @@ export class StorybookModulesBuilder {
   }
 
   /**
+   * Setter Sub Component Storybook Modules
+   * @param {IStorybookComponent} component - main component for storybook modules
+   * @returns {StorybookModulesBuilder}
+   */
+  setSubComponent(
+    component: Record<string, IStorybookComponent>
+  ): StorybookModulesBuilder {
+    this.subComponent = component;
+
+    return this;
+  }
+
+  /**
    * Setter Args Storybook Modules
    * @param {IStorybookArgsItem} args - one args type storybook modules
    * @returns {StorybookModulesBuilder}
@@ -100,12 +115,20 @@ export class StorybookModulesBuilder {
    */
   @bind
   execute(): NullAble<IStorybookGenerated> {
-    const { args, component, moduleName, parentModule, type } = this;
+    const {
+      args,
+      component,
+      moduleName,
+      parentModule,
+      subComponent,
+      type
+    } = this;
 
     if (bulkVerifiedIsNotEmpty([component, moduleName])) {
       return {
         argTypes: generateArgsModules(args),
         component: component as IStorybookComponent,
+        subcomponents: subComponent,
         title: generateTitleModules(type, moduleName as string, parentModule)
       };
     }

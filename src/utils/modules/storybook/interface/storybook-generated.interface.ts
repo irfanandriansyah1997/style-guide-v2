@@ -11,6 +11,7 @@ import {
 export interface IStorybookGenerated {
   argTypes: IStorybookGeneratedArgs;
   component: IStorybookComponent;
+  subcomponents: Record<string, IStorybookComponent>;
   title: string;
 }
 

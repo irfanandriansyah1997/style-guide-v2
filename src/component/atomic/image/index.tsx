@@ -1,18 +1,22 @@
 import { objToString, verifiedIsNotEmpty } from '@99/helper';
 import { Property } from 'csstype';
 import PropTypes from 'prop-types';
-import { FC, Validator } from 'react';
+import { Validator } from 'react';
 
 import style from '@/atomic/image/style/style.module.scss';
 
-import { IImageProps, IImageShapeType } from './interface';
+import {
+  ImagePreset,
+  ImageResponsive
+} from './section/image-responsive.component';
+import { IImageDefaultExport, IImageShapeType } from './interface';
 
 /**
  * Image Component
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.05
  */
-const Image: FC<IImageProps> = ({
+const Image: IImageDefaultExport = ({
   alt,
   className,
   height,
@@ -73,5 +77,9 @@ Image.defaultProps = {
   shape: `square`,
   width: undefined
 };
+
+Image.Responsive = ImageResponsive;
+
+Image.Preset = ImagePreset;
 
 export default Image;

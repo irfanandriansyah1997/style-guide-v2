@@ -7,7 +7,7 @@
 
   @include rounded(0);
 
-  &--type {
+  &--shape {
     &-circle {
       @include rounded(50%);
     }
