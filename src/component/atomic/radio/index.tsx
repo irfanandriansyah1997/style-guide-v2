@@ -51,11 +51,7 @@ Radio.propTypes = {
 
 Radio.defaultProps = {
   active: false,
-  className: {
-    label: undefined,
-    selector: undefined,
-    wrapper: undefined
-  }
+  className: undefined
 };
 
 export default Radio;

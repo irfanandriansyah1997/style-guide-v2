@@ -1,3 +1,4 @@
+import { bulkVerifiedIsNotEmpty } from '@99/helper';
 import { FC } from 'react';
 
 import {
@@ -26,7 +27,11 @@ export const ImageResponsive: FC<IImageResponsiveProps> = ({
 }) => {
   const { src, srcSet } = useImageResponsive(children);
 
-  return <Image {...props} src={src} srcSet={srcSet} />;
+  if (bulkVerifiedIsNotEmpty([src, srcSet])) {
+    return <Image {...props} src={src} srcSet={srcSet} />;
+  }
+
+  return null;
 };
 
 ImageResponsive.displayName = `Image.Responsive`;
