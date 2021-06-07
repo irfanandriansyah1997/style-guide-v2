@@ -31,3 +31,5 @@ yarn-error.log*
 .jest_coverage/
 lib
 storybook-static
+.tmp_staging/
+tmp/
