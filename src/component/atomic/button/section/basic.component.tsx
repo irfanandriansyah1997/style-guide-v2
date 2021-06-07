@@ -7,11 +7,17 @@ import { FC, memo, ReactNode } from 'react';
 
 import {
   IBasicButtonProps,
-  IButtonClassnameList as List
+  IButtonClassnameList as List,
+  IButtonSize as Size,
+  IButtonThemeOption as Theme
 } from '@/atomic/button/interface';
 import styles from '@/atomic/button/style/style.module.scss';
 import Text from '@/atomic/text';
 import { checkClassnameAvailable } from '@/helper/component.helper';
+
+const BUTTON_THEME: Theme[] = [`dark`, `light`];
+
+const BUTTON_SIZE: Size[] = [`big`, `default`, `small`];
 
 /**
  * Basic Button Component
@@ -85,19 +91,12 @@ export const generateButtonClassName = (
     [styles[`a-button--outline`]]: verifiedIsNotFalse(outline),
     [styles[`a-button--rounded`]]: verifiedIsNotFalse(rounded),
     [styles[`a-button--rtl`]]: verifiedIsNotFalse(rtl),
-    [styles[`a-button--size-big`]]: verifiedIsNotEmpty(size) && size === `big`,
-    [styles[`a-button--size-default`]]:
-      verifiedIsNotEmpty(size) && size === `default`,
-    [styles[`a-button--size-small`]]:
-      verifiedIsNotEmpty(size) && size === `small`,
-    [styles[`a-button--theme-dark`]]:
+    [styles[`a-button--size-${size}`]]:
+      verifiedIsNotEmpty(size) && BUTTON_SIZE.includes(size as Size),
+    [styles[`a-button--theme-${theme}`]]:
       verifiedIsNotEmpty(theme) &&
-      !verifiedIsNotFalse(outline) &&
-      theme === `dark`,
-    [styles[`a-button--theme-light`]]:
-      verifiedIsNotEmpty(theme) &&
-      !verifiedIsNotFalse(outline) &&
-      theme === `light`,
+      BUTTON_THEME.includes(theme as Theme) &&
+      !verifiedIsNotFalse(outline),
     [styles[`a-button--with-icon`]]: verifiedIsNotEmpty(icon),
     flex: tag === `button`,
     'flex-align-center': true,

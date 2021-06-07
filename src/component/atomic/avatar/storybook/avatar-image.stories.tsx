@@ -5,7 +5,7 @@ import Avatar from '@/atomic/avatar';
 import { IAvatarProps } from '@/atomic/avatar/interface';
 import Builder from '@/modules/storybook';
 
-import { CUSTOM_ARGS_AVATAR_ENUM_SIZE_COMPONENT } from './section';
+import { CUSTOM_ARGS_AVATAR_ENUM_SIZE_COMPONENT } from './constant';
 
 Avatar.displayName = `Image`;
 

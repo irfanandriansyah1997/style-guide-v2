@@ -22,7 +22,7 @@ describe(`Testing Avatar Component`, () => {
       expect(container.firstChild).toHaveAttribute(`alt`, `images alt`);
       expect(container.firstChild).toHaveAttribute(`src`, `image.jpg`);
       expect((container.firstChild as HTMLElement).style.objectFit).toBe(
-        `initial`
+        `cover`
       );
       expect((container.firstChild as HTMLElement).style.width).toBe(`44px`);
       expect((container.firstChild as HTMLElement).style.height).toBe(`44px`);
@@ -69,7 +69,7 @@ describe(`Testing Avatar Component`, () => {
       expect(container.firstChild).toHaveAttribute(`alt`, `images alt`);
       expect(container.firstChild).toHaveAttribute(`src`, `image.jpg`);
       expect((container.firstChild as HTMLElement).style.objectFit).toBe(
-        `initial`
+        `cover`
       );
       expect((container.firstChild as HTMLElement).style.width).toBe(`36px`);
       expect((container.firstChild as HTMLElement).style.height).toBe(`36px`);
