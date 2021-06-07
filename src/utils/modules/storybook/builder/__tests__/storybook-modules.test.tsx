@@ -95,6 +95,7 @@ describe(`Testing Storybook Modules`, () => {
           type: { required: true }
         }
       },
+      subcomponents: {},
       title: `atomic/Parent Modules/Component`
     });
   });
@@ -127,6 +128,7 @@ describe(`Testing Storybook Modules`, () => {
           type: { required: true }
         }
       },
+      subcomponents: {},
       title: `atomic/Component`
     });
   });

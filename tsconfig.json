@@ -27,7 +27,6 @@
       "typings"
     ],
     "exclude": [
-      "src/**/__tests__",
       "typings"
     ]
   }

@@ -30,3 +30,4 @@ yarn-error.log*
 !env/**/*.env
 .jest_coverage/
 lib
+storybook-static
