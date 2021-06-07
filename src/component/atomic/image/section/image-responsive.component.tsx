@@ -1,13 +1,13 @@
 import { bulkVerifiedIsNotEmpty } from '@99/helper';
+import PropTypes from 'prop-types';
 import { FC } from 'react';
 
+import Image from '@/atomic/image';
 import {
   IImagePresetProps,
   IImageResponsiveProps
 } from '@/atomic/image/interface';
 import { useImageResponsive } from '@/utils/hooks/image.hooks';
-
-import Image from '..';
 
 /**
  * Image Responsive Item
@@ -15,6 +15,11 @@ import Image from '..';
  * @since 2021.06.05
  */
 export const ImagePreset: FC<IImagePresetProps> = () => null;
+
+ImagePreset.propTypes = {
+  sizes: PropTypes.number.isRequired,
+  src: PropTypes.string.isRequired
+};
 
 /**
  * Image Responsive

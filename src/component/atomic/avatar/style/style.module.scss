@@ -4,4 +4,5 @@
   overflow: hidden;
 
   @include rounded(50%);
+  @include background-color(dark100);
 }

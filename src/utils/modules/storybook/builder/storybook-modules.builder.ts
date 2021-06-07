@@ -101,6 +101,8 @@ export class StorybookModulesBuilder {
   /**
    * Setter Multiple Args Storybook Modules
    * @param {IStorybookArgsItem[]} args - multiple args type storybook modules
+   * @description if you want read more related parameter on setMultipleArgs you can read storybook documentation
+   * https://storybook.js.org/docs/ember/essentials/controls
    * @returns {StorybookModulesBuilder}
    */
   setMultipleArgs(args: IStorybookArgsItem[]): StorybookModulesBuilder {

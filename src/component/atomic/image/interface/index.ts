@@ -48,7 +48,10 @@ export interface IImageResponsiveProps
  */
 export interface IImageResponsiveTemplate
   extends Omit<IImageResponsiveProps, 'children'> {
-  template: IImagePresetProps[];
+  imageDesktop: string;
+  imageMobile: string;
+  imageTableHorizontal: string;
+  imageTablet: string;
 }
 
 /**

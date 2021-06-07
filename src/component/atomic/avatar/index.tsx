@@ -50,6 +50,7 @@ const Avatar: FC<IAvatarProps> = ({
           [`${className}`]: verifiedIsNotEmpty(className)
         })}
         width={size}
+        objectFit="cover"
         height={size}
         shape="circle"
       />

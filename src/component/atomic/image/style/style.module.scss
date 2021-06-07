@@ -6,6 +6,7 @@
   width: auto;
 
   @include rounded(0);
+  @include background-color(light300);
 
   &--shape {
     &-circle {

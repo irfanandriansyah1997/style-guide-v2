@@ -45,8 +45,8 @@ describe(`Testing Avatar Component`, () => {
     if (container.firstChild) {
       expect(container.firstChild).toHaveClass(`a-avatar`);
       expect(container.firstChild).toHaveClass(`sample-classname`);
-      expect((container.firstChild as HTMLElement).style.width).toBe(`10px`);
-      expect((container.firstChild as HTMLElement).style.height).toBe(`10px`);
+      expect((container.firstChild as HTMLElement).style.width).toBe(`32px`);
+      expect((container.firstChild as HTMLElement).style.height).toBe(`32px`);
       expect((container.firstChild as HTMLElement).childElementCount).toBe(1);
     }
   });
