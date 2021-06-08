@@ -3,6 +3,7 @@ import type { Story } from '@storybook/react/types-6-0';
 
 import Checkbox from '@/atomic/checkbox';
 import { ICheckboxProps } from '@/atomic/selection/interface';
+import { partialAction } from '@/helper/storybook.helper';
 import Builder from '@/modules/storybook';
 
 import { CUSTOM_ARGS_CHECKBOX_COMPONENT } from './constant';
@@ -30,6 +31,7 @@ CheckboxSelect.args = {
   active: true,
   children: `Label Checkbox Button`,
   labelTag: `h1`,
+  on: partialAction(`on`),
   value: `1`
 };
 
@@ -40,6 +42,7 @@ CheckboxUnselect.args = {
   active: false,
   children: `Label Checkbox Button`,
   labelTag: `h1`,
+  on: partialAction(`on`),
   value: `1`
 };
 
@@ -55,6 +58,7 @@ CheckboxWithCustomClassName.args = {
     wrapper: `custom-wrapper`
   },
   labelTag: `h1`,
+  on: partialAction(`on`),
   value: `1`
 };
 
@@ -63,5 +67,6 @@ export const CheckboxWithoutLabel = Template.bind({});
 CheckboxWithoutLabel.args = {
   ...Checkbox.defaultProps,
   active: false,
+  on: partialAction(`on`),
   value: `1`
 };
