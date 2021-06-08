@@ -16,6 +16,7 @@ import { IToggleClassnameList } from '@/interface/selection';
 const Checkbox: FC<ICheckboxProps> = ({ active, className, ...props }) => (
   <BasicSelection
     {...props}
+    active={active}
     className={{
       label: objToString({
         [`${style[`a-checkbox__text`]}`]: true,

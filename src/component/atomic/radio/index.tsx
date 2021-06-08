@@ -16,6 +16,7 @@ import { IToggleClassnameList } from '@/interface/selection';
 const Radio: FC<IRadioProps> = ({ active, className, ...props }) => (
   <BasicSelection
     {...props}
+    active={active}
     className={{
       label: objToString({
         [`${style[`a-radio__text`]}`]: true,

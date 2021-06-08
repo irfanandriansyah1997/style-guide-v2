@@ -4,8 +4,8 @@ import Tags from '@/atomic/tags';
 
 describe(`Testing Tags Component`, () => {
   it(`Testing Tags Normally`, () => {
-    const onClickSpy = jest.fn();
-    const { container } = render(<Tags onClick={onClickSpy}>Testing</Tags>);
+    const onSpy = jest.fn((response) => response);
+    const { container } = render(<Tags on={onSpy}>Testing</Tags>);
 
     if (container.firstChild) {
       expect(container.firstChild).toHaveClass(`a-tags`);
@@ -23,7 +23,8 @@ describe(`Testing Tags Component`, () => {
         })
       );
 
-      expect(onClickSpy).toHaveBeenCalledTimes(1);
+      expect(onSpy).toHaveBeenCalledTimes(1);
+      expect(onSpy.mock.results[0].value.event).toBe(`on-click`);
     }
   });
 

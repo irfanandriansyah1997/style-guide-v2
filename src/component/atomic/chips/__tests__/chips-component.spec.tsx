@@ -5,10 +5,8 @@ import Chips from '@/atomic/chips';
 
 describe(`Testing Chips Component`, () => {
   it(`Testing Chips Normally`, () => {
-    const onCloseChipsSpy = jest.fn();
-    const { container } = render(
-      <Chips label="chips" onCloseChips={onCloseChipsSpy} />
-    );
+    const onSpy = jest.fn((param) => param);
+    const { container } = render(<Chips label="chips" on={onSpy} />);
 
     if (container.firstChild) {
       expect(container.firstChild).toHaveClass(`a-chips`);
@@ -38,15 +36,14 @@ describe(`Testing Chips Component`, () => {
         );
       }
 
-      expect(onCloseChipsSpy).toHaveBeenCalledTimes(1);
+      expect(onSpy).toHaveBeenCalledTimes(1);
+      expect(onSpy.mock.results[0].value.event).toBe(`on-click-close-icon`);
     }
   });
 
   it(`Testing Chips With Outline`, () => {
-    const onCloseChipsSpy = jest.fn();
-    const { container } = render(
-      <Chips label="chips" onCloseChips={onCloseChipsSpy} outline />
-    );
+    const onSpy = jest.fn((param) => param);
+    const { container } = render(<Chips label="chips" on={onSpy} outline />);
 
     if (container.firstChild) {
       expect(container.firstChild).toHaveClass(`a-chips`);
@@ -76,16 +73,17 @@ describe(`Testing Chips Component`, () => {
         );
       }
 
-      expect(onCloseChipsSpy).toHaveBeenCalledTimes(1);
+      expect(onSpy).toHaveBeenCalledTimes(1);
+      expect(onSpy.mock.results[0].value.event).toBe(`on-click-close-icon`);
     }
   });
 
   it(`Testing Chips With Custom Class Name`, () => {
-    const onCloseChipsSpy = jest.fn();
+    const onSpy = jest.fn((param) => param);
     const { container } = render(
       <Chips
         label="custom classname"
-        onCloseChips={onCloseChipsSpy}
+        on={onSpy}
         outline
         className={{
           close: `custom-close-classname`,
@@ -126,7 +124,8 @@ describe(`Testing Chips Component`, () => {
         );
       }
 
-      expect(onCloseChipsSpy).toHaveBeenCalledTimes(1);
+      expect(onSpy).toHaveBeenCalledTimes(1);
+      expect(onSpy.mock.results[0].value.event).toBe(`on-click-close-icon`);
     }
   });
 });

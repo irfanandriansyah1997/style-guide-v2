@@ -13,12 +13,7 @@ import { IChipsClassnameList as List, IChipsProps } from './interface';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.08
  */
-const Chips: FC<IChipsProps> = ({
-  className,
-  label,
-  onCloseChips,
-  outline
-}) => (
+const Chips: FC<IChipsProps> = ({ className, label, on, outline }) => (
   <div
     className={objToString({
       [styles[`a-chips`]]: true,
@@ -41,7 +36,12 @@ const Chips: FC<IChipsProps> = ({
       <button
         type="button"
         aria-label="close"
-        onClick={(e) => onCloseChips?.(e)}
+        onClick={(e) =>
+          on?.({
+            event: `on-click-close-icon`,
+            payload: e
+          })
+        }
         style={{ height: 16, width: 16 }}
         className={objToString({
           flex: true,
@@ -65,13 +65,12 @@ Chips.propTypes = {
     text: PropTypes.string
   }) as Validator<List>,
   label: PropTypes.string.isRequired,
-  onCloseChips: PropTypes.func,
+  on: PropTypes.func.isRequired,
   outline: PropTypes.bool
 };
 
 Chips.defaultProps = {
   className: undefined,
-  onCloseChips: undefined,
   outline: false
 };
 

@@ -30,7 +30,7 @@ export const DefaultChips = Template.bind({});
 DefaultChips.args = {
   ...Chips.defaultProps,
   label: `Chips`,
-  onCloseChips: partialAction(`onCloseChips`)
+  on: partialAction(`on`)
 };
 
 export const OutlineChips = Template.bind({});
@@ -38,7 +38,7 @@ export const OutlineChips = Template.bind({});
 OutlineChips.args = {
   ...Chips.defaultProps,
   label: `Chips`,
-  onCloseChips: partialAction(`onCloseChips`),
+  on: partialAction(`on`),
   outline: true
 };
 
@@ -52,6 +52,6 @@ WithCustomClassName.args = {
     wrapper: `sample-classname-wrapper`
   },
   label: `Chips`,
-  onCloseChips: partialAction(`onCloseChips`),
+  on: partialAction(`on`),
   outline: true
 };

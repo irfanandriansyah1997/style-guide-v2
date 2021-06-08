@@ -3,8 +3,8 @@ import { IStorybookArgsItem } from '@/modules/storybook/interface';
 export const CUSTOM_ARGS_CHIPS_COMPONENT: IStorybookArgsItem[] = [
   {
     action: `clicked`,
-    argsName: `onCloseChips`,
-    description: `This method will be invoked when user try to icon close`,
+    argsName: `on`,
+    description: `This method will be invoked when user try to interact chips component`,
     table: {
       category: `Event`,
       defaultValue: {

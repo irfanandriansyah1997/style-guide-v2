@@ -14,10 +14,11 @@ import { IToggleClassnameList } from '@/interface/selection';
  * @since 2021.06.04
  */
 const component: FC<ISelectionProps> = ({
+  active,
   children,
   className,
   labelTag,
-  onChangeSelection,
+  on,
   value
 }) => (
   <div
@@ -31,7 +32,15 @@ const component: FC<ISelectionProps> = ({
     role="button"
     tabIndex={0}
     onKeyDown={undefined}
-    onClick={() => onChangeSelection?.(value)}
+    onClick={() =>
+      on?.({
+        event: `on-change-selection`,
+        payload: {
+          show: !active,
+          value
+        }
+      })
+    }
   >
     <div
       className={objToString({
@@ -59,6 +68,7 @@ const component: FC<ISelectionProps> = ({
 );
 
 component.propTypes = {
+  active: PropTypes.bool,
   className: PropTypes.shape({
     label: PropTypes.string,
     selector: PropTypes.string,
@@ -74,13 +84,14 @@ component.propTypes = {
     `p`,
     `span`
   ]),
-  onChangeSelection: PropTypes.func,
+  on: PropTypes.func,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
 };
 
 component.defaultProps = {
+  active: false,
   labelTag: `p`,
-  onChangeSelection: undefined
+  on: undefined
 };
 
 const BasicSelection = memo(component);

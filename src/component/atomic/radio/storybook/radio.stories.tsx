@@ -3,6 +3,7 @@ import type { Story } from '@storybook/react/types-6-0';
 
 import Radio from '@/atomic/radio';
 import { IRadioProps } from '@/atomic/selection/interface';
+import { partialAction } from '@/helper/storybook.helper';
 import Builder from '@/modules/storybook';
 
 import { CUSTOM_ARGS_RADIO_COMPONENT } from './constant';
@@ -30,6 +31,7 @@ RadioButtonSelect.args = {
   active: true,
   children: `Label Radio Button`,
   labelTag: `h1`,
+  on: partialAction(`on`),
   value: `1`
 };
 
@@ -40,6 +42,7 @@ RadioButtonUnselect.args = {
   active: false,
   children: `Label Radio Button`,
   labelTag: `h1`,
+  on: partialAction(`on`),
   value: `1`
 };
 
@@ -55,6 +58,7 @@ RadioButtonWithCustomClassName.args = {
     wrapper: `custom-wrapper`
   },
   labelTag: `h1`,
+  on: partialAction(`on`),
   value: `1`
 };
 
@@ -63,5 +67,6 @@ export const RadioButtonWithoutLabel = Template.bind({});
 RadioButtonWithoutLabel.args = {
   ...Radio.defaultProps,
   active: false,
+  on: partialAction(`on`),
   value: `1`
 };

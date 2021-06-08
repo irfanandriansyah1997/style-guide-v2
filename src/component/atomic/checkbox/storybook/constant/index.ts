@@ -4,14 +4,14 @@ export const CUSTOM_ARGS_CHECKBOX_COMPONENT: IStorybookArgsItem[] = [
   {
     action: `clicked`,
     argsName: `onChangeSelection`,
-    description: `This method will be invoked when user try to click checkbox component`,
+    description: `This method will be invoked when user interact checkbox`,
     table: {
       category: `Event`,
       defaultValue: {
         summary: `undefined`
       },
       type: {
-        summary: `(value: IDefaultText) => void`
+        summary: `(param: IEventOnChangeSelection) => void`
       }
     }
   },

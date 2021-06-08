@@ -29,7 +29,7 @@ const Tags: FC<ITagsProps> = ({
   children,
   className,
   inverted,
-  onClick,
+  on,
   outline,
   rounded,
   rtl,
@@ -56,7 +56,12 @@ const Tags: FC<ITagsProps> = ({
     role="button"
     tabIndex={0}
     onKeyDown={undefined}
-    onClick={(e) => onClick?.(e)}
+    onClick={(e) =>
+      on?.({
+        event: `on-click`,
+        payload: e
+      })
+    }
   >
     {children}
   </div>
@@ -65,7 +70,7 @@ const Tags: FC<ITagsProps> = ({
 Tags.propTypes = {
   className: PropTypes.string,
   inverted: PropTypes.bool,
-  onClick: PropTypes.func,
+  on: PropTypes.func,
   outline: PropTypes.bool,
   rounded: PropTypes.bool,
   rtl: PropTypes.bool,
@@ -76,7 +81,7 @@ Tags.propTypes = {
 Tags.defaultProps = {
   className: undefined,
   inverted: false,
-  onClick: undefined,
+  on: undefined,
   outline: false,
   rounded: false,
   rtl: false,

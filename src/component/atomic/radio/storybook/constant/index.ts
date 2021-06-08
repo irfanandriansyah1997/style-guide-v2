@@ -3,15 +3,15 @@ import { IStorybookArgsItem } from '@/modules/storybook/interface';
 export const CUSTOM_ARGS_RADIO_COMPONENT: IStorybookArgsItem[] = [
   {
     action: `clicked`,
-    argsName: `onChangeSelection`,
-    description: `This method will be invoked when user try to click radio component`,
+    argsName: `on`,
+    description: `This method will be invoked when user interact radio component`,
     table: {
       category: `Event`,
       defaultValue: {
         summary: `undefined`
       },
       type: {
-        summary: `(value: IDefaultText) => void`
+        summary: `(param: IEventOnChangeSelection) => void`
       }
     }
   },

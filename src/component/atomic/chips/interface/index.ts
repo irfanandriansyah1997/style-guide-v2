@@ -1,4 +1,6 @@
-import { MouseEventHandler } from 'react';
+import { MouseEvent } from 'react';
+
+import { IEventComponent } from '@/interface/general/event.interface';
 
 /**
  * All Class Name Each Tag on Chips Component
@@ -19,6 +21,16 @@ export interface IChipsClassnameList {
 export interface IChipsProps {
   className?: Partial<IChipsClassnameList>;
   label: string;
-  onCloseChips?: MouseEventHandler<HTMLButtonElement>;
+  on: (param: IEventIconCloseOnClick) => void;
   outline?: boolean;
 }
+
+/**
+ * Event Icon Close On Click
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.06.08
+ */
+export type IEventIconCloseOnClick = IEventComponent<
+  'on-click-close-icon',
+  MouseEvent<HTMLButtonElement>
+>;

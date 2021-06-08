@@ -46,14 +46,9 @@ describe(`Testing Checkbox Component`, () => {
   });
 
   it(`Testing trigger onChange Checkbox`, () => {
-    const onChangeSelectionSpy = jest.fn((output) => output);
+    const onSpy = jest.fn((output) => output);
     const { container } = render(
-      <Checkbox
-        value="sample-value"
-        active
-        labelTag="p"
-        onChangeSelection={onChangeSelectionSpy}
-      >
+      <Checkbox value="sample-value" active labelTag="p" on={onSpy}>
         Label
       </Checkbox>
     );
@@ -68,8 +63,14 @@ describe(`Testing Checkbox Component`, () => {
       );
     }
 
-    expect(onChangeSelectionSpy).toHaveBeenCalledTimes(1);
-    expect(onChangeSelectionSpy.mock.results[0].value).toBe(`sample-value`);
+    expect(onSpy).toHaveBeenCalledTimes(1);
+    expect(onSpy.mock.results[0].value).toStrictEqual({
+      event: `on-change-selection`,
+      payload: {
+        show: false,
+        value: `sample-value`
+      }
+    });
   });
 
   it(`Testing Set Classname On Checkbox Component`, () => {

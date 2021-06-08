@@ -1,4 +1,16 @@
-import { MouseEventHandler, ReactNode } from 'react';
+import { MouseEvent, ReactNode } from 'react';
+
+import { IEventComponent } from '@/interface/general/event.interface';
+
+/**
+ * Event On Click Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.06.08
+ */
+export type IEventOnClickTags = IEventComponent<
+  'on-click',
+  MouseEvent<HTMLDivElement>
+>;
 
 /**
  * All Class Name Each Tag on Tags Component
@@ -19,7 +31,7 @@ export interface ITagsProps {
   children?: ReactNode;
   className?: string;
   inverted?: boolean;
-  onClick?: MouseEventHandler<HTMLDivElement>;
+  on?: (param: IEventOnClickTags) => void;
   outline?: boolean;
   rounded?: boolean;
   rtl?: boolean;

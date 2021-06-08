@@ -39,6 +39,6 @@ export interface IRadioProps extends IBaseProps {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.04
  */
-export interface ISelectionProps extends Omit<IBaseProps, 'active'> {
+export interface ISelectionProps extends IBaseProps {
   className: IToggleClassnameList;
 }
