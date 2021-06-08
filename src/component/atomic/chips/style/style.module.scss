@@ -1,0 +1,40 @@
+@import '../../../../style/import.scss';
+
+.a-chips {
+  /**
+   * Comment this section for enabling customize layout on each portal
+   */
+  // &:hover {
+  //   @include background-color(darken(get-color(dark100), 5%));
+  // }
+
+  // &:active {
+  //   @include background-color(darken(get-color(dark100), 10%));
+  // }
+
+  &__close {
+    @include no-border();
+    @include rounded(50%);
+    @include margin-left(8px);
+    @include background-color(dark400);
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      height: 2px;
+      position: absolute;
+      width: 10px;
+
+      @include background-color(white);
+    }
+
+    &::after {
+      @include transform-rotate(45);
+    }
+
+    &::before {
+      @include transform-rotate(-45);
+    }
+  }
+}

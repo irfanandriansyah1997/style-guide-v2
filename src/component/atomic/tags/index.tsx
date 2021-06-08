@@ -4,14 +4,11 @@ import {
   verifiedIsNotFalse
 } from '@99/helper';
 import PropTypes from 'prop-types';
-import { FC, Validator } from 'react';
+import { FC } from 'react';
 
 import styles from '@/atomic/tags/style/style.module.scss';
-import { checkClassnameAvailable } from '@/helper/component.helper';
 
 import {
-  ITagsClassnameList,
-  ITagsClassnameList as List,
   ITagsProps,
   ITagsSize,
   ITagsSize as Size,
@@ -42,50 +39,31 @@ const Tags: FC<ITagsProps> = ({
   <div
     className={objToString({
       [styles[`a-tags`]]: true,
-      [styles[`a-tags--inverted`]]: verifiedIsNotFalse(inverted),
+      [styles[`a-tags--inverted`]]:
+        verifiedIsNotFalse(inverted) && !verifiedIsNotFalse(outline),
       [styles[`a-tags--outline`]]: verifiedIsNotFalse(outline),
       [styles[`a-tags--rounded`]]: verifiedIsNotFalse(rounded),
-      [styles[`a-tags--rtl`]]: verifiedIsNotFalse(rtl),
       [styles[`a-tags--size-${size}`]]:
         verifiedIsNotEmpty(size) && TAGS_SIZE.includes(size as Size),
       [styles[`a-tags--theme-${theme}`]]:
         verifiedIsNotEmpty(theme) && TAGS_THEME.includes(theme as Theme),
       'flex-align-center': true,
       'flex-justify-content': true,
+      'flex-row-reverse': verifiedIsNotFalse(rtl),
       'inline-flex': true,
-      [`${
-        className ? className.wrapper : undefined
-      }`]: checkClassnameAvailable<List>(className, `wrapper`)
+      [`${className}`]: verifiedIsNotEmpty(className)
     })}
-    onClick={onClick}
     role="button"
     tabIndex={0}
-    onKeyPress={undefined}
+    onKeyDown={undefined}
+    onClick={(e) => onClick?.(e)}
   >
-    <div
-      className={objToString({
-        flex: true,
-        'flex-align-center': true,
-        'flex-justify-center': true,
-        'flex-row-reverse': verifiedIsNotFalse(rtl),
-        [styles[`a-tags__content`]]: true,
-        [`${
-          className ? className.content : undefined
-        }`]: checkClassnameAvailable<List>(className, `content`)
-      })}
-    >
-      {children}
-    </div>
+    {children}
   </div>
 );
 
 Tags.propTypes = {
-  className: PropTypes.shape({
-    content: PropTypes.string,
-    icon: PropTypes.string,
-    text: PropTypes.string,
-    wrapper: PropTypes.string
-  }) as Validator<Partial<ITagsClassnameList>>,
+  className: PropTypes.string,
   inverted: PropTypes.bool,
   onClick: PropTypes.func,
   outline: PropTypes.bool,

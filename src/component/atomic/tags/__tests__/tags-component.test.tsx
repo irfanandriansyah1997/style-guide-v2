@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Tags from '@/atomic/tags';
 
-describe(`Testing Tags Component With Tag Anchor`, () => {
+describe(`Testing Tags Component`, () => {
   it(`Testing Tags Normally`, () => {
     const onClickSpy = jest.fn();
     const { container } = render(<Tags onClick={onClickSpy}>Testing</Tags>);
@@ -13,13 +13,7 @@ describe(`Testing Tags Component With Tag Anchor`, () => {
       expect(container.firstChild).toHaveClass(`a-tags--theme-light`);
       expect(container.firstChild).not.toHaveClass(`a-tags--outline`);
       expect(container.firstChild).not.toHaveClass(`a-tags--rounded`);
-      expect(container.firstChild).not.toHaveClass(`a-tags--rtl`);
-
-      const element = container.querySelector(`.a-tags > div`) as HTMLElement;
-
-      if (element) {
-        expect(element).not.toHaveClass(`flex-row-reverse`);
-      }
+      expect(container.firstChild).not.toHaveClass(`flex-row-reverse`);
 
       fireEvent(
         container.firstChild,
@@ -47,13 +41,7 @@ describe(`Testing Tags Component With Tag Anchor`, () => {
       expect(container.firstChild).toHaveClass(`a-tags--theme-light`);
       expect(container.firstChild).not.toHaveClass(`a-tags--outline`);
       expect(container.firstChild).toHaveClass(`a-tags--rounded`);
-      expect(container.firstChild).not.toHaveClass(`a-tags--rtl`);
-
-      const element = container.querySelector(`.a-tags > div`) as HTMLElement;
-
-      if (element) {
-        expect(element).not.toHaveClass(`flex-row-reverse`);
-      }
+      expect(container.firstChild).not.toHaveClass(`flex-row-reverse`);
     }
   });
 
@@ -73,13 +61,7 @@ describe(`Testing Tags Component With Tag Anchor`, () => {
       expect(container.firstChild).not.toHaveClass(`a-tags--theme-light`);
       expect(container.firstChild).not.toHaveClass(`a-tags--outline`);
       expect(container.firstChild).not.toHaveClass(`a-tags--rounded`);
-      expect(container.firstChild).not.toHaveClass(`a-tags--rtl`);
-
-      const element = container.querySelector(`.a-tags > div`) as HTMLElement;
-
-      if (element) {
-        expect(element).not.toHaveClass(`flex-row-reverse`);
-      }
+      expect(container.firstChild).not.toHaveClass(`flex-row-reverse`);
     }
   });
 
@@ -94,13 +76,7 @@ describe(`Testing Tags Component With Tag Anchor`, () => {
       expect(container.firstChild).toHaveClass(`a-tags--outline`);
       expect(container.firstChild).not.toHaveClass(`a-tags--inverted`);
       expect(container.firstChild).not.toHaveClass(`a-tags--rounded`);
-      expect(container.firstChild).not.toHaveClass(`a-tags--rtl`);
-
-      const element = container.querySelector(`.a-tags > div`) as HTMLElement;
-
-      if (element) {
-        expect(element).not.toHaveClass(`flex-row-reverse`);
-      }
+      expect(container.firstChild).not.toHaveClass(`flex-row-reverse`);
     }
   });
 
@@ -115,13 +91,7 @@ describe(`Testing Tags Component With Tag Anchor`, () => {
       expect(container.firstChild).not.toHaveClass(`a-tags--outline`);
       expect(container.firstChild).toHaveClass(`a-tags--inverted`);
       expect(container.firstChild).not.toHaveClass(`a-tags--rounded`);
-      expect(container.firstChild).not.toHaveClass(`a-tags--rtl`);
-
-      const element = container.querySelector(`.a-tags > div`) as HTMLElement;
-
-      if (element) {
-        expect(element).not.toHaveClass(`flex-row-reverse`);
-      }
+      expect(container.firstChild).not.toHaveClass(`flex-row-reverse`);
     }
   });
 
@@ -134,44 +104,25 @@ describe(`Testing Tags Component With Tag Anchor`, () => {
       expect(container.firstChild).toHaveClass(`a-tags--theme-light`);
       expect(container.firstChild).not.toHaveClass(`a-tags--outline`);
       expect(container.firstChild).not.toHaveClass(`a-tags--rounded`);
-      expect(container.firstChild).toHaveClass(`a-tags--rtl`);
-
-      const element = container.querySelector(`.a-tags > div`) as HTMLElement;
-
-      if (element) {
-        expect(element).toHaveClass(`flex-row-reverse`);
-      }
+      expect(container.firstChild).toHaveClass(`flex-row-reverse`);
     }
   });
 
   it(`Testing With Set Custom Classname`, () => {
     const { container } = render(
-      <Tags
-        rtl
-        className={{
-          content: `custom-className`,
-          wrapper: `custom-wrapper`
-        }}
-      >
+      <Tags rtl className="custom-className">
         Testing
       </Tags>
     );
 
     if (container.firstChild) {
-      expect(container.firstChild).toHaveClass(`custom-wrapper`);
+      expect(container.firstChild).toHaveClass(`custom-className`);
       expect(container.firstChild).toHaveClass(`a-tags`);
       expect(container.firstChild).toHaveClass(`a-tags--size-default`);
       expect(container.firstChild).toHaveClass(`a-tags--theme-light`);
       expect(container.firstChild).not.toHaveClass(`a-tags--outline`);
       expect(container.firstChild).not.toHaveClass(`a-tags--rounded`);
-      expect(container.firstChild).toHaveClass(`a-tags--rtl`);
-
-      const element = container.querySelector(`.a-tags > div`) as HTMLElement;
-
-      if (element) {
-        expect(element).toHaveClass(`flex-row-reverse`);
-        expect(element).toHaveClass(`custom-className`);
-      }
+      expect(container.firstChild).toHaveClass(`flex-row-reverse`);
     }
   });
 });

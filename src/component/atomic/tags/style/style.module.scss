@@ -7,46 +7,33 @@
   text-decoration: none;
 
   @include rounded(4px);
-
-  @include background-color(transparent);
+  @include font-weight(600);
 
   &--size {
     &-default {
       height: 32px;
 
       @include padding(all, 0 8px);
-
-      .a-tags__content {
-        @include font-size(subtitle-2);
-      }
+      @include font-size(subtitle-2);
     }
 
     &-small {
       height: 20px;
 
       @include padding(all, 0 4px);
-
-      .a-tags__content {
-        @include font-size(caption-2);
-      }
+      @include font-size(caption-2);
     }
   }
 
   &--theme {
     &-dark {
       @include background-color(dark400);
-
-      .a-tags__content {
-        @include font-color(white);
-      }
+      @include font-color(white);
     }
 
     &-light {
       @include background-color(light400);
-
-      .a-tags__content {
-        @include font-color(dark800);
-      }
+      @include font-color(dark800);
     }
   }
 
@@ -54,18 +41,12 @@
   &--outline {
     &.a-tags--theme-dark {
       @include background-color(dark100);
-
-      .a-tags__content {
-        @include font-color(dark400);
-      }
+      @include font-color(dark400);
     }
 
     &.a-tags--theme-light {
       @include background-color(white);
-
-      .a-tags__content {
-        @include font-color(dark800);
-      }
+      @include font-color(dark800);
     }
   }
 
@@ -81,9 +62,5 @@
 
   &--rounded {
     @include rounded(30px);
-  }
-
-  &__content {
-    @include font-weight(600);
   }
 }

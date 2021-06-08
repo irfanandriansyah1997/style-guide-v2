@@ -3,34 +3,36 @@ import '@/style/global.scss';
 import '@/style/storybook.scss';
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: {
+    argTypesRegex: '^on[A-Z].*'
+  },
   backgrounds: {
     default: 'light',
     values: [
       {
         name: 'light',
-        value: '#fafafa',
+        value: '#fafafa'
       },
       {
         name: 'dark',
-        value: '#313c45',
-      },
-    ],
+        value: '#313c45'
+      }
+    ]
   },
   controls: {
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/,
-    },
+      date: /Date$/
+    }
   },
   html: {
-    removeEmptyComments: true,
     highlighter: {
-      showLineNumbers: true,
+      showLineNumbers: true
     },
     prettier: {
       tabWidth: 2,
-      useTabs: false,
+      useTabs: false
     },
+    removeEmptyComments: true
   }
-}
+};

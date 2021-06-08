@@ -3,7 +3,17 @@ import { IStorybookArgsItem } from '@/modules/storybook/interface';
 export const CUSTOM_TAGS_COMPONENT: IStorybookArgsItem[] = [
   {
     action: `clicked`,
-    argsName: `onClick`
+    argsName: `onClick`,
+    description: `This method will be invoked when user try to click tags component`,
+    table: {
+      category: `Event`,
+      defaultValue: {
+        summary: `undefined`
+      },
+      type: {
+        summary: `(value: IDefaultText) => void`
+      }
+    }
   },
   {
     argsName: `children`,
@@ -48,19 +58,6 @@ export const CUSTOM_TAGS_COMPONENT: IStorybookArgsItem[] = [
   {
     argsName: `rounded`,
     description: `Set rounded type of tags`,
-    table: {
-      category: `Styling`,
-      defaultValue: {
-        summary: `false`
-      },
-      type: {
-        summary: `boolean`
-      }
-    }
-  },
-  {
-    argsName: `rtl`,
-    description: `Set right to left tags content`,
     table: {
       category: `Styling`,
       defaultValue: {

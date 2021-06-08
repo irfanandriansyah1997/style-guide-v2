@@ -17,7 +17,7 @@ export interface ITagsClassnameList {
  */
 export interface ITagsProps {
   children?: ReactNode;
-  className?: Partial<ITagsClassnameList>;
+  className?: string;
   inverted?: boolean;
   onClick?: MouseEventHandler<HTMLDivElement>;
   outline?: boolean;

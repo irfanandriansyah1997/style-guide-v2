@@ -1,16 +1,16 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
-    "@whitespace/storybook-addon-html",
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-a11y",
-    "@storybook/addon-storysource",
-    "storybook-dark-mode",
-    "@storybook/addon-viewport"
+    '@whitespace/storybook-addon-html',
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
+    '@storybook/addon-storysource',
+    'storybook-dark-mode',
+    '@storybook/addon-viewport'
   ],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   // disable react docgen for reduce compile time
   // typescript: {
   //   reactDocgen: "react-docgen-typescript",
@@ -26,19 +26,17 @@ module.exports = {
   // },
   webpackFinal: async (config) => {
     config.module.rules.push({
-      test: /\.scss$/,
       exclude: /node_modules/,
+      test: /\.scss$/,
       use: [
         'style-loader',
         'css-loader',
         {
           loader: 'sass-loader',
           options: {
-              sourceMap: true
+            sourceMap: true
           }
-        },
-        // disable it for reduce compile time
-        // 'postcss-loader'
+        }
       ]
     });
 
@@ -58,5 +56,5 @@ module.exports = {
     };
 
     return config;
-  },
+  }
 };
