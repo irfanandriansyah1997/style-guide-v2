@@ -7,7 +7,7 @@ import { STYLE_GUIDE_COLOR } from '@/constant/color';
 import { partialAction } from '@/helper/storybook.helper';
 import Builder from '@/modules/storybook';
 
-import { CUSTOM_TAGS_COMPONENT } from './constant';
+import { CUSTOM_TAGS_COMPONENT } from './storybook-args';
 
 Tags.displayName = `Tags`;
 

@@ -1,6 +1,6 @@
 import type { Story } from '@storybook/react/types-6-0';
 
-import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/atomic/text/storybook/constant';
+import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/atomic/text/storybook/storybook-args';
 import TextCustom from '@/atomic/text-custom';
 import { ILabelProps } from '@/atomic/text-custom/interface';
 import { STYLE_GUIDE_COLOR } from '@/constant/color';

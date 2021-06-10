@@ -6,7 +6,7 @@ import { ICheckboxProps } from '@/atomic/selection/interface';
 import { partialAction } from '@/helper/storybook.helper';
 import Builder from '@/modules/storybook';
 
-import { CUSTOM_ARGS_CHECKBOX_COMPONENT } from './constant';
+import { CUSTOM_ARGS_CHECKBOX_COMPONENT } from './storybook-args';
 
 Checkbox.displayName = `Checkbox`;
 

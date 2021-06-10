@@ -6,7 +6,7 @@ import { IChipsProps } from '@/atomic/chips/interface';
 import { partialAction } from '@/helper/storybook.helper';
 import Builder from '@/modules/storybook';
 
-import { CUSTOM_ARGS_CHIPS_COMPONENT } from './constant';
+import { CUSTOM_ARGS_CHIPS_COMPONENT } from './storybook-args';
 
 Chips.displayName = `Chips`;
 

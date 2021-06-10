@@ -3,7 +3,7 @@ import type { Story } from '@storybook/react/types-6-0';
 
 import Button from '@/atomic/button';
 import { IButtonTagProps } from '@/atomic/button/interface';
-import { CUSTOM_ARGS_BUTTON_COMPONENT } from '@/component/atomic/button/storybook/constant';
+import { CUSTOM_ARGS_BUTTON_COMPONENT } from '@/atomic/button/storybook/storybook-args';
 import { STYLE_GUIDE_COLOR } from '@/constant/color';
 import Builder from '@/modules/storybook';
 

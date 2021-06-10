@@ -5,7 +5,7 @@ import {
   ITextParagraphType,
   ITextWithTagsProps
 } from '@/atomic/text/interface';
-import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/atomic/text/storybook/constant';
+import { CUSTOM_ARGS_TEXT_COMPONENT } from '@/atomic/text/storybook/storybook-args';
 import { STYLE_GUIDE_COLOR } from '@/constant/color';
 import {
   STYLE_GUIDE_FONT_SIZE,

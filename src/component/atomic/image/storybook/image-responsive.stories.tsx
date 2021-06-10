@@ -5,7 +5,7 @@ import Image from '@/atomic/image';
 import { IImageResponsiveTemplate } from '@/atomic/image/interface';
 import Builder from '@/modules/storybook';
 
-import { CUSTOM_ARGS_IMAGE_RESPONSIVE_COMPONENT } from './constant';
+import { CUSTOM_ARGS_IMAGE_RESPONSIVE_COMPONENT } from './storybook-args';
 
 Image.Responsive.displayName = `Image.Responsive`;
 

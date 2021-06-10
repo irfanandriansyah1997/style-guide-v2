@@ -7,14 +7,17 @@ import Builder from '@/modules/storybook';
 import Pagination from '@/molecules/pagination';
 import { IPaginationProps } from '@/molecules/pagination/interface';
 
+import { CUSTOM_ARGS_PAGINATION_COMPONENT } from './storybook-args';
+
 Pagination.displayName = `Pagination`;
 Pagination.Item.displayName = `Pagination`;
 
 export default new Builder()
-  .setModuleName(`Pagination Component`)
+  .setParentModuleName(`Pagination Component`)
+  .setModuleName(`Custom Pagination Item`)
   .setType(`molecules`)
   .setComponent(Pagination)
-  .setMultipleArgs([])
+  .setMultipleArgs(CUSTOM_ARGS_PAGINATION_COMPONENT)
   .execute();
 
 /**
@@ -62,7 +65,7 @@ export const DefaultPagination = Template.bind({});
 
 DefaultPagination.args = {
   ...Pagination.defaultProps,
-  disableInitialCallback: true,
+  disableInitialCallback: false,
   marginDisplayed: 2,
   on: partialAction(`on`),
   page: 2,

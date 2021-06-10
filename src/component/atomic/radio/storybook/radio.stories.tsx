@@ -6,7 +6,7 @@ import { IRadioProps } from '@/atomic/selection/interface';
 import { partialAction } from '@/helper/storybook.helper';
 import Builder from '@/modules/storybook';
 
-import { CUSTOM_ARGS_RADIO_COMPONENT } from './constant';
+import { CUSTOM_ARGS_RADIO_COMPONENT } from './storybook-args';
 
 Radio.displayName = `Radio`;
 
