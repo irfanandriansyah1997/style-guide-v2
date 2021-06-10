@@ -30,7 +30,7 @@ const Template: Story<IPaginationProps> = (args) => (
       <div className="flex">
         <div
           style={{
-            backgroundColor: STYLE_GUIDE_COLOR.danger500,
+            backgroundColor: STYLE_GUIDE_COLOR.dark500,
             borderRadius: `50%`,
             height: 8,
             width: 8
@@ -38,7 +38,7 @@ const Template: Story<IPaginationProps> = (args) => (
         />
         <div
           style={{
-            backgroundColor: STYLE_GUIDE_COLOR.danger500,
+            backgroundColor: STYLE_GUIDE_COLOR.dark500,
             borderRadius: `50%`,
             height: 8,
             margin: `0 8px`,
@@ -47,7 +47,7 @@ const Template: Story<IPaginationProps> = (args) => (
         />
         <div
           style={{
-            backgroundColor: STYLE_GUIDE_COLOR.danger500,
+            backgroundColor: STYLE_GUIDE_COLOR.dark500,
             borderRadius: `50%`,
             height: 8,
             width: 8
@@ -66,6 +66,6 @@ DefaultPagination.args = {
   marginDisplayed: 2,
   on: partialAction(`on`),
   page: 2,
-  pageRange: 5,
+  pageRange: 2,
   totalPage: 100
 };

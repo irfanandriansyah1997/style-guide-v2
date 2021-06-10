@@ -1,0 +1,73 @@
+@import '../../../../style/import.scss';
+
+.m-paginate {
+  &__break {
+    @include margin-right(8px);
+  }
+
+  &__item {
+    align-items: center;
+    height: 40px;
+    justify-content: center;
+    min-width: 40px;
+
+    @include margin-right(8px);
+    @include rounded(3px);
+    @include border(all, 1px, solid, dark100);
+
+    &--prev,
+    &--next {
+      align-items: center;
+      justify-content: center;
+
+      @include rounded(3px);
+      @include font-color(dark300);
+      @include border(all, 1px, solid, dark100);
+
+      a {
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+
+        @include padding(all, 10px);
+      }
+    }
+
+    &--next {
+      @include margin-right(16px);
+    }
+
+    &--prev {
+      @include margin-left(16px);
+      @include margin-right(8px);
+    }
+
+    a {
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      text-decoration: none;
+      width: 100%;
+
+      @include font-color(dark300);
+      @include rounded(0);
+      @include padding(all, 10px);
+      @include transition(0.3s cubic-bezier(0.7, 0.3, 0, 1));
+
+      &:hover {
+        @include background-color(dark300);
+        @include font-color(white);
+      }
+    }
+
+    &--active {
+      @include background-color(dark300);
+
+      a {
+        @include font-color(white);
+      }
+    }
+  }
+}

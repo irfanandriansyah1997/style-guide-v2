@@ -1,6 +1,7 @@
 import {
   objToString,
   verifiedIsNotEmpty,
+  verifiedIsNotFalse,
   verifiedKeyIsExist
 } from '@99/helper';
 import { ReactElement, ReactNode } from 'react';
@@ -38,7 +39,7 @@ export const generateClassnamePagination = (
 
       return {
         [reactPaginationProps]: objToString({
-          [`${(className || {})[paginationProps]}`]: verifiedIsNotEmpty(
+          [`${(className || {})[paginationProps]}`]: verifiedIsNotFalse(
             isClassNameEmpty
           ),
           [`${cssClassName}`]: verifiedIsNotEmpty(cssClassName)

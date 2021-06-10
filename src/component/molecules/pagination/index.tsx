@@ -1,11 +1,17 @@
+import PropTypes from 'prop-types';
+import { Validator } from 'react';
 import ReactPaginate from 'react-paginate';
 
 import {
   usePaginationClassName,
   usePaginationContent
-} from '../../../utils/hooks/pagination.hooks';
+} from '@/utils/hooks/pagination.hooks';
+
 import PaginationItem from './section/pagination-item.component';
-import { IPaginationExportDefault } from './interface';
+import {
+  IPaginationClassnameList,
+  IPaginationExportDefault
+} from './interface';
 
 /**
  * Pagination Component
@@ -35,11 +41,11 @@ const Pagination: IPaginationExportDefault = ({
       previousLabel={previousLabel}
       nextLabel={nextLabel}
       breakLabel={breakLabel}
-      pageCount={totalPage || 0}
+      pageCount={totalPage}
       initialPage={page - 1}
       forcePage={page - 1}
       marginPagesDisplayed={marginDisplayed as number}
-      pageRangeDisplayed={pageRange || 5}
+      pageRangeDisplayed={pageRange}
       disableInitialCallback={disableInitialCallback}
       onPageChange={({ selected: page }) =>
         on?.({
@@ -54,5 +60,35 @@ const Pagination: IPaginationExportDefault = ({
 };
 
 Pagination.Item = PaginationItem;
+
+Pagination.propTypes = {
+  className: PropTypes.shape({
+    active: PropTypes.string,
+    activeLink: PropTypes.string,
+    break: PropTypes.string,
+    breakLink: PropTypes.string,
+    container: PropTypes.string,
+    disabled: PropTypes.string,
+    next: PropTypes.string,
+    nextLink: PropTypes.string,
+    page: PropTypes.string,
+    pageLink: PropTypes.string,
+    previous: PropTypes.string,
+    previousLink: PropTypes.string
+  }) as Validator<Partial<IPaginationClassnameList>>,
+  disableInitialCallback: PropTypes.bool,
+  marginDisplayed: PropTypes.number,
+  on: PropTypes.func,
+  page: PropTypes.number.isRequired,
+  pageRange: PropTypes.number.isRequired,
+  totalPage: PropTypes.number.isRequired
+};
+
+Pagination.defaultProps = {
+  className: undefined,
+  disableInitialCallback: false,
+  marginDisplayed: 2,
+  on: undefined
+};
 
 export default Pagination;
