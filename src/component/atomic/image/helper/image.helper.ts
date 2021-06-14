@@ -3,9 +3,8 @@ import { ReactElement, ReactNode } from 'react';
 
 import { IImagePresetProps } from '@/atomic/image/interface';
 import { ImagePreset } from '@/atomic/image/section/image-responsive.component';
+import { transformChildrenToArray } from '@/helper/component.helper';
 import { IImageResponsive } from '@/interface/general';
-
-import { transformChildrenToArray } from './component.helper';
 
 /**
  * Transform Children To Image Responsive Object

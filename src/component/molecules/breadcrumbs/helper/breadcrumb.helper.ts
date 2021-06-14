@@ -1,10 +1,9 @@
 import { verifiedIsNotEmpty, verifiedKeyIsExist } from '@99/helper';
 import { ReactElement, ReactNode } from 'react';
 
+import { transformChildrenToArray } from '@/helper/component.helper';
 import { IBreadcrumbItemProps } from '@/molecules/breadcrumbs/interface';
 import BreadcrumbItem from '@/molecules/breadcrumbs/section/breadcrumb-item.component';
-
-import { transformChildrenToArray } from './component.helper';
 
 /**
  * Transform Children To Breadcumbs Item

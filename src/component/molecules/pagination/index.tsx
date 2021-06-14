@@ -5,8 +5,7 @@ import ReactPaginate from 'react-paginate';
 import {
   usePaginationClassName,
   usePaginationContent
-} from '@/utils/hooks/pagination.hooks';
-
+} from './hooks/pagination.hooks';
 import PaginationItem from './section/pagination-item.component';
 import {
   IPaginationClassnameList,

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { FC } from 'react';
 
 import Image from '@/atomic/image';
+import { useImageResponsive } from '@/atomic/image/hooks/image.hooks';
 import {
   IImagePresetProps,
   IImageResponsiveProps
 } from '@/atomic/image/interface';
-import { useImageResponsive } from '@/utils/hooks/image.hooks';
 
 /**
  * Image Responsive Item

@@ -5,8 +5,8 @@ import { FC, Validator } from 'react';
 import style from '@/atomic/avatar/style/style.module.scss';
 import Image from '@/atomic/image';
 import { IImageSizeType } from '@/interface/general';
-import { useAvatar } from '@/utils/hooks/avatar.hooks';
 
+import { useAvatar } from './hooks/avatar.hooks';
 import { IAvatarProps } from './interface';
 
 /**

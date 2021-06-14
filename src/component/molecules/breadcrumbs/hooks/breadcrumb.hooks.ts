@@ -1,7 +1,7 @@
 import { bulkVerifiedIsNotEmpty } from '@99/helper';
 import { CSSProperties, ReactNode, useEffect, useState } from 'react';
 
-import { transformChildrenToBreadcrumbContent } from '@/helper/breadcrumb.helper';
+import { transformChildrenToBreadcrumbContent } from '@/molecules/breadcrumbs/helper/breadcrumb.helper';
 import {
   IBreadcrumbHooks,
   IBreadcrumbItemProps,

@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 
-import { transformChildrenToImageResponsive } from '@/helper/image.helper';
+import { transformChildrenToImageResponsive } from '@/atomic/image/helper/image.helper';
 import { IImageResponsive } from '@/interface/general/image.interface';
 
 /**

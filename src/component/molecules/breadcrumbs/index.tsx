@@ -1,5 +1,8 @@
-import { useBreadcrumb } from '@/utils/hooks/breadcrumb.hooks';
+import { verifiedIsNotEmpty } from '@99/helper';
 
+import Text from '@/atomic/text';
+
+import { useBreadcrumb } from './hooks/breadcrumb.hooks';
 import BreadcrumbItem from './section/breadcrumb-item.component';
 import { IBreadcrumbExportDefault } from './interface';
 
@@ -13,24 +16,39 @@ const Breadcrumb: IBreadcrumbExportDefault = ({ children, on, style }) => {
 
   return (
     <div style={styleWrapper}>
-      {item.map(({ label, link }) => (
-        <a
-          key={link}
-          style={styleItem}
-          href={link}
-          onKeyDown={undefined}
-          role="button"
-          tabIndex={0}
-          onClick={(e) =>
-            on?.({
-              event: `on-click-breadcrumb-item`,
-              payload: e
-            })
-          }
-        >
-          {label}
-        </a>
-      ))}
+      {item.map(({ label, link }) => {
+        if (verifiedIsNotEmpty(link)) {
+          return (
+            <a
+              key={link}
+              style={styleItem}
+              href={link}
+              onKeyDown={undefined}
+              role="button"
+              tabIndex={0}
+              onClick={(e) =>
+                on?.({
+                  event: `on-click-breadcrumb-item`,
+                  payload: e
+                })
+              }
+            >
+              {label}
+            </a>
+          );
+        }
+
+        return (
+          <Text.Paragraph
+            key={label}
+            fontSize={styleItem?.fontSize as number | undefined}
+            fontWeight={styleItem?.fontWeight as number | undefined}
+            color={styleItem?.color as string | undefined}
+          >
+            {label}
+          </Text.Paragraph>
+        );
+      })}
     </div>
   );
 };
