@@ -3,7 +3,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import {
   generateClassnamePagination,
   transformChildrenToPaginationContent
-} from '@/helper/pagination.helper';
+} from '@/molecules/pagination/helper/pagination.helper';
 import {
   IPaginationClassnameList,
   IReactPaginationClassnameList,

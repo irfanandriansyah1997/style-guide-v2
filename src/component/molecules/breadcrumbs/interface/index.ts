@@ -9,7 +9,34 @@ import { IEventComponent } from '@/interface/general/event.interface';
  */
 export interface IBreadcrumbClassnameList {
   item: string;
+  separator: string;
   wrapper: string;
+}
+
+type IBreadcrumbContentGenerator<P, T> = {
+  key: string;
+  payload: P;
+  type: T;
+};
+
+/**
+ * Breadcrumb Content
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.06.14
+ */
+export type IBreadcrumbContent =
+  | IBreadcrumbContentGenerator<
+      IBreadcrumbItemProps,
+      IBreadcrumbContentType.item
+    >
+  | IBreadcrumbContentGenerator<
+      ReactNode | string,
+      IBreadcrumbContentType.separator
+    >;
+
+export enum IBreadcrumbContentType {
+  item = `Item`,
+  separator = `Separator`
 }
 
 /**
@@ -27,7 +54,7 @@ export type IBreadcrumbExportDefault = FC<IBreadcrumbProps> & {
  * @since 2021.06.11
  */
 export interface IBreadcrumbHooks {
-  item: IBreadcrumbItemProps[];
+  item: IBreadcrumbContent[];
   styleItem?: CSSProperties;
   styleWrapper?: CSSProperties;
 }
@@ -63,6 +90,9 @@ export interface IBreadcrumbStyle {
   backgroundColor: string;
   fontSize: number;
   fontWeight: number;
+  heightContainer: number;
+  paddingContainer: number;
+  spaceEachItem: number;
   textColor: string;
 }
 

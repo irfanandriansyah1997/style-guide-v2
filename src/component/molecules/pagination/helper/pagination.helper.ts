@@ -6,6 +6,10 @@ import {
 } from '@99/helper';
 import { ReactElement, ReactNode } from 'react';
 
+import {
+  checkClassnameAvailable,
+  transformChildrenToArray
+} from '@/helper/component.helper';
 import { PAGINATION_CLASSNAME_LIST } from '@/molecules/pagination/constant';
 import {
   IPaginationClassnameList,
@@ -14,11 +18,6 @@ import {
   IReactPaginationContent
 } from '@/molecules/pagination/interface';
 import PaginationItem from '@/molecules/pagination/section/pagination-item.component';
-
-import {
-  checkClassnameAvailable,
-  transformChildrenToArray
-} from './component.helper';
 
 /**
  * Generate ClassName Pagination
@@ -39,10 +38,10 @@ export const generateClassnamePagination = (
 
       return {
         [reactPaginationProps]: objToString({
+          [`${cssClassName}`]: verifiedIsNotEmpty(cssClassName),
           [`${(className || {})[paginationProps]}`]: verifiedIsNotFalse(
             isClassNameEmpty
-          ),
-          [`${cssClassName}`]: verifiedIsNotEmpty(cssClassName)
+          )
         })
       };
     }

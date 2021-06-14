@@ -3,8 +3,8 @@ import { CSSProperties, ReactNode, useEffect, useState } from 'react';
 
 import { transformChildrenToBreadcrumbContent } from '@/molecules/breadcrumbs/helper/breadcrumb.helper';
 import {
+  IBreadcrumbContent,
   IBreadcrumbHooks,
-  IBreadcrumbItemProps,
   IBreadcrumbStyle
 } from '@/molecules/breadcrumbs/interface';
 
@@ -19,14 +19,17 @@ const generateStyleItem = (
   style: Partial<IBreadcrumbStyle> | undefined
 ): CSSProperties => ({
   color: bulkVerifiedIsNotEmpty([style, style?.textColor])
-    ? style?.textColor
+    ? (style as IBreadcrumbStyle).textColor
     : undefined,
   fontSize: bulkVerifiedIsNotEmpty([style, style?.fontSize])
-    ? style?.fontSize
+    ? (style as IBreadcrumbStyle).fontSize
     : undefined,
   fontWeight: bulkVerifiedIsNotEmpty([style, style?.fontWeight])
-    ? style?.fontWeight
-    : undefined
+    ? (style as IBreadcrumbStyle).fontWeight
+    : undefined,
+  margin: bulkVerifiedIsNotEmpty([style, style?.spaceEachItem])
+    ? `0 ${(style as IBreadcrumbStyle).spaceEachItem / 2}px`
+    : `0 10px`
 });
 
 /**
@@ -40,7 +43,13 @@ const generateStyleWrapper = (
   style: Partial<IBreadcrumbStyle> | undefined
 ): CSSProperties => ({
   backgroundColor: bulkVerifiedIsNotEmpty([style, style?.backgroundColor])
-    ? style?.backgroundColor
+    ? (style as IBreadcrumbStyle).backgroundColor
+    : undefined,
+  height: bulkVerifiedIsNotEmpty([style, style?.heightContainer])
+    ? (style as IBreadcrumbStyle).heightContainer
+    : undefined,
+  padding: bulkVerifiedIsNotEmpty([style, style?.paddingContainer])
+    ? `0 ${(style as IBreadcrumbStyle).paddingContainer}px`
     : undefined
 });
 
@@ -52,10 +61,11 @@ const generateStyleWrapper = (
  */
 export const useBreadcrumb = (
   children: ReactNode,
-  style: Partial<IBreadcrumbStyle> | undefined
+  style: Partial<IBreadcrumbStyle> | undefined,
+  separator: string | ReactNode
 ): IBreadcrumbHooks => {
-  const [content, setContent] = useState<IBreadcrumbItemProps[]>(
-    transformChildrenToBreadcrumbContent(children)
+  const [content, setContent] = useState<IBreadcrumbContent[]>(
+    transformChildrenToBreadcrumbContent(children, separator)
   );
   const [styleItem, setStyleItem] = useState<CSSProperties>(
     generateStyleItem(style)
@@ -65,8 +75,8 @@ export const useBreadcrumb = (
   );
 
   useEffect(() => {
-    setContent(transformChildrenToBreadcrumbContent(children));
-  }, [children]);
+    setContent(transformChildrenToBreadcrumbContent(children, separator));
+  }, [children, separator]);
 
   useEffect(() => {
     setStyleItem(generateStyleItem(style));

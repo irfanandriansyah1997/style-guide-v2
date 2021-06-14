@@ -1,0 +1,8 @@
+@import '../../../../style/import.scss';
+
+.m-breadcrumb {
+  &__item,
+  &__item a {
+    text-decoration: none;
+  }
+}
