@@ -1,6 +1,7 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 
 import { transformChildrenToImageResponsive } from '@/atomic/image/helper/image.helper';
+import { shallowEquals } from '@/helper/component.helper';
 import { IImageResponsive } from '@/interface/general/image.interface';
 
 /**
@@ -16,9 +17,22 @@ export const useImageResponsive = (
     transformChildrenToImageResponsive(children)
   );
 
+  const onChangeImage = useCallback(
+    (value: Partial<IImageResponsive>) => {
+      setImageProps(
+        (): Partial<IImageResponsive> => {
+          if (!shallowEquals(image, value)) return value;
+
+          return image;
+        }
+      );
+    },
+    [setImageProps, image]
+  );
+
   useEffect(() => {
-    setImageProps(transformChildrenToImageResponsive(children));
-  }, [children]);
+    onChangeImage(transformChildrenToImageResponsive(children));
+  }, [children, onChangeImage]);
 
   return image;
 };

@@ -40,6 +40,16 @@ export enum IBreadcrumbContentType {
 }
 
 /**
+ * Breadcrumb Text Divider
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.06.15
+ */
+export interface IBreadcrumbDivider {
+  className?: string;
+  style?: CSSProperties;
+}
+
+/**
  * Breadcrumbs Export Default Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.11
@@ -70,6 +80,17 @@ export interface IBreadcrumbItemProps {
 }
 
 /**
+ * Breadcrumb Link Props
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.06.15
+ */
+export interface IBreadcrumbLinkProps {
+  href: string;
+  on(param: IEventOnClickBreadcrumb): void;
+  style?: CSSProperties;
+}
+
+/**
  * Breadcrumbs Props Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.11
@@ -94,6 +115,15 @@ export interface IBreadcrumbStyle {
   paddingContainer: number;
   spaceEachItem: number;
   textColor: string;
+}
+
+/**
+ * Breadcrumb Text Props
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.06.15
+ */
+export interface IBreadcrumbTextProps {
+  style?: CSSProperties;
 }
 
 /**

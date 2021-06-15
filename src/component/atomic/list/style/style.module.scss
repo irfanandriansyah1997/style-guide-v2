@@ -1,0 +1,27 @@
+.m-list {
+  $c: &;
+
+  &--divider-line {
+    &--horizontal {
+      #{$c}__item {
+        border-right-style: solid;
+        border-right-width: 1px;
+
+        &:last-child {
+          border-right: 0;
+        }
+      }
+    }
+
+    &--vertical {
+      #{$c}__item {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}

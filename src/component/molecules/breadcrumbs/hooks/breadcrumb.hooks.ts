@@ -1,57 +1,24 @@
-import { bulkVerifiedIsNotEmpty } from '@99/helper';
-import { CSSProperties, ReactNode, useEffect, useState } from 'react';
+import {
+  CSSProperties,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState
+} from 'react';
 
-import { transformChildrenToBreadcrumbContent } from '@/molecules/breadcrumbs/helper/breadcrumb.helper';
+import { shallowEquals } from '@/helper/component.helper';
+import {
+  generateStyleItem,
+  generateStyleWrapper,
+  transformChildrenToBreadcrumbContent
+} from '@/molecules/breadcrumbs/helper/breadcrumb.helper';
 import {
   IBreadcrumbContent,
+  IBreadcrumbContentType,
   IBreadcrumbHooks,
   IBreadcrumbStyle
 } from '@/molecules/breadcrumbs/interface';
-
-/**
- * Generate Style Item
- * @param {Partial<IBreadcrumbStyle> | undefined} style - style object props
- * @returns {CSSProperties}
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.06.11
- */
-const generateStyleItem = (
-  style: Partial<IBreadcrumbStyle> | undefined
-): CSSProperties => ({
-  color: bulkVerifiedIsNotEmpty([style, style?.textColor])
-    ? (style as IBreadcrumbStyle).textColor
-    : undefined,
-  fontSize: bulkVerifiedIsNotEmpty([style, style?.fontSize])
-    ? (style as IBreadcrumbStyle).fontSize
-    : undefined,
-  fontWeight: bulkVerifiedIsNotEmpty([style, style?.fontWeight])
-    ? (style as IBreadcrumbStyle).fontWeight
-    : undefined,
-  margin: bulkVerifiedIsNotEmpty([style, style?.spaceEachItem])
-    ? `0 ${(style as IBreadcrumbStyle).spaceEachItem / 2}px`
-    : `0 10px`
-});
-
-/**
- * Generate Style Wrapper
- * @param {Partial<IBreadcrumbStyle> | undefined} style - style object props
- * @returns {CSSProperties}
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.06.11
- */
-const generateStyleWrapper = (
-  style: Partial<IBreadcrumbStyle> | undefined
-): CSSProperties => ({
-  backgroundColor: bulkVerifiedIsNotEmpty([style, style?.backgroundColor])
-    ? (style as IBreadcrumbStyle).backgroundColor
-    : undefined,
-  height: bulkVerifiedIsNotEmpty([style, style?.heightContainer])
-    ? (style as IBreadcrumbStyle).heightContainer
-    : undefined,
-  padding: bulkVerifiedIsNotEmpty([style, style?.paddingContainer])
-    ? `0 ${(style as IBreadcrumbStyle).paddingContainer}px`
-    : undefined
-});
 
 /**
  * Use Breadcrumb Content
@@ -74,18 +41,63 @@ export const useBreadcrumb = (
     generateStyleWrapper(style)
   );
 
-  useEffect(() => {
-    setContent(transformChildrenToBreadcrumbContent(children, separator));
-  }, [children, separator]);
+  const onChangeStyleItem = useCallback(
+    (value: CSSProperties) => {
+      setStyleItem(() => {
+        if (!shallowEquals(styleItem, value)) return value;
+        return styleItem;
+      });
+    },
+    [setStyleItem, styleItem]
+  );
+
+  const onChangeStyleWrapper = useCallback(
+    (value: CSSProperties) => {
+      setStyleWrapper(() => {
+        if (!shallowEquals(styleWrapper, value)) return value;
+        return styleWrapper;
+      });
+    },
+    [setStyleWrapper, styleWrapper]
+  );
+
+  const onChangeContent = useCallback(
+    (value: IBreadcrumbContent[]) => {
+      setContent(() => {
+        const filteredValue = value.filter(
+          ({ type }) => type === IBreadcrumbContentType.item
+        );
+        const filteredContent = content.filter(
+          ({ type }) => type === IBreadcrumbContentType.item
+        );
+        const mustReRender = filteredValue.filter(
+          ({ payload }, index) =>
+            !shallowEquals(payload, filteredContent[index].payload)
+        );
+
+        if (mustReRender.length > 0) return value;
+
+        return content;
+      });
+    },
+    [setContent, content]
+  );
 
   useEffect(() => {
-    setStyleItem(generateStyleItem(style));
-    setStyleWrapper(generateStyleWrapper(style));
-  }, [style]);
+    onChangeContent(transformChildrenToBreadcrumbContent(children, separator));
+  }, [children, separator, onChangeContent]);
 
-  return {
-    item: content,
-    styleItem,
-    styleWrapper
-  };
+  useEffect(() => {
+    onChangeStyleItem(generateStyleItem(style));
+    onChangeStyleWrapper(generateStyleWrapper(style));
+  }, [onChangeStyleItem, onChangeStyleWrapper, style]);
+
+  return useMemo(
+    () => ({
+      item: content,
+      styleItem,
+      styleWrapper
+    }),
+    [content, styleItem, styleWrapper]
+  );
 };

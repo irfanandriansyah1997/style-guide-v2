@@ -1,5 +1,6 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 
+import { shallowEquals } from '@/helper/component.helper';
 import {
   generateClassnamePagination,
   transformChildrenToPaginationContent
@@ -22,9 +23,20 @@ export const usePaginationClassName = (
     generateClassnamePagination(classNameList)
   );
 
+  const onChangeClassName = useCallback(
+    (value: IReactPaginationClassnameList) => {
+      setClassName(() => {
+        if (!shallowEquals(value, className)) return value;
+
+        return className;
+      });
+    },
+    [setClassName, className]
+  );
+
   useEffect(() => {
-    setClassName(generateClassnamePagination(classNameList));
-  }, [classNameList]);
+    onChangeClassName(generateClassnamePagination(classNameList));
+  }, [classNameList, onChangeClassName]);
 
   return className;
 };
@@ -42,9 +54,20 @@ export const usePaginationContent = (
     transformChildrenToPaginationContent(children)
   );
 
+  const onChangeContent = useCallback(
+    (value: IReactPaginationContent) => {
+      setContent(() => {
+        if (!shallowEquals(value, content)) return value;
+
+        return content;
+      });
+    },
+    [setContent, content]
+  );
+
   useEffect(() => {
-    setContent(transformChildrenToPaginationContent(children));
-  }, [children]);
+    onChangeContent(transformChildrenToPaginationContent(children));
+  }, [children, onChangeContent]);
 
   return content;
 };

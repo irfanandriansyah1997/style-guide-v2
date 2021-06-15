@@ -2,11 +2,14 @@ import { objToString, verifiedIsNotEmpty } from '@99/helper';
 import PropTypes from 'prop-types';
 import { Validator } from 'react';
 
-import Text from '@/atomic/text';
+import List from '@/atomic/list';
 import { checkClassnameAvailable } from '@/helper/component.helper';
 
 import { useBreadcrumb } from './hooks/breadcrumb.hooks';
+import BreadcrumbDivider from './section/breadcrumb-divider.component';
 import BreadcrumbItem from './section/breadcrumb-item.component';
+import BreadcrumbLink from './section/breadcrumb-link.component';
+import BreadcrumbText from './section/breadcrumb-text.component';
 import styles from './style/style.module.scss';
 import {
   IBreadcrumbClassnameList,
@@ -15,6 +18,7 @@ import {
   IBreadcrumbItemProps,
   IBreadcrumbStyle
 } from './interface';
+
 /**
  * Breadcrumb Component
  * @author Irfan Andriansyah <irfan@99.co>
@@ -32,6 +36,7 @@ const Breadcrumb: IBreadcrumbExportDefault = ({
     style,
     separator
   );
+  const { margin, ...resStyleItem } = styleItem || {};
 
   return (
     <div
@@ -46,82 +51,57 @@ const Breadcrumb: IBreadcrumbExportDefault = ({
         )
       })}
     >
-      {item.map(({ key, payload, type }) => {
-        switch (type) {
-          case IBreadcrumbContentType.item: {
-            const { label, link } = payload as IBreadcrumbItemProps;
+      <List
+        space={verifiedIsNotEmpty(margin) ? parseInt(`${margin}`, 10) : 10}
+        className={{
+          item: objToString({
+            [`${styles[`m-breadcrumb__item`]}`]: true,
+            [`${className?.item}`]: checkClassnameAvailable<IBreadcrumbClassnameList>(
+              className,
+              `item`
+            )
+          })
+        }}
+      >
+        {item.map(({ key, payload, type }) => {
+          switch (type) {
+            case IBreadcrumbContentType.item: {
+              const { label, link } = payload as IBreadcrumbItemProps;
 
-            if (verifiedIsNotEmpty(link)) {
+              if (verifiedIsNotEmpty(link)) {
+                return (
+                  <List.Item key={key}>
+                    <BreadcrumbLink
+                      style={resStyleItem}
+                      href={`${link}`}
+                      on={(e) => on?.(e)}
+                    >
+                      {label}
+                    </BreadcrumbLink>
+                  </List.Item>
+                );
+              }
+
               return (
-                <a
-                  key={key}
-                  className={objToString({
-                    [styles[`m-breadcrumb__item`]]: true,
-                    [`${className?.item}`]: checkClassnameAvailable<IBreadcrumbClassnameList>(
-                      className,
-                      `item`
-                    )
-                  })}
-                  style={styleItem}
-                  href={link}
-                  onKeyDown={undefined}
-                  role="button"
-                  tabIndex={0}
-                  onClick={(e) =>
-                    on?.({
-                      event: `on-click-breadcrumb-item`,
-                      payload: e
-                    })
-                  }
-                >
-                  {label}
-                </a>
+                <List.Item key={key}>
+                  <BreadcrumbText style={resStyleItem}>{label}</BreadcrumbText>
+                </List.Item>
               );
             }
-
-            return (
-              <div
-                key={key}
-                className={objToString({
-                  [styles[`m-breadcrumb__item`]]: true,
-                  [`${className?.item}`]: checkClassnameAvailable<IBreadcrumbClassnameList>(
-                    className,
-                    `item`
-                  )
-                })}
-                style={{
-                  margin: styleItem?.margin as string | undefined
-                }}
-              >
-                <Text.Paragraph
-                  fontSize={styleItem?.fontSize as number | undefined}
-                  fontWeight={styleItem?.fontWeight as number | undefined}
-                  color={styleItem?.color as string | undefined}
-                >
-                  {label}
-                </Text.Paragraph>
-              </div>
-            );
+            default:
+              return (
+                <List.Item key={key}>
+                  <BreadcrumbDivider
+                    className={className?.separator}
+                    style={{ color: styleItem?.color as string | undefined }}
+                  >
+                    {payload}
+                  </BreadcrumbDivider>
+                </List.Item>
+              );
           }
-          default:
-            return (
-              <div
-                key={key}
-                style={{
-                  color: styleItem?.color as string | undefined
-                }}
-                className={objToString({
-                  [`${className?.separator}`]: checkClassnameAvailable<IBreadcrumbClassnameList>(
-                    className,
-                    `separator`
-                  )
-                })}
-              >
-                {payload}
-              </div>
-            );
-        }
-      })}
+        })}
+      </List>
     </div>
   );
 };
