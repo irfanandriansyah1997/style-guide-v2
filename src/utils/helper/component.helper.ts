@@ -58,22 +58,26 @@ export const shallowEquals = (a: any, b: any): boolean => {
   if (a === b) return true;
   if (!(a || b)) return true;
 
-  const aKeys = Object.keys(a);
-  for (let position = 0; position < aKeys.length; position += 1) {
-    const key = aKeys[position];
-    if (!(key in b) || a[key] !== b[key]) {
-      return false;
+  if (typeof a === `object` && typeof b === `object`) {
+    const aKeys = Object.keys(a);
+    for (let position = 0; position < aKeys.length; position += 1) {
+      const key = aKeys[position];
+      if (!(key in b) || a[key] !== b[key]) {
+        return false;
+      }
     }
+
+    const bKeys = Object.keys(b);
+    for (let position = 0; position < bKeys.length; position += 1) {
+      const key = bKeys[position];
+      if (!(key in a) || a[key] !== b[key]) {
+        return false;
+      }
+    }
+    return true;
   }
 
-  const bKeys = Object.keys(b);
-  for (let position = 0; position < bKeys.length; position += 1) {
-    const key = bKeys[position];
-    if (!(key in a) || a[key] !== b[key]) {
-      return false;
-    }
-  }
-  return true;
+  return false;
 };
 
 /**

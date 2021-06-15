@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import Breadcrumb from '..';
+import Breadcrumb from '@/molecules/breadcrumbs';
 
 describe(`Testing Breadcrumb`, () => {
   it(`Testing With Full Implemented Props`, () => {
@@ -47,42 +47,42 @@ describe(`Testing Breadcrumb`, () => {
     );
 
     if (container.firstChild) {
-      const {
-        childElementCount,
-        childNodes
-      } = container.firstChild as HTMLElement;
+      const { childNodes: wrapperNodes } = container.firstChild as HTMLElement;
+      const { childElementCount, childNodes } = wrapperNodes[0] as HTMLElement;
       const BreadcrumbItem1 = childNodes[0] as HTMLElement;
-      const Divider1 = childNodes[1] as HTMLElement;
+      const BreadcrumbLinkItem1 = childNodes[0].childNodes[0] as HTMLElement;
+      const Divider1 = childNodes[1].childNodes[0] as HTMLElement;
       const BreadcrumbItem2 = childNodes[2] as HTMLElement;
-      const Divider2 = childNodes[3] as HTMLElement;
+      const BreadcrumbLinkItem2 = childNodes[2].childNodes[0] as HTMLElement;
+      const Divider2 = childNodes[3].childNodes[0] as HTMLElement;
       const BreadcrumbItemLast = childNodes[10] as HTMLElement;
 
       expect(childElementCount).toBe(11);
 
-      expect(BreadcrumbItem1).toHaveAttribute(
+      expect(BreadcrumbLinkItem1).toHaveAttribute(
         `href`,
         `https://www.rumah123.com/`
       );
       expect(BreadcrumbItem1).toHaveClass(`sample-item`);
-      expect(BreadcrumbItem1).toHaveTextContent(`Beranda`);
-      expect(BreadcrumbItem1).toHaveStyle({ color: `rgb(204, 204, 204)` });
-      expect(BreadcrumbItem1).toHaveStyle({ fontSize: 12 });
-      expect(BreadcrumbItem1).toHaveStyle({ fontWeight: 400 });
-      expect(BreadcrumbItem1).toHaveStyle({ margin: `0px 10px` });
+      expect(BreadcrumbLinkItem1).toHaveTextContent(`Beranda`);
+      expect(BreadcrumbLinkItem1).toHaveStyle({ color: `rgb(204, 204, 204)` });
+      expect(BreadcrumbLinkItem1).toHaveStyle({ fontSize: 12 });
+      expect(BreadcrumbLinkItem1).toHaveStyle({ fontWeight: 400 });
+      expect(BreadcrumbItem1).toHaveStyle({ padding: `0px 5px` });
 
       expect(Divider1).toHaveClass(`sample-separator`);
       expect(Divider1).toHaveTextContent(`/`);
 
-      expect(BreadcrumbItem2).toHaveAttribute(
+      expect(BreadcrumbLinkItem2).toHaveAttribute(
         `href`,
         `https://www.rumah123.com/jual/residensial/`
       );
       expect(BreadcrumbItem2).toHaveClass(`sample-item`);
-      expect(BreadcrumbItem2).toHaveTextContent(`Dijual`);
-      expect(BreadcrumbItem2).toHaveStyle({ color: `rgb(204, 204, 204)` });
-      expect(BreadcrumbItem2).toHaveStyle({ fontSize: 12 });
-      expect(BreadcrumbItem2).toHaveStyle({ fontWeight: 400 });
-      expect(BreadcrumbItem2).toHaveStyle({ margin: `0px 10px` });
+      expect(BreadcrumbLinkItem2).toHaveTextContent(`Dijual`);
+      expect(BreadcrumbLinkItem2).toHaveStyle({ color: `rgb(204, 204, 204)` });
+      expect(BreadcrumbLinkItem2).toHaveStyle({ fontSize: 12 });
+      expect(BreadcrumbLinkItem2).toHaveStyle({ fontWeight: 400 });
+      expect(BreadcrumbItem2).toHaveStyle({ padding: `0px 5px` });
 
       expect(Divider2).toHaveClass(`sample-separator`);
       expect(Divider2).toHaveTextContent(`/`);
@@ -93,7 +93,7 @@ describe(`Testing Breadcrumb`, () => {
       expect(BreadcrumbItemLast.childNodes[0]).toHaveStyle({ fontSize: 12 });
       expect(BreadcrumbItemLast.childNodes[0]).toHaveStyle({ fontWeight: 400 });
       expect(BreadcrumbItemLast).toHaveStyle({
-        margin: `0px 10px`
+        padding: `0px 5px`
       });
     }
   });
@@ -125,34 +125,36 @@ describe(`Testing Breadcrumb`, () => {
     );
 
     if (container.firstChild) {
-      const {
-        childElementCount,
-        childNodes
-      } = container.firstChild as HTMLElement;
+      const { childNodes: wrapperNodes } = container.firstChild as HTMLElement;
+      const { childElementCount, childNodes } = wrapperNodes[0] as HTMLElement;
       const BreadcrumbItem1 = childNodes[0] as HTMLElement;
-      const Divider1 = childNodes[1] as HTMLElement;
+      const BreadcrumbLinkItem1 = childNodes[0].childNodes[0] as HTMLElement;
+      const Divider1 = childNodes[1].childNodes[0] as HTMLElement;
       const BreadcrumbItem2 = childNodes[2] as HTMLElement;
-      const Divider2 = childNodes[3] as HTMLElement;
+      const BreadcrumbLinkItem2 = childNodes[2].childNodes[0] as HTMLElement;
+      const Divider2 = childNodes[3].childNodes[0] as HTMLElement;
       const BreadcrumbItemLast = childNodes[10] as HTMLElement;
 
       expect(childElementCount).toBe(11);
 
-      expect(BreadcrumbItem1).toHaveAttribute(
+      expect(BreadcrumbLinkItem1).toHaveAttribute(
         `href`,
         `https://www.rumah123.com/`
       );
       expect(BreadcrumbItem1).not.toHaveClass(`sample-item`);
-      expect(BreadcrumbItem1).toHaveTextContent(`Beranda`);
-      expect(BreadcrumbItem1).not.toHaveStyle({ color: `rgb(204, 204, 204)` });
-      expect(BreadcrumbItem1).toHaveStyle({ fontSize: undefined });
-      expect(BreadcrumbItem1).not.toHaveStyle({ fontWeight: 400 });
-      expect(BreadcrumbItem1).not.toHaveStyle({ margin: `0px 5px` });
+      expect(BreadcrumbLinkItem1).toHaveTextContent(`Beranda`);
+      expect(BreadcrumbLinkItem1).not.toHaveStyle({
+        color: `rgb(204, 204, 204)`
+      });
+      expect(BreadcrumbLinkItem1).toHaveStyle({ fontSize: undefined });
+      expect(BreadcrumbLinkItem1).not.toHaveStyle({ fontWeight: 400 });
+      expect(BreadcrumbItem1).not.toHaveStyle({ padding: `0px 5px` });
 
       /**
        * On Click Breadcrumb1
        */
       fireEvent(
-        BreadcrumbItem1,
+        BreadcrumbLinkItem1,
         new MouseEvent(`click`, {
           bubbles: true,
           cancelable: true
@@ -164,16 +166,18 @@ describe(`Testing Breadcrumb`, () => {
       expect(Divider1).not.toHaveClass(`sample-separator`);
       expect(Divider1).toHaveTextContent(`/`);
 
-      expect(BreadcrumbItem2).toHaveAttribute(
+      expect(BreadcrumbLinkItem2).toHaveAttribute(
         `href`,
         `https://www.rumah123.com/jual/residensial/`
       );
       expect(BreadcrumbItem2).not.toHaveClass(`sample-item`);
-      expect(BreadcrumbItem2).toHaveTextContent(`Dijual`);
-      expect(BreadcrumbItem2).not.toHaveStyle({ color: `rgb(204, 204, 204)` });
-      expect(BreadcrumbItem2).toHaveStyle({ fontSize: undefined });
-      expect(BreadcrumbItem2).not.toHaveStyle({ fontWeight: 400 });
-      expect(BreadcrumbItem2).not.toHaveStyle({ margin: `0px 5px` });
+      expect(BreadcrumbLinkItem2).toHaveTextContent(`Dijual`);
+      expect(BreadcrumbLinkItem2).not.toHaveStyle({
+        color: `rgb(204, 204, 204)`
+      });
+      expect(BreadcrumbLinkItem2).toHaveStyle({ fontSize: undefined });
+      expect(BreadcrumbLinkItem2).not.toHaveStyle({ fontWeight: 400 });
+      expect(BreadcrumbItem2).not.toHaveStyle({ padding: `0px 5px` });
 
       expect(Divider2).not.toHaveClass(`sample-separator`);
       expect(Divider2).toHaveTextContent(`/`);
@@ -188,7 +192,7 @@ describe(`Testing Breadcrumb`, () => {
         fontWeight: 400
       });
       expect(BreadcrumbItemLast).not.toHaveStyle({
-        margin: `0px 5px`
+        padding: `0px 5px`
       });
     }
   });
@@ -237,30 +241,29 @@ describe(`Testing Breadcrumb`, () => {
     );
 
     if (container.firstChild) {
-      const {
-        childElementCount,
-        childNodes
-      } = container.firstChild as HTMLElement;
+      const { childNodes: wrapperNodes } = container.firstChild as HTMLElement;
+      const { childElementCount, childNodes } = wrapperNodes[0] as HTMLElement;
       const BreadcrumbItem1 = childNodes[0] as HTMLElement;
+      const BreadcrumbItemLink1 = childNodes[0].childNodes[0] as HTMLElement;
 
       expect(childElementCount).toBe(11);
 
-      expect(BreadcrumbItem1).toHaveAttribute(
+      expect(BreadcrumbItemLink1).toHaveAttribute(
         `href`,
         `https://www.rumah123.com/`
       );
       expect(BreadcrumbItem1).toHaveClass(`sample-item`);
-      expect(BreadcrumbItem1).toHaveTextContent(`Beranda`);
-      expect(BreadcrumbItem1).toHaveStyle({ color: `rgb(204, 204, 204)` });
-      expect(BreadcrumbItem1).toHaveStyle({ fontSize: 12 });
-      expect(BreadcrumbItem1).toHaveStyle({ fontWeight: 400 });
-      expect(BreadcrumbItem1).toHaveStyle({ margin: `0px 10px` });
+      expect(BreadcrumbItemLink1).toHaveTextContent(`Beranda`);
+      expect(BreadcrumbItemLink1).toHaveStyle({ color: `rgb(204, 204, 204)` });
+      expect(BreadcrumbItemLink1).toHaveStyle({ fontSize: 12 });
+      expect(BreadcrumbItemLink1).toHaveStyle({ fontWeight: 400 });
+      expect(BreadcrumbItem1).toHaveStyle({ padding: `0px 5px` });
 
       /**
        * On Click Breadcrumb1
        */
       fireEvent(
-        BreadcrumbItem1,
+        BreadcrumbItemLink1,
         new MouseEvent(`click`, {
           bubbles: true,
           cancelable: true

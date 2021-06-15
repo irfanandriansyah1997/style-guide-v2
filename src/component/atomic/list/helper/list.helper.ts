@@ -65,16 +65,16 @@ export const generateStyleItem = (
 ): CSSProperties => {
   if (style) {
     const { dividerColor: borderColor, orientation, outline, space } = style;
-    let margin: string | undefined;
+    let padding: string | undefined;
     let borderStyle: string | undefined;
 
     if (space) {
       switch (orientation) {
         case `horizontal`:
-          margin = `0px ${(space as number) / 2}px`;
+          padding = `0px ${(space as number) / 2}px`;
           break;
         case `vertical`:
-          margin = `${(space as number) / 2}px 0px`;
+          padding = `${(space as number) / 2}px 0px`;
           break;
       }
     }
@@ -93,7 +93,7 @@ export const generateStyleItem = (
     return {
       borderColor,
       borderStyle,
-      margin
+      padding
     };
   }
 

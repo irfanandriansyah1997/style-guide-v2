@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { FC } from 'react';
 
 import { IListItemProps } from '@/atomic/list/interface';
@@ -8,5 +9,17 @@ import { IListItemProps } from '@/atomic/list/interface';
  * @since 2021.06.11
  */
 const ListItem: FC<IListItemProps> = () => null;
+
+ListItem.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+    PropTypes.string
+  ]).isRequired
+};
+
+ListItem.defaultProps = {
+  children: undefined
+};
 
 export default ListItem;

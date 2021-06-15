@@ -1,10 +1,10 @@
 .m-list {
   $c: &;
 
-  &--divider-line {
+  &--divider-solid,
+  &--divider-dash {
     &--horizontal {
       #{$c}__item {
-        border-right-style: solid;
         border-right-width: 1px;
 
         &:last-child {
@@ -15,12 +15,39 @@
 
     &--vertical {
       #{$c}__item {
-        border-bottom-style: solid;
         border-bottom-width: 1px;
 
         &:last-child {
           border-bottom: 0;
         }
+      }
+    }
+  }
+
+  &--divider-solid {
+    &--horizontal {
+      #{$c}__item {
+        border-right-style: solid;
+      }
+    }
+
+    &--vertical {
+      #{$c}__item {
+        border-bottom-style: solid;
+      }
+    }
+  }
+
+  &--divider-dash {
+    &--horizontal {
+      #{$c}__item {
+        border-right-style: dashed;
+      }
+    }
+
+    &--vertical {
+      #{$c}__item {
+        border-bottom-style: dashed;
       }
     }
   }
