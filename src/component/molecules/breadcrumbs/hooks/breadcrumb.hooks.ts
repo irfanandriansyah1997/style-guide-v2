@@ -45,6 +45,7 @@ export const useBreadcrumb = (
     (value: CSSProperties) => {
       setStyleItem(() => {
         if (!shallowEquals(styleItem, value)) return value;
+
         return styleItem;
       });
     },
@@ -55,6 +56,7 @@ export const useBreadcrumb = (
     (value: CSSProperties) => {
       setStyleWrapper(() => {
         if (!shallowEquals(styleWrapper, value)) return value;
+
         return styleWrapper;
       });
     },

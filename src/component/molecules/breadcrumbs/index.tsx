@@ -70,7 +70,7 @@ const Breadcrumb: IBreadcrumbExportDefault = ({
 
               if (verifiedIsNotEmpty(link)) {
                 return (
-                  <List.Item key={key}>
+                  <List.Item key={`${key}-${JSON.stringify(resStyleItem)}`}>
                     <BreadcrumbLink
                       style={resStyleItem}
                       href={`${link}`}
@@ -83,7 +83,7 @@ const Breadcrumb: IBreadcrumbExportDefault = ({
               }
 
               return (
-                <List.Item key={key}>
+                <List.Item key={`${key}-${JSON.stringify(resStyleItem)}`}>
                   <BreadcrumbText style={resStyleItem}>{label}</BreadcrumbText>
                 </List.Item>
               );
