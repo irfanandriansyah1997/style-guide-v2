@@ -66,6 +66,8 @@ export const useBreadcrumb = (
   const onChangeContent = useCallback(
     (value: IBreadcrumbContent[]) => {
       setContent(() => {
+        if (content.length !== value.length) return value;
+
         const filteredValue = value.filter(
           ({ type }) => type === IBreadcrumbContentType.item
         );

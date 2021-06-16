@@ -1,0 +1,83 @@
+@import '../../../../style/import.scss';
+
+$grid-columns: 12;
+
+.a-container {
+  width: 100%;
+
+  @include margin-left(auto);
+  @include margin-right(auto);
+}
+
+.a-row {
+  @include margin-left(-15px);
+  @include margin-right(-15px);
+}
+
+@include generate-grid('default');
+
+.a-col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+@media (max-width: 576px) {
+  @include generate-grid('xs');
+}
+
+@media (min-width: 576px) {
+  .a-container {
+    max-width: 540px;
+  }
+
+  .a-col-sm {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
+  @include generate-grid('sm');
+}
+
+@media (min-width: 768px) {
+  .a-container {
+    max-width: 720px;
+  }
+
+  .a-col-md {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
+  @include generate-grid('md');
+}
+
+@media (min-width: 992px) {
+  .a-container {
+    max-width: 960px;
+  }
+
+  .a-col-lg {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
+  @include generate-grid('lg');
+}
+
+@media (min-width: 1200px) {
+  .a-container {
+    max-width: 1140px;
+  }
+
+  .a-col-xl {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
+  @include generate-grid('xl');
+}
