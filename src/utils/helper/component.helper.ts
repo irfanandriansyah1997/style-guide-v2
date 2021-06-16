@@ -2,12 +2,16 @@
 import { verifiedIsNotEmpty, verifiedKeyIsExist } from '@99/helper';
 import {
   Children,
+  cloneElement,
+  isValidElement,
   JSXElementConstructor,
+  ReactChild,
   ReactElement,
   ReactNode,
   ReactNodeArray,
   ReactPortal
 } from 'react';
+import { isFragment } from 'react-is';
 
 import { IDefaultText } from '@/interface/general';
 
@@ -28,6 +32,41 @@ export function checkClassnameAvailable<Props>(
     verifiedIsNotEmpty((className as Props)[key])
   );
 }
+
+/**
+ * Flatten Children
+ * @param {ReactNode} children - children props from react component
+ * @param {number} depth - number of depth flatten react children
+ * @param {(string | number)[]} keys - keys list
+ * @returns {ReactChild[]}
+ */
+export const flattenChildren = (
+  children: ReactNode,
+  depth = 0,
+  keys: (string | number)[] = []
+): ReactChild[] =>
+  Children.toArray(children)
+    .reduce((acc: ReactChild[], node, nodeIndex): ReactChild[] => {
+      if (isFragment(node)) {
+        acc.push(
+          ...flattenChildren(
+            node.props.children,
+            depth + 1,
+            keys.concat(node.key || nodeIndex)
+          )
+        );
+      } else if (isValidElement(node)) {
+        acc.push(
+          cloneElement(node, {
+            key: keys.concat(String(node.key)).join(`.`)
+          })
+        );
+      } else if (typeof node === `string` || typeof node === `number`) {
+        acc.push(node);
+      }
+      return acc;
+    }, [])
+    .filter(verifiedIsNotEmpty);
 
 /**
  * Getter Size
@@ -103,7 +142,7 @@ export function transformChildrenToArray<Output>(children: ReactNode) {
         | undefined
     ) => Output | undefined
   ): Output[] => {
-    const result = Children.toArray(children)
+    const result = flattenChildren(children)
       .map(callback)
       ?.filter(verifiedIsNotEmpty) as Output[];
 
@@ -117,12 +156,3 @@ export function transformChildrenToArray<Output>(children: ReactNode) {
     return [];
   };
 }
-
-/**
- * Is Equals
- * @param {ReactNode} children
- * @param {ReactNode} children
- * @returns {boolean}
- */
-export const isEqual = (prevChildren: ReactNode, nextChildren: ReactNode) =>
-  shallowEquals(prevChildren, nextChildren);

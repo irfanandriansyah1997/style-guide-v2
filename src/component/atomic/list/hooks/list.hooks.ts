@@ -60,8 +60,8 @@ export const useList = (
   const onChangeContent = useCallback(
     (value: IListContent[]) => {
       setContent(() => {
-        const filteredValue = value.map(({ key }) => key);
-        const filteredContent = content.map(({ key }) => key);
+        const filteredValue = value.map(({ payload }) => payload);
+        const filteredContent = content.map(({ payload }) => payload);
         const mustReRender = filteredValue.filter(
           (key, index) => !shallowEquals(key, filteredContent[index])
         );
