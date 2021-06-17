@@ -1,96 +1,103 @@
-import {
-  CSSProperties,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState
-} from 'react';
+import { useCallback, useEffect, useReducer, useRef } from 'react';
 
 import {
   generateClassnameContainer,
-  generateStyleItem,
-  transformChildrenToListContent
+  generateStyleItem
 } from '@/atomic/list/helper/list.helper';
-import { IListContent, IListHooks, IListStyle } from '@/atomic/list/interface';
+import { IListHooks, IListStyle } from '@/atomic/list/interface';
 import { shallowEquals } from '@/helper/component.helper';
 
+type IListReducer =
+  | {
+      type: 'set-css';
+      value: Pick<IListHooks, 'styleItem'>;
+    }
+  | {
+      type: 'set-class';
+      value: Pick<IListHooks, 'classnameContainer'>;
+    }
+  | {
+      type: 'set-all';
+      value: IListHooks;
+    };
+
 /**
- * Use Breadcrumb Content
+ * Toggle Reducer
+ * @param {IListHooks} state - initial state reducers
+ * @param {} param1
+ */
+function toggleReducer(
+  state: IListHooks,
+  { type, value }: IListReducer
+): IListHooks {
+  switch (type) {
+    case `set-css`:
+    case `set-class`:
+    case `set-all`:
+      return { ...state, ...value };
+
+    default: {
+      throw new Error(`Unsupported type: ${type}`);
+    }
+  }
+}
+
+/**
+ * Use List Content
  * @description generate label on pagination component
- * @param {ReactNode} children - children props
+ * @param {Partial<IListStyle>} style - style props
  * @returns {IReactPaginationContent}
  */
-export const useList = (
-  children: ReactNode,
-  style: Partial<IListStyle>
-): IListHooks => {
-  const [content, setContent] = useState<IListContent[]>(
-    transformChildrenToListContent(children)
-  );
-  const [styleItem, setStyleItem] = useState<CSSProperties>(
-    generateStyleItem(style)
-  );
-  const [classnameContainer, setClassnameContainer] = useState<string>(
-    generateClassnameContainer(style)
-  );
-
-  const onChangeStyleItem = useCallback(
-    (value: CSSProperties) => {
-      setStyleItem(() => {
-        if (!shallowEquals(styleItem, value)) return value;
-
-        return styleItem;
-      });
-    },
-    [setStyleItem, styleItem]
-  );
-
-  const onChangeStyleContainer = useCallback(
-    (value: string) => {
-      setClassnameContainer((): string => {
-        if (!shallowEquals(classnameContainer, value)) return value;
-
-        return classnameContainer;
-      });
-    },
-    [setClassnameContainer, classnameContainer]
-  );
+export function useList(style: Partial<IListStyle>): IListHooks {
+  const { current: initialState } = useRef<IListHooks>({
+    classnameContainer: generateClassnameContainer(style),
+    styleItem: generateStyleItem(style)
+  });
+  const [state, dispatch] = useReducer(toggleReducer, initialState);
+  const content = state;
 
   const onChangeContent = useCallback(
-    (value: IListContent[]) => {
-      setContent(() => {
-        if (content.length !== value.length) return value;
+    ({ classnameContainer, styleItem }: IListHooks) => {
+      if (
+        !shallowEquals(content.styleItem, styleItem) &&
+        !shallowEquals(content.classnameContainer, classnameContainer)
+      ) {
+        dispatch({
+          type: `set-all`,
+          value: {
+            classnameContainer,
+            styleItem
+          }
+        });
+      }
 
-        const filteredValue = value.map(({ payload }) => payload);
-        const filteredContent = content.map(({ payload }) => payload);
-        const mustReRender = filteredValue.filter(
-          (key, index) => !shallowEquals(key, filteredContent[index])
-        );
+      if (!shallowEquals(content.styleItem, styleItem)) {
+        dispatch({
+          type: `set-css`,
+          value: {
+            styleItem
+          }
+        });
+      }
 
-        if (mustReRender.length > 0) return value;
-
-        return content;
-      });
+      if (!shallowEquals(content.classnameContainer, classnameContainer)) {
+        dispatch({
+          type: `set-class`,
+          value: {
+            classnameContainer
+          }
+        });
+      }
     },
-    [setContent, content]
+    [content]
   );
 
   useEffect(() => {
-    onChangeContent(transformChildrenToListContent(children));
-  }, [children, onChangeContent]);
+    onChangeContent({
+      classnameContainer: generateClassnameContainer(style),
+      styleItem: generateStyleItem(style)
+    });
+  }, [style, onChangeContent]);
 
-  useEffect(() => {
-    onChangeStyleItem(generateStyleItem(style));
-    onChangeStyleContainer(generateClassnameContainer(style));
-  }, [style, setStyleItem, onChangeStyleItem, onChangeStyleContainer]);
-
-  return useMemo(
-    () => ({
-      classnameContainer,
-      item: content,
-      styleItem
-    }),
-    [content, styleItem, classnameContainer]
-  );
-};
+  return content;
+}

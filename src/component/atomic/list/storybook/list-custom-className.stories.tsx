@@ -32,19 +32,19 @@ const Template: Story<Omit<IListProps, 'className'> & IListClassnameList> = ({
   wrapper,
   ...res
 }) => (
-  <List
+  <List.Memoized
     {...res}
     className={{
       item,
       wrapper
     }}
   >
-    <List.Item>List Number 1</List.Item>
+    <List.Item className="first">List Number 1</List.Item>
     <List.Item>List Number 2</List.Item>
-    <List.Item>List Number 3</List.Item>
+    <List.Item className="mid">List Number 3</List.Item>
     <List.Item>List Number 4</List.Item>
-    <List.Item>List Number 5</List.Item>
-  </List>
+    <List.Item className="last">List Number 5</List.Item>
+  </List.Memoized>
 );
 
 export const Showcase = Template.bind({});

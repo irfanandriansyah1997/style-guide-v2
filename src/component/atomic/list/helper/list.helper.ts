@@ -1,18 +1,7 @@
-import {
-  objToString,
-  verifiedIsNotEmpty,
-  verifiedKeyIsExist
-} from '@99/helper';
-import { CSSProperties, Key, ReactElement, ReactNode } from 'react';
+import { objToString } from '@99/helper';
+import { CSSProperties } from 'react';
 
-import {
-  IListContent,
-  IListContentType,
-  IListItemProps,
-  IListStyle
-} from '@/atomic/list/interface';
-import ListItem from '@/atomic/list/section/list-item.component';
-import { transformChildrenToArray } from '@/helper/component.helper';
+import { IListStyle } from '@/atomic/list/interface';
 
 /**
  * Generate Classname Container
@@ -99,40 +88,3 @@ export const generateStyleItem = (
 
   return {};
 };
-
-/**
- * Transform Children To List Item
- * @param {ReactNode} children - children Props
- * @returns {IBreadcrumbItemProps}
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.06.11
- */
-export const transformChildrenToListContent = (
-  children: ReactNode
-): IListContent[] =>
-  transformChildrenToArray<{
-    item: IListItemProps;
-    key: Key | null;
-  }>(children)((child) => {
-    if (
-      verifiedIsNotEmpty(child) &&
-      verifiedKeyIsExist((child as unknown) as Record<string, any>, `type`)
-    ) {
-      const { key, props, type } = child as ReactElement;
-
-      if ([ListItem].includes(type as any)) {
-        return {
-          item: props,
-          key
-        };
-      }
-    }
-
-    return undefined;
-  }).map(
-    ({ item, key }, index): IListContent => ({
-      key: key ? `${key}` : `${index}`,
-      payload: item,
-      type: IListContentType.item
-    })
-  );

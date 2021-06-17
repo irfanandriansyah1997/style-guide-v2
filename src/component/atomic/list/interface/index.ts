@@ -22,7 +22,7 @@ type IListContentGenerator<P, T> = {
  * @since 2021.06.14
  */
 export type IListContent = IListContentGenerator<
-  IListItemProps,
+  IListExposedItemProps,
   IListContentType.item
 >;
 
@@ -37,8 +37,19 @@ export enum IListContentType {
  * @since 2021.06.11
  */
 export type IListExportDefault = FC<IListProps> & {
-  Item: FC<IListItemProps>;
+  Item: FC<IListExposedItemProps>;
+  Memoized: FC<IListProps>;
 };
+
+/**
+ * List Exposed Item Props
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.06.14
+ */
+export interface IListExposedItemProps {
+  children: ReactNode;
+  className?: string;
+}
 
 /**
  * List Hooks Interface
@@ -47,17 +58,17 @@ export type IListExportDefault = FC<IListProps> & {
  */
 export interface IListHooks {
   classnameContainer: string;
-  item: IListContent[];
   styleItem?: CSSProperties;
 }
 
 /**
- * List Item Props
+ * List Exposed Item Props
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.14
  */
-export interface IListItemProps {
-  children: ReactNode;
+export interface IListItemProps extends IListExposedItemProps {
+  className?: string;
+  style?: CSSProperties;
 }
 
 export type IListOrientation = 'vertical' | 'horizontal';
