@@ -1,10 +1,5 @@
 import { Property } from 'csstype';
-import { CSSProperties, FC, Key, ReactNode } from 'react';
-
-interface IBasicGridProps {
-  children: ReactNode;
-  id: string; // Must be unique id
-}
+import { CSSProperties, FC, ReactNode } from 'react';
 
 export interface IBasicSizeGrid {
   // between 992px and 1200px
@@ -25,6 +20,8 @@ export interface IBasicSizeGrid {
  * @since 2021.06.16
  */
 export interface IGridContainerProps {
+  children: ReactNode;
+  className?: string;
   size: IGridContainerSize;
 }
 
@@ -36,9 +33,16 @@ export type IGridContainerSize = 'full-width' | 'normal' | 'unset';
  * @since 2021.06.16
  */
 export type IGridDefaultExport = FC<IGridContainerProps> & {
-  Item: FC<IGridItemProps>;
+  Item: FC<IGridItemExposedProps>;
   Rows: FC<IGridRowProps>;
 };
+
+/**
+ * Grid Item Exposed Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.06.16
+ */
+export type IGridItemExposedProps = Omit<IGridItemProps, 'spaceEachItem'>;
 
 /**
  * Grid Item Hooks Interface
@@ -46,9 +50,7 @@ export type IGridDefaultExport = FC<IGridContainerProps> & {
  * @since 2021.06.16
  */
 export interface IGridItemHooks {
-  children: ReactNode;
   className: string;
-  key: Key;
   style: CSSProperties;
 }
 
@@ -57,12 +59,12 @@ export interface IGridItemHooks {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.16
  */
-export type IGridItemProps = IBasicGridProps &
-  Partial<IBasicSizeGrid> & {
-    className?: string;
-    order?: number;
-    size: IGridSize;
-  };
+export interface IGridItemProps extends Partial<IBasicSizeGrid> {
+  className?: string;
+  order?: number;
+  size: IGridSize;
+  spaceEachItem?: number | Partial<IGridSpaceItem>;
+}
 
 /**
  * Grid Row Hooks Interface
@@ -71,7 +73,6 @@ export type IGridItemProps = IBasicGridProps &
  */
 export interface IGridRowHooks {
   className: string;
-  content: IGridItemHooks[];
   style: CSSProperties;
 }
 
@@ -80,10 +81,9 @@ export interface IGridRowHooks {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.16
  */
-export type IGridRowProps = Omit<IBasicGridProps, 'id'> &
-  IGridRowStyling & {
-    className?: string;
-  };
+export interface IGridRowProps extends IGridRowStyling {
+  className?: string;
+}
 
 /**
  * Grid Row Styling Interface

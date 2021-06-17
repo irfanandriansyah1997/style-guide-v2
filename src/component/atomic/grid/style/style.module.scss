@@ -9,11 +9,6 @@ $grid-columns: 12;
   @include margin-right(auto);
 }
 
-.a-row {
-  @include margin-left(-15px);
-  @include margin-right(-15px);
-}
-
 @include generate-grid('default');
 
 .a-col {

@@ -1,6 +1,6 @@
 import { Property } from 'csstype';
 import PropTypes from 'prop-types';
-import { FC, Validator } from 'react';
+import { Children, cloneElement, FC, ReactElement, Validator } from 'react';
 
 import {
   DEFAULT_GRID_ALIGN_ITEM as ALIGN_ITEM,
@@ -9,32 +9,33 @@ import {
 import { useGridRow } from '@/atomic/grid/hooks/grid.hooks';
 import { IGridRowProps, IGridSpaceItem } from '@/atomic/grid/interface';
 
+import GridItem from './grid-item.component';
+
 /**
  * Grid Row Component
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.16
  */
-const GridRow: FC<IGridRowProps> = (props) => {
-  const { content, ...res } = useGridRow(props);
+const GridRow: FC<IGridRowProps> = ({ children, ...props }) => {
+  const { ...res } = useGridRow({ ...props });
 
   return (
     <div {...res}>
-      {content.map(({ children, key, ...res }) => (
-        <div {...res} key={key}>
-          {children}
-        </div>
-      ))}
+      {Children.map(children as ReactElement, (child: ReactElement) => {
+        const { type } = child as ReactElement;
+
+        if ([GridItem].includes(type as any)) {
+          return cloneElement(child, { spaceEachItem: props.spaceEachItem });
+        }
+
+        return null;
+      })}
     </div>
   );
 };
 
 GridRow.propTypes = {
   alignItems: PropTypes.oneOf<Property.AlignItems>(ALIGN_ITEM),
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-    PropTypes.string
-  ]).isRequired,
   justifyContent: PropTypes.oneOf<Property.JustifyContent>(JUSTIFY_CONTENT),
   spaceEachItem: PropTypes.oneOfType([
     PropTypes.number,
@@ -48,7 +49,7 @@ GridRow.propTypes = {
 GridRow.defaultProps = {
   alignItems: `center`,
   justifyContent: `center`,
-  spaceEachItem: undefined
+  spaceEachItem: 10
 };
 
 export default GridRow;

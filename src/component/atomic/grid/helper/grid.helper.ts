@@ -1,21 +1,13 @@
-import {
-  objToString,
-  verifiedIsNotEmpty,
-  verifiedKeyIsExist
-} from '@99/helper';
-import { CSSProperties, Key, ReactElement, ReactNode } from 'react';
+import { objToString, verifiedIsNotEmpty } from '@99/helper';
+import { CSSProperties } from 'react';
 
 import {
   IBasicSizeGrid,
-  IGridItemHooks,
-  IGridItemProps,
   IGridRowStyling,
   IGridSize,
   IGridSpaceItem
 } from '@/atomic/grid/interface';
-import GridItem from '@/atomic/grid/section/grid-item.component';
 import styles from '@/atomic/grid/style/style.module.scss';
-import { transformChildrenToArray } from '@/helper/component.helper';
 
 /**
  * Generate Spacing Size
@@ -65,16 +57,16 @@ export const generateClassNameItem = (
     [`${className}`]: verifiedIsNotEmpty(className),
     [`${styles[`a-col`]}`]: size === `auto`,
     [`${styles[`a-col-${size}`]}`]: size !== `auto`,
-    [`${styles[`a-col-lg`]}`]: verifiedIsNotEmpty(lg) && lg === `auto`,
-    [`${styles[`a-col-lg-${size}`]}`]: verifiedIsNotEmpty(lg) && lg !== `auto`,
-    [`${styles[`a-col-md`]}`]: verifiedIsNotEmpty(md) && md === `auto`,
-    [`${styles[`a-col-md-${size}`]}`]: verifiedIsNotEmpty(md) && md !== `auto`,
-    [`${styles[`a-col-sm`]}`]: verifiedIsNotEmpty(sm) && sm === `auto`,
-    [`${styles[`a-col-sm-${size}`]}`]: verifiedIsNotEmpty(sm) && sm !== `auto`,
-    [`${styles[`a-col-xl`]}`]: verifiedIsNotEmpty(xl) && xl === `auto`,
-    [`${styles[`a-col-xl-${size}`]}`]: verifiedIsNotEmpty(xl) && xl !== `auto`,
+    [`${styles[`a-col-xs-${xs}`]}`]: verifiedIsNotEmpty(xs) && xs !== `auto`,
     [`${styles[`a-col-xs`]}`]: verifiedIsNotEmpty(xs) && xs === `auto`,
-    [`${styles[`a-col-xs-${size}`]}`]: verifiedIsNotEmpty(xs) && xs !== `auto`
+    [`${styles[`a-col-sm`]}`]: verifiedIsNotEmpty(sm) && sm === `auto`,
+    [`${styles[`a-col-sm-${sm}`]}`]: verifiedIsNotEmpty(sm) && sm !== `auto`,
+    [`${styles[`a-col-md`]}`]: verifiedIsNotEmpty(md) && md === `auto`,
+    [`${styles[`a-col-md-${md}`]}`]: verifiedIsNotEmpty(md) && md !== `auto`,
+    [`${styles[`a-col-lg`]}`]: verifiedIsNotEmpty(lg) && lg === `auto`,
+    [`${styles[`a-col-lg-${lg}`]}`]: verifiedIsNotEmpty(lg) && lg !== `auto`,
+    [`${styles[`a-col-xl`]}`]: verifiedIsNotEmpty(xl) && xl === `auto`,
+    [`${styles[`a-col-xl-${xl}`]}`]: verifiedIsNotEmpty(xl) && xl !== `auto`
   });
 
 /**
@@ -86,7 +78,8 @@ export const generateClassNameItem = (
  */
 export const generateClassNameWrapper = (className?: string): string =>
   objToString({
-    [`${styles[`a-row`]}`]: true,
+    flex: true,
+    'flex-wrap': true,
     [`${className}`]: verifiedIsNotEmpty(className)
   });
 
@@ -135,50 +128,3 @@ export const generateStyleWrapper = ({
     marginTop: -1 * vertical
   };
 };
-
-/**
- * Transform Children To Breadcumbs Item
- * @param {ReactNode} children - children Props
- * @param {Partial<IGridSpaceItem> | number} space - space between grid item
- * @returns {IBreadcrumbItemProps}
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.06.11
- */
-export const transformChildrenToGridItem = (
-  children: ReactNode,
-  space?: Partial<IGridSpaceItem> | number
-): IGridItemHooks[] =>
-  transformChildrenToArray<IGridItemProps & { key: Key | undefined }>(children)(
-    (child) => {
-      if (
-        verifiedIsNotEmpty(child) &&
-        verifiedKeyIsExist((child as unknown) as Record<string, any>, `type`)
-      ) {
-        const { key, props, type } = child as ReactElement;
-
-        if ([GridItem].includes(type as any)) {
-          return { ...props, key };
-        }
-      }
-
-      return undefined;
-    }
-  ).map(
-    (
-      {
-        children,
-        className,
-        id,
-        key,
-        order,
-        size,
-        ...res
-      }: IGridItemProps & { key: Key | undefined },
-      index
-    ): IGridItemHooks => ({
-      children,
-      className: generateClassNameItem(size, res, className),
-      key: `${id}-${key || `0`}-${index}`,
-      style: generateStyleItem(space, order)
-    })
-  );

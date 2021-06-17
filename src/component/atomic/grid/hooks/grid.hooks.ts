@@ -1,6 +1,5 @@
 import {
   CSSProperties,
-  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -8,53 +7,104 @@ import {
 } from 'react';
 
 import {
+  generateClassNameItem,
   generateClassNameWrapper,
-  generateStyleWrapper,
-  transformChildrenToGridItem
+  generateStyleItem,
+  generateStyleWrapper
 } from '@/atomic/grid/helper/grid.helper';
 import {
   IGridItemHooks,
+  IGridItemProps,
   IGridRowHooks,
-  IGridRowProps,
-  IGridSpaceItem
+  IGridRowProps
 } from '@/atomic/grid/interface';
 import { shallowEquals } from '@/helper/component.helper';
 
 /**
- * Use Grid Row Content
+ * Use Grid Item
  * @description generate label on pagination component
  * @param {ReactNode} children - children props
  * @returns {IReactPaginationContent}
  */
-export const useGridItem = (
-  children: ReactNode,
-  space?: Partial<IGridSpaceItem> | number
-): IGridItemHooks[] => {
-  const [content, setContent] = useState<IGridItemHooks[]>(
-    transformChildrenToGridItem(children, space)
+export const useGridItem = ({
+  className: customClassName,
+  lg,
+  md,
+  order,
+  size,
+  sm,
+  spaceEachItem,
+  xl,
+  xs
+}: IGridItemProps): IGridItemHooks => {
+  const [style, setStyle] = useState<CSSProperties>(
+    generateStyleItem(spaceEachItem, order)
+  );
+  const [className, setClassName] = useState<string>(
+    generateClassNameItem(
+      size,
+      {
+        lg,
+        md,
+        sm,
+        xl,
+        xs
+      },
+      customClassName
+    )
   );
 
-  const onChangeContent = useCallback(
-    (value: IGridItemHooks[]) => {
-      setContent((): IGridItemHooks[] => {
-        if (content.length !== value.length) return value;
+  const onChangeStyle = useCallback(
+    (value: CSSProperties) => {
+      setStyle(
+        (): CSSProperties => {
+          if (!shallowEquals(style, value)) return value;
 
-        const isChange = content.filter(
-          (item, index) => !shallowEquals(item, value[index])
-        );
-        if (isChange.length > 0) return value;
+          return style;
+        }
+      );
+    },
+    [style, setStyle]
+  );
 
-        return content;
+  const onChangeClassName = useCallback(
+    (value: string) => {
+      setClassName((): string => {
+        if (!shallowEquals(className, value)) return value;
+
+        return className;
       });
     },
-    [content, setContent]
+    [className, setClassName]
   );
 
   useEffect(() => {
-    onChangeContent(transformChildrenToGridItem(children, space));
-  }, [children, space, onChangeContent]);
+    onChangeStyle(generateStyleItem(spaceEachItem, order));
+  }, [order, spaceEachItem, onChangeStyle]);
 
-  return useMemo(() => content, [content]);
+  useEffect(() => {
+    onChangeClassName(
+      generateClassNameItem(
+        size,
+        {
+          lg,
+          md,
+          sm,
+          xl,
+          xs
+        },
+        customClassName
+      )
+    );
+  }, [customClassName, lg, md, onChangeClassName, size, sm, xl, xs]);
+
+  return useMemo(
+    () => ({
+      className,
+      style
+    }),
+    [style, className]
+  );
 };
 
 /**
@@ -64,11 +114,9 @@ export const useGridItem = (
  * @returns {IReactPaginationContent}
  */
 export const useGridRow = ({
-  children,
   className: customClassName,
   ...res
 }: IGridRowProps): IGridRowHooks => {
-  const content = useGridItem(children);
   const [style, setStyle] = useState<CSSProperties>(generateStyleWrapper(res));
   const [className, setClassName] = useState<string>(
     generateClassNameWrapper(customClassName)
@@ -109,9 +157,9 @@ export const useGridRow = ({
   return useMemo(
     () => ({
       className,
-      content,
+
       style
     }),
-    [content, style, className]
+    [style, className]
   );
 };
