@@ -22,7 +22,7 @@ export interface IBasicSizeGrid {
 export interface IGridContainerProps {
   children: ReactNode;
   className?: string;
-  size: IGridContainerSize;
+  size?: IGridContainerSize;
 }
 
 export type IGridContainerSize = 'full-width' | 'normal' | 'unset';

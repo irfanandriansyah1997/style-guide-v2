@@ -1,5 +1,4 @@
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable sort-exports/sort-exports */
 import type { Story } from '@storybook/react/types-6-0';
 import { useState } from 'react';
 
@@ -8,30 +7,28 @@ import Text from '@/atomic/text';
 import { STYLE_GUIDE_COLOR } from '@/constant/color';
 import Builder from '@/modules/storybook';
 
-import { IGridSize } from '../interface';
+import { IBasicSizeGrid, IGridSize } from '../interface';
+import { CUSTOM_ARGS_GRID_COMPONENT } from './storybook-args';
 
 Grid.displayName = `Chips`;
-const GRID_SIZE: IGridSize[] = [
-  2,
-  10,
-  3,
-  9,
-  4,
-  8,
-  5,
-  7,
-  6,
-  6,
-  `auto`,
-  `auto`,
-  `auto`
-];
+const GRID_SIZE: IGridSize[] = [1, 2, 3, 4, 5];
 
 export default new Builder()
-  .setModuleName(`Grid Component`)
+  .setParentModuleName(`Grid Component`)
+  .setModuleName(`Responsive`)
   .setType(`atomic`)
   .setComponent(Grid)
-  .setMultipleArgs([])
+  .setMultipleArgs(
+    CUSTOM_ARGS_GRID_COMPONENT.map((item) => {
+      const response = { ...item };
+
+      if (response.argsName === `size`) {
+        response.control = false;
+      }
+
+      return response;
+    })
+  )
   .execute();
 
 /**
@@ -39,21 +36,16 @@ export default new Builder()
  * @param {IChipsProps} args - args props
  * @returns {ReactNode}
  */
-const Template: Story<{ space: number; text: string }> = ({ space, text }) => {
+const Template: Story<
+  IBasicSizeGrid & { size: IGridSize; spaceEachItem: number }
+> = ({ spaceEachItem, ...res }) => {
   const [number] = useState<IGridSize[]>(GRID_SIZE);
 
   return (
     <Grid size="normal">
-      <Grid.Rows spaceEachItem={space}>
+      <Grid.Rows spaceEachItem={spaceEachItem}>
         {number.map((item, index) => (
-          <Grid.Item
-            size={item}
-            key={`${item}-${index}`}
-            lg={2}
-            xl={item}
-            sm={4}
-            xs={6}
-          >
+          <Grid.Item {...res} key={`${item}-${index}`}>
             <div
               className="text-center"
               style={{
@@ -77,7 +69,7 @@ const Template: Story<{ space: number; text: string }> = ({ space, text }) => {
                 fontWeight={400}
                 color={STYLE_GUIDE_COLOR.dark400}
               >
-                {text}
+                custom text
               </Text.H5>
             </div>
           </Grid.Item>
@@ -90,6 +82,11 @@ const Template: Story<{ space: number; text: string }> = ({ space, text }) => {
 export const SampleGrid = Template.bind({});
 
 SampleGrid.args = {
-  space: 10,
-  text: `Sample`
+  lg: 2,
+  md: 4,
+  size: 2,
+  sm: 4,
+  spaceEachItem: 10,
+  xl: 3,
+  xs: 6
 };

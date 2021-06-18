@@ -36,8 +36,8 @@ const generateSpacingSize = (
   }
 
   return {
-    horizontal: (param as IGridSpaceItem).horizontal || defaultSize,
-    vertical: (param as IGridSpaceItem).vertical || defaultSize
+    horizontal: ((param as IGridSpaceItem).horizontal || defaultSize) / 2,
+    vertical: ((param as IGridSpaceItem).vertical || defaultSize) / 2
   };
 };
 

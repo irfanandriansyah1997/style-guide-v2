@@ -157,7 +157,6 @@ export const useGridRow = ({
   return useMemo(
     () => ({
       className,
-
       style
     }),
     [style, className]

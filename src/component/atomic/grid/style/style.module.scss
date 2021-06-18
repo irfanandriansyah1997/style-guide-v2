@@ -3,10 +3,17 @@
 $grid-columns: 12;
 
 .a-container {
-  width: 100%;
-
   @include margin-left(auto);
   @include margin-right(auto);
+
+  &--full-width,
+  &--normal {
+    width: 100%;
+  }
+
+  &--unset {
+    width: initial;
+  }
 }
 
 @include generate-grid('default');
@@ -23,7 +30,9 @@ $grid-columns: 12;
 
 @media (min-width: 576px) {
   .a-container {
-    max-width: 540px;
+    &--normal {
+      max-width: 540px;
+    }
   }
 
   .a-col-sm {
@@ -37,7 +46,9 @@ $grid-columns: 12;
 
 @media (min-width: 768px) {
   .a-container {
-    max-width: 720px;
+    &--normal {
+      max-width: 720px;
+    }
   }
 
   .a-col-md {
@@ -51,7 +62,9 @@ $grid-columns: 12;
 
 @media (min-width: 992px) {
   .a-container {
-    max-width: 960px;
+    &--normal {
+      max-width: 960px;
+    }
   }
 
   .a-col-lg {
@@ -65,7 +78,9 @@ $grid-columns: 12;
 
 @media (min-width: 1200px) {
   .a-container {
-    max-width: 1140px;
+    &--normal {
+      max-width: 1140px;
+    }
   }
 
   .a-col-xl {
