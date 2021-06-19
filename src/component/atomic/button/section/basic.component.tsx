@@ -35,18 +35,20 @@ const component: FC<Partial<IBasicButtonProps> & { children?: ReactNode }> = ({
       flex: true,
       'flex-align-center': true,
       'flex-row-reverse': verifiedIsNotFalse(rtl),
-      [`${
-        className ? className.content : undefined
-      }`]: checkClassnameAvailable<List>(className, `content`)
+      [`${className?.content}`]: checkClassnameAvailable<List>(
+        className,
+        `content`
+      )
     })}
   >
     {icon && (
       <div
         className={objToString({
           [styles[`a-button__icon`]]: true,
-          [`${
-            className ? className.icon : undefined
-          }`]: checkClassnameAvailable<List>(className, `icon`)
+          [`${className?.icon}`]: checkClassnameAvailable<List>(
+            className,
+            `icon`
+          )
         })}
       >
         {icon}
@@ -55,9 +57,7 @@ const component: FC<Partial<IBasicButtonProps> & { children?: ReactNode }> = ({
     <Text.Span
       className={objToString({
         [styles[`a-button__text`]]: true,
-        [`${
-          className ? className.text : undefined
-        }`]: checkClassnameAvailable<List>(className, `text`)
+        [`${className?.text}`]: checkClassnameAvailable<List>(className, `text`)
       })}
     >
       {children}
@@ -102,7 +102,8 @@ export const generateButtonClassName = (
     'flex-align-center': true,
     'flex-justify-content': true,
     'inline-flex': tag === `a`,
-    [`${
-      className ? className.wrapper : undefined
-    }`]: checkClassnameAvailable<List>(className, `wrapper`)
+    [`${className?.wrapper}`]: checkClassnameAvailable<List>(
+      className,
+      `wrapper`
+    )
   });

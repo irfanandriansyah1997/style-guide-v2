@@ -17,9 +17,10 @@ const Chips: FC<IChipsProps> = ({ className, label, on, outline }) => (
   <div
     className={objToString({
       [styles[`a-chips`]]: true,
-      [`${
-        className ? className.wrapper : undefined
-      }`]: checkClassnameAvailable<List>(className, `wrapper`)
+      [`${className?.wrapper}`]: checkClassnameAvailable<List>(
+        className,
+        `wrapper`
+      )
     })}
   >
     <Tags
@@ -27,9 +28,10 @@ const Chips: FC<IChipsProps> = ({ className, label, on, outline }) => (
       theme="dark"
       outline={outline}
       className={objToString({
-        [`${
-          className ? className.content : undefined
-        }`]: checkClassnameAvailable<List>(className, `content`)
+        [`${className?.content}`]: checkClassnameAvailable<List>(
+          className,
+          `content`
+        )
       })}
     >
       {label}
@@ -49,9 +51,10 @@ const Chips: FC<IChipsProps> = ({ className, label, on, outline }) => (
           'flex-justify-center': true,
           relative: true,
           [styles[`a-chips__close`]]: true,
-          [`${
-            className ? className.close : undefined
-          }`]: checkClassnameAvailable<List>(className, `close`)
+          [`${className?.close}`]: checkClassnameAvailable<List>(
+            className,
+            `close`
+          )
         })}
       />
     </Tags>

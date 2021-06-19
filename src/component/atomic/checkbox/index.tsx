@@ -1,6 +1,6 @@
 import { objToString, verifiedIsNotFalse } from '@99/helper';
 import PropTypes from 'prop-types';
-import { FC } from 'react';
+import { FC, Validator } from 'react';
 
 import style from '@/atomic/checkbox/style/style.module.scss';
 import { ICheckboxProps } from '@/atomic/selection/interface';
@@ -20,16 +20,15 @@ const Checkbox: FC<ICheckboxProps> = ({ active, className, ...props }) => (
     className={{
       label: objToString({
         [`${style[`a-checkbox__text`]}`]: true,
-        [`${
-          className ? className.label : undefined
-        }`]: checkClassnameAvailable<IToggleClassnameList>(className, `label`)
+        [`${className?.label}`]: checkClassnameAvailable<IToggleClassnameList>(
+          className,
+          `label`
+        )
       }),
       selector: objToString({
         relative: true,
         [`${style[`a-checkbox__toggle`]}`]: true,
-        [`${
-          className ? className.selector : undefined
-        }`]: checkClassnameAvailable<IToggleClassnameList>(
+        [`${className?.selector}`]: checkClassnameAvailable<IToggleClassnameList>(
           className,
           `selector`
         )
@@ -37,9 +36,10 @@ const Checkbox: FC<ICheckboxProps> = ({ active, className, ...props }) => (
       wrapper: objToString({
         [`${style[`a-checkbox`]}`]: true,
         [`${style[`a-checkbox--active`]}`]: verifiedIsNotFalse(active),
-        [`${
-          className ? className.wrapper : undefined
-        }`]: checkClassnameAvailable<IToggleClassnameList>(className, `wrapper`)
+        [`${className?.wrapper}`]: checkClassnameAvailable<IToggleClassnameList>(
+          className,
+          `wrapper`
+        )
       })
     }}
   />
@@ -47,7 +47,11 @@ const Checkbox: FC<ICheckboxProps> = ({ active, className, ...props }) => (
 
 Checkbox.propTypes = {
   active: PropTypes.bool,
-  className: PropTypes.shape({})
+  className: PropTypes.shape({
+    label: PropTypes.string,
+    selector: PropTypes.string,
+    wrapper: PropTypes.string
+  }) as Validator<Partial<IToggleClassnameList>>
 };
 
 Checkbox.defaultProps = {

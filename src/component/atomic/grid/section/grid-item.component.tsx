@@ -2,14 +2,13 @@ import PropTypes from 'prop-types';
 import { FC, Validator } from 'react';
 
 import { DEFAULT_GRID_SIZE } from '@/atomic/grid/constant';
+import { useGridItem } from '@/atomic/grid/hooks/grid.hooks';
 import {
   IGridItemExposedProps,
   IGridItemProps,
   IGridSize,
   IGridSpaceItem
 } from '@/atomic/grid/interface';
-
-import { useGridItem } from '../hooks/grid.hooks';
 
 /**
  * Grid Generator

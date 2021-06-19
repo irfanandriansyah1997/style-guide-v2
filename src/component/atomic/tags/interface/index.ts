@@ -13,16 +13,6 @@ export type IEventOnClickTags = IEventComponent<
 >;
 
 /**
- * All Class Name Each Tag on Tags Component
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.05.13
- */
-export interface ITagsClassnameList {
-  content: string;
-  wrapper: string;
-}
-
-/**
  * Tags Props Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.07

@@ -20,16 +20,15 @@ const Radio: FC<IRadioProps> = ({ active, className, ...props }) => (
     className={{
       label: objToString({
         [`${style[`a-radio__text`]}`]: true,
-        [`${
-          className ? className.label : undefined
-        }`]: checkClassnameAvailable<IToggleClassnameList>(className, `label`)
+        [`${className?.label}`]: checkClassnameAvailable<IToggleClassnameList>(
+          className,
+          `label`
+        )
       }),
       selector: objToString({
         relative: true,
         [`${style[`a-radio__toggle`]}`]: true,
-        [`${
-          className ? className.selector : undefined
-        }`]: checkClassnameAvailable<IToggleClassnameList>(
+        [`${className?.selector}`]: checkClassnameAvailable<IToggleClassnameList>(
           className,
           `selector`
         )
@@ -37,9 +36,10 @@ const Radio: FC<IRadioProps> = ({ active, className, ...props }) => (
       wrapper: objToString({
         [`${style[`a-radio`]}`]: true,
         [`${style[`a-radio--active`]}`]: verifiedIsNotFalse(active),
-        [`${
-          className ? className.wrapper : undefined
-        }`]: checkClassnameAvailable<IToggleClassnameList>(className, `wrapper`)
+        [`${className?.wrapper}`]: checkClassnameAvailable<IToggleClassnameList>(
+          className,
+          `wrapper`
+        )
       })
     }}
   />

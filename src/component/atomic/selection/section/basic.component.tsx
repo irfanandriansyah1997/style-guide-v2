@@ -25,9 +25,10 @@ const component: FC<ISelectionProps> = ({
     className={objToString({
       flex: true,
       'flex-align-center': true,
-      [`${
-        className ? className.wrapper : undefined
-      }`]: checkClassnameAvailable<IToggleClassnameList>(className, `wrapper`)
+      [`${className?.wrapper}`]: checkClassnameAvailable<IToggleClassnameList>(
+        className,
+        `wrapper`
+      )
     })}
     role="button"
     tabIndex={0}
@@ -44,9 +45,7 @@ const component: FC<ISelectionProps> = ({
   >
     <div
       className={objToString({
-        [`${
-          className ? className.selector : undefined
-        }`]: checkClassnameAvailable<IToggleClassnameList>(
+        [`${className?.selector}`]: checkClassnameAvailable<IToggleClassnameList>(
           className,
           `selector`
         )
@@ -55,9 +54,10 @@ const component: FC<ISelectionProps> = ({
     {children && (
       <Text
         className={objToString({
-          [`${
-            className ? className.label : undefined
-          }`]: checkClassnameAvailable<IToggleClassnameList>(className, `label`)
+          [`${className?.label}`]: checkClassnameAvailable<IToggleClassnameList>(
+            className,
+            `label`
+          )
         })}
         tag={labelTag as ITextType}
       >
