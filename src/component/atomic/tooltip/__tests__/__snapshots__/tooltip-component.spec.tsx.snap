@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Tooltip component Simulate Hover Tooltip 1`] = `"<div><div class=\\"relative inline-block\\"><div class=\\"sample-class-toggle\\"><h1>Hover This Heading</h1></div></div></div>"`;
+
+exports[`Test Tooltip component Simulate Hover Tooltip 2`] = `"<div><div class=\\"relative inline-block\\"><div class=\\"sample-class-toggle\\"><h1>Hover This Heading</h1></div><div class=\\"absolute block fade a-tooltip__content a-tooltip__content--position-right fade-entering sample-class-tooltip\\" style=\\"background: rgb(250, 250, 250);\\"><div class=\\"absolute a-tooltip__triangle\\" style=\\"border-right-color: #fafafa;\\"></div>Sample Content</div></div></div>"`;
+
+exports[`Test Tooltip component Simulate Hover Tooltip Bottom 1`] = `"<div><div class=\\"relative inline-block\\"><div class=\\"sample-class-toggle\\"><h1>Hover This Heading</h1></div></div></div>"`;
+
+exports[`Test Tooltip component Simulate Hover Tooltip Bottom 2`] = `"<div><div class=\\"relative inline-block\\"><div class=\\"sample-class-toggle\\"><h1>Hover This Heading</h1></div><div class=\\"absolute block fade a-tooltip__content a-tooltip__content--position-bottom fade-entering sample-class-tooltip\\" style=\\"background: rgb(255, 79, 56);\\"><div class=\\"absolute a-tooltip__triangle\\" style=\\"border-bottom-color: #ff4f38;\\"></div>Sample Content</div></div></div>"`;
+
+exports[`Test Tooltip component Simulate Hover Tooltip Not Visible 1`] = `"<div><div class=\\"relative inline-block\\"><div class=\\"sample-class-toggle\\"><h1>Hover This Heading</h1></div></div></div>"`;
+
+exports[`Test Tooltip component Simulate Hover Tooltip Not Visible 2`] = `"<div><div class=\\"relative inline-block\\"><div class=\\"sample-class-toggle\\"><h1>Hover This Heading</h1></div></div></div>"`;

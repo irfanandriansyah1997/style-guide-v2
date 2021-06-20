@@ -1,0 +1,112 @@
+@import '../../../../style/import.scss';
+
+.fade {
+  @include transition(0.3s cubic-bezier(0.7, 0.3, 0, 1));
+
+  &-entering {
+    display: block;
+    opacity: 0;
+  }
+
+  &-entered {
+    display: block;
+    opacity: 1;
+  }
+
+  &-exiting {
+    display: block;
+    opacity: 0;
+  }
+
+  &-exited {
+    display: none;
+    opacity: 0;
+  }
+}
+
+.a-tooltip {
+  $c: &;
+
+  &__triangle {
+    border-color: transparent;
+    border-style: solid;
+    border-width: 8px;
+    height: 0;
+    width: 0;
+  }
+
+  &__content {
+    text-align: center;
+    width: max-content;
+    z-index: 9;
+
+    @include padding(all, 8px);
+    @include rounded(5px);
+
+    @media (min-width: 1024px) {
+      max-width: 350px;
+    }
+
+    &--position {
+      &-top {
+        left: -100%;
+        right: -100%;
+        top: -8px;
+
+        @include margin(all, auto);
+        @include transform-translate(0, -100%);
+
+        #{$c}__triangle {
+          left: 50%;
+          top: 100%;
+
+          @include transform-translate(-50%, 0);
+        }
+      }
+
+      &-bottom {
+        bottom: -8px;
+        left: -100%;
+        right: -100%;
+
+        @include margin(all, auto);
+        @include transform-translate(0, 100%);
+
+        #{$c}__triangle {
+          left: 50%;
+          top: 0%;
+
+          @include transform-translate(-50%, -100%);
+        }
+      }
+
+      &-right {
+        right: -8px;
+        top: 50%;
+
+        @include transform-translate(100%, -50%);
+
+        #{$c}__triangle {
+          left: 0%;
+          top: 50%;
+
+          @include transform-translate(-100%, -50%);
+        }
+      }
+
+      &-left {
+        left: -8px;
+        top: 50%;
+
+        @include transform-translate(-100%, -50%);
+
+        #{$c}__triangle {
+          left: 100%;
+          top: 50%;
+
+          @include transform-translate(0%, -50%);
+        }
+      }
+    }
+  }
+}
