@@ -1,0 +1,82 @@
+@import '../../../../style/import.scss';
+@import './animation.scss';
+
+.a-spinner {
+  $c: &;
+
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 40px;
+  min-width: 40px;
+  width: max-content;
+
+  @include padding(all, 5px);
+  @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+
+  &--spinning {
+    &#{$c}--with-children {
+      #{$c}__container {
+        opacity: 0.5;
+        position: relative;
+
+        &::before {
+          content: '';
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  &__container {
+    @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+  }
+
+  &__spinner {
+    flex: 0 0 40px;
+    height: 40px;
+    left: 50%;
+    min-width: 40px;
+    overflow: hidden;
+    width: 40px;
+    z-index: 100;
+
+    @include transform-translate-x(-50%);
+    @include background-color(white);
+    @include rounded(50%);
+    @include box-shadow-multi(
+      0 10px 20px rgba(0, 0, 0, 0.05),
+      0 6px 6px rgba(0, 0, 0, 0.075)
+    );
+  }
+
+  &__circle,
+  &__circle-custom {
+    animation: loading 1s linear infinite;
+    height: 40px;
+    width: 40px;
+
+    @include rounded(50%);
+  }
+
+  &__circle {
+    @include padding(all, 5px);
+
+    &__inner {
+      animation: loading-circle-full-color 1s linear infinite;
+      fill: transparent;
+      stroke: get-color(primary500);
+      stroke: {
+        dasharray: 300;
+        dashoffset: 0;
+        linecap: round;
+        miterlimit: 0;
+        width: 20;
+      }
+    }
+  }
+}

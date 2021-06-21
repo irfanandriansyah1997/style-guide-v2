@@ -1,0 +1,84 @@
+@import '../../../../style/import.scss';
+
+@keyframes loading {
+  0% {
+    @include transform-rotate(0);
+  }
+
+  100% {
+    @include transform-rotate(360);
+  }
+}
+
+@keyframes loading-circle-full-color {
+  0% {
+    stroke: lighten(get-color(primary500), 40);
+    stroke-dashoffset: 0;
+  }
+
+  11% {
+    stroke: lighten(get-color(primary500), 30);
+    stroke-dashoffset: -66;
+  }
+
+  22% {
+    stroke: lighten(get-color(primary500), 20);
+    stroke-dashoffset: -133;
+  }
+
+  33% {
+    stroke: lighten(get-color(primary500), 10);
+    stroke-dashoffset: -200;
+  }
+
+  44% {
+    stroke: get-color(primary500);
+    stroke-dashoffset: -266;
+  }
+
+  55% {
+    stroke: get-color(primary500);
+    stroke-dashoffset: -333;
+  }
+
+  66% {
+    stroke: lighten(get-color(primary500), 10);
+    stroke-dashoffset: -400;
+  }
+
+  77% {
+    stroke: get-color(primary500);
+    stroke-dashoffset: -466;
+  }
+
+  88% {
+    stroke: lighten(get-color(primary500), 30);
+    stroke-dashoffset: -533;
+  }
+
+  100% {
+    stroke: lighten(get-color(primary500), 40);
+    stroke-dashoffset: -600;
+  }
+}
+
+.fade {
+  @include transition(0.3s cubic-bezier(0.7, 0.3, 0, 1));
+
+  &-entering {
+    opacity: 0;
+  }
+
+  &-entered {
+    opacity: 1;
+  }
+
+  &-exiting {
+    opacity: 0;
+  }
+
+  &-exited {
+    display: none;
+    opacity: 0;
+  }
+}
