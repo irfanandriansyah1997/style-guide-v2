@@ -7,10 +7,12 @@ import {
   JSXElementConstructor,
   ReactChild,
   ReactElement,
+  ReactInstance,
   ReactNode,
   ReactNodeArray,
   ReactPortal
 } from 'react';
+import ReactDOM from 'react-dom';
 import { isFragment } from 'react-is';
 
 import { IDefaultText } from '@/interface/general';
@@ -155,4 +157,20 @@ export function transformChildrenToArray<Output>(children: ReactNode) {
 
     return [];
   };
+}
+
+/**
+ * Return if a node is a DOM node. Else will return by `findDOMNode`
+ * @param {ReactInstance | HTMLElement} node - node element
+ * @returns {hh}
+ */
+export function findDOMNode<T = Element | Text>(
+  node: ReactInstance | HTMLElement
+): T {
+  if (node instanceof HTMLElement) {
+    return (node as unknown) as T;
+  }
+
+  // eslint-disable-next-line react/no-find-dom-node
+  return (ReactDOM.findDOMNode(node) as unknown) as T;
 }
