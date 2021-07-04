@@ -1,8 +1,10 @@
 /* eslint-disable sort-exports/sort-exports */
 import type { Story } from '@storybook/react/types-6-0';
 
+import { partialAction } from '@/helper/storybook.helper';
 import Builder from '@/modules/storybook';
-import Rate, { RateProps } from '@/molecules/rate';
+import Rate from '@/molecules/rate';
+import { IRateProps } from '@/molecules/rate/interface';
 
 export default new Builder()
   .setModuleName(`Rate Component`)
@@ -16,13 +18,13 @@ export default new Builder()
  * @param {IMeterProps} args - args props
  * @returns {ReactNode}
  */
-const Template: Story<RateProps> = (props) => <Rate {...props} />;
+const Template: Story<IRateProps> = (props) => <Rate {...props} />;
 
 export const SampleRate = Template.bind({});
 
 SampleRate.args = {
   allowHalf: true,
-  character: `$`,
-  defaultValue: 2.5,
-  style: { fontSize: 50, marginTop: 24 }
+  count: 10,
+  defaultValue: 7,
+  on: partialAction(`on`)
 };

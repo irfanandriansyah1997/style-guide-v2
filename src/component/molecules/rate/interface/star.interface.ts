@@ -1,4 +1,11 @@
-import React, { KeyboardEvent, MouseEvent } from 'react';
+import React, {
+  FC,
+  ForwardRefExoticComponent,
+  KeyboardEvent,
+  MouseEvent,
+  MutableRefObject,
+  RefAttributes
+} from 'react';
 
 import { IEventComponent } from '@/interface/general/event.interface';
 
@@ -46,6 +53,15 @@ export interface IStarClassNameList {
 }
 
 /**
+ * Star Default Export Comonent
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.07.04
+ */
+export type IStarDefaultExport = FC<IStarProps> & {
+  WithRef: ForwardRefExoticComponent<IStarProps & RefAttributes<HTMLLIElement>>;
+};
+
+/**
  * Star Props Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.30
@@ -54,6 +70,7 @@ export interface IStarProps extends Partial<IStarStyling>, IDefaultRateContent {
   className?: Partial<IStarClassNameList>;
   index: number;
   on?: (param: IEventOnStarClicked | IEventOnStarHovered) => void;
+  refContainer?: MutableRefObject<HTMLLIElement | undefined>;
   value: number;
 }
 

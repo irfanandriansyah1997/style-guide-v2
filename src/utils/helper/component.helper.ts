@@ -18,6 +18,48 @@ import { isFragment } from 'react-is';
 import { IDefaultText } from '@/interface/general';
 
 /**
+ * Get Scroll
+ * @param {Window} window - A window containing a DOM document
+ * @returns {number}
+ */
+const getScroll = (w: Window): number => {
+  let ret = w.pageXOffset;
+  const method = `scrollLeft`;
+
+  if (typeof ret !== `number`) {
+    const d = w.document;
+    ret = d.documentElement[method];
+
+    if (typeof ret !== `number`) {
+      ret = d.body[method];
+    }
+  }
+  return ret;
+};
+
+/**
+ * Get Client Position
+ * @param {HTMLElement} elem - Any HTML element
+ */
+const getClientPosition = (elem: HTMLElement) => {
+  let x: number;
+  let y: number;
+  const doc = elem.ownerDocument;
+  const { body } = doc;
+  const docElem = doc && doc.documentElement;
+  const box = elem.getBoundingClientRect();
+  x = box.left;
+  y = box.top;
+  x -= docElem.clientLeft || body.clientLeft || 0;
+  y -= docElem.clientTop || body.clientTop || 0;
+
+  return {
+    left: x,
+    top: y
+  };
+};
+
+/**
  * Check Classname Available
  * @param {Partial<IButtonClassnameList>} className - class name list on button component
  * @param {string} key - key on IButtonClassnameList interface
@@ -173,4 +215,18 @@ export function findDOMNode<T = Element | Text>(
 
   // eslint-disable-next-line react/no-find-dom-node
   return (ReactDOM.findDOMNode(node) as unknown) as T;
+}
+
+/**
+ * Get Offset Left
+ * @param {HTMLElement} elem - Any HTML element
+ * @returns {number}
+ */
+export function getOffsetLeft(el: HTMLElement): number {
+  const pos = getClientPosition(el);
+  const doc = el.ownerDocument;
+  // Only IE use `parentWindow`
+  const w: Window = doc.defaultView || (doc as any).parentWindow;
+  pos.left += getScroll(w);
+  return pos.left;
 }

@@ -1,21 +1,29 @@
 import { objToString } from '@99/helper';
 import {
-  FC,
+  forwardRef,
   KeyboardEventHandler,
+  LegacyRef,
   MouseEventHandler,
+  MutableRefObject,
   ReactElement,
   useCallback
 } from 'react';
 
 import { checkClassnameAvailable } from '@/helper/component.helper';
-import { IStarClassNameList, IStarProps } from '@/molecules/rate/interface';
+import {
+  IStarClassNameList,
+  IStarDefaultExport,
+  IStarProps
+} from '@/molecules/rate/interface';
+
+import styles from '../style/style.module.scss';
 
 /**
  * Star Component
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.30
  */
-const Star: FC<IStarProps> = (props) => {
+const Star: IStarDefaultExport = (props) => {
   const {
     allowHalf,
     character,
@@ -26,6 +34,7 @@ const Star: FC<IStarProps> = (props) => {
     focused,
     index,
     on,
+    refContainer,
     value
   } = props;
 
@@ -81,12 +90,12 @@ const Star: FC<IStarProps> = (props) => {
    * @returns {string}
    */
   const generateClassName = useCallback((): string => {
-    let response = ``;
+    let response = `${styles[`m-star`]} `;
     const offsetValue = index + 1;
 
     if (value === 0 && index === 0 && focused) {
       response += objToString({
-        'm-star--focused': true,
+        [`${styles[`m-star--focused`]}`]: true,
         [`${className?.focused}`]: checkClassnameAvailable<IStarClassNameList>(
           className,
           `focused`
@@ -94,9 +103,9 @@ const Star: FC<IStarProps> = (props) => {
       });
     } else if (allowHalf && value + 0.5 >= offsetValue && value < offsetValue) {
       response += objToString({
-        'm-star--active': true,
-        'm-star--focused': focused,
-        'm-star--half': true,
+        [`${styles[`m-star--active`]}`]: true,
+        [`${styles[`m-star--focused`]}`]: focused,
+        [`${styles[`m-star--half`]}`]: true,
         [`${className?.active}`]: checkClassnameAvailable<IStarClassNameList>(
           className,
           `active`
@@ -115,9 +124,9 @@ const Star: FC<IStarProps> = (props) => {
       const halfCondition = !fullCondition;
 
       response += objToString({
-        'm-star--focused': focusedCondition,
-        'm-star--full': fullCondition,
-        'm-star--half': halfCondition,
+        [`${styles[`m-star--focused`]}`]: focusedCondition,
+        [`${styles[`m-star--full`]}`]: fullCondition,
+        [`${styles[`m-star--zero`]}`]: halfCondition,
         [`${className?.focused}`]:
           checkClassnameAvailable<IStarClassNameList>(className, `focused`) &&
           focusedCondition,
@@ -141,7 +150,10 @@ const Star: FC<IStarProps> = (props) => {
     typeof character === `function` ? character(props) : character;
 
   let component: ReactElement = (
-    <li className={generateClassName()}>
+    <li
+      className={generateClassName()}
+      ref={refContainer as LegacyRef<HTMLLIElement> | undefined}
+    >
       <div
         onClick={disabled ? undefined : onClick}
         onKeyDown={disabled ? undefined : onKeyDown}
@@ -154,7 +166,7 @@ const Star: FC<IStarProps> = (props) => {
       >
         <div
           className={objToString({
-            'm-star__first': true,
+            [`${styles[`m-star__first`]}`]: true,
             [`${className?.first}`]: checkClassnameAvailable<IStarClassNameList>(
               className,
               `first`
@@ -165,7 +177,7 @@ const Star: FC<IStarProps> = (props) => {
         </div>
         <div
           className={objToString({
-            'm-star__second': true,
+            [`${styles[`m-star__second`]}`]: true,
             [`${className?.second}`]: checkClassnameAvailable<IStarClassNameList>(
               className,
               `second`
@@ -184,5 +196,9 @@ const Star: FC<IStarProps> = (props) => {
 
   return component as ReactElement;
 };
+
+Star.WithRef = forwardRef<HTMLLIElement, IStarProps>((props, ref) => (
+  <Star {...props} refContainer={ref as MutableRefObject<HTMLLIElement>} />
+));
 
 export default Star;

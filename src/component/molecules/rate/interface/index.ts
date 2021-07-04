@@ -1,12 +1,12 @@
 import {
   FocusEventHandler,
   KeyboardEventHandler,
+  MouseEventHandler,
   MutableRefObject,
   ReactElement,
   ReactNode
 } from 'react';
 
-import Star from '../star';
 import {
   IEventOnStarClicked,
   IEventOnStarHovered,
@@ -38,6 +38,7 @@ export interface IRateEventHandler {
   onFocus: FocusEventHandler<HTMLUListElement>;
   onHover: (param: IEventOnStarHovered) => void;
   onKeyDown: KeyboardEventHandler<HTMLUListElement>;
+  onMouseLeave: MouseEventHandler<HTMLUListElement>;
 }
 
 /**
@@ -63,7 +64,7 @@ export interface IRateHooks {
  */
 export interface IRateRefHooks {
   rate: MutableRefObject<HTMLUListElement | undefined>;
-  star: MutableRefObject<Star[]>;
+  star: MutableRefObject<HTMLLIElement[]>;
 }
 
 /**
@@ -72,7 +73,7 @@ export interface IRateRefHooks {
  * @since 2021.07.01
  */
 export interface IRateStateHooks {
-  cleanedValue?: number;
+  cleanedValue: number | null;
   focused: boolean;
   hoverValue?: number;
   value: number;

@@ -7,7 +7,8 @@ import {
   useRef,
   useState
 } from 'react';
-import { findDOMNode } from 'react-dom';
+
+import { getOffsetLeft } from '@/helper/component.helper';
 
 import {
   IEventOnStarClicked,
@@ -15,8 +16,6 @@ import {
   IRateHooks,
   IRateProps
 } from '../interface';
-import Star from '../star';
-import { getOffsetLeft } from '../util';
 
 /**
  * Generate Method
@@ -35,10 +34,8 @@ export const useRate = ({
   value: valueProps
 }: IRateProps): IRateHooks => {
   const rateRef = useRef<HTMLUListElement>();
-  const starRef = useRef<Star[]>([]);
-  const [cleanedValue, setCleanedValue] = useState<number | undefined>(
-    undefined
-  );
+  const starRef = useRef<HTMLLIElement[]>([]);
+  const [cleanedValue, setCleanedValue] = useState<number | null>(null);
   const [focused, setFocused] = useState<boolean>(false);
   const [hoverValue, setHoverValue] = useState<number | undefined>(undefined);
   const [value, setValue] = useState<number>(
@@ -52,7 +49,7 @@ export const useRate = ({
    */
   const getStarDOM = (index: number): HTMLElement | undefined => {
     // eslint-disable-next-line react/no-find-dom-node
-    const element = findDOMNode(starRef.current?.[index]);
+    const element = starRef.current?.[index];
 
     if (verifiedIsNotEmpty(element)) {
       return element as HTMLElement;
@@ -114,7 +111,7 @@ export const useRate = ({
     const starValue: number = getStarValue(index, event.pageX);
 
     if (hoverValue !== cleanedValue) {
-      setCleanedValue(undefined);
+      setCleanedValue(null);
       setHoverValue(starValue);
     }
 
@@ -130,7 +127,7 @@ export const useRate = ({
    * @returns {void}
    */
   const onMouseLeave: MouseEventHandler<HTMLUListElement> = (): void => {
-    setCleanedValue(undefined);
+    setCleanedValue(null);
     setHoverValue(undefined);
 
     on({
@@ -151,6 +148,7 @@ export const useRate = ({
       index,
       (event as React.MouseEvent).pageX
     );
+
     let isReset = false;
     if (allowClear) {
       isReset = starValue === value;
@@ -158,7 +156,7 @@ export const useRate = ({
 
     onMouseLeave({} as MouseEvent<HTMLUListElement>);
     onChangeValue(isReset ? 0 : starValue);
-    setCleanedValue(isReset ? starValue : undefined);
+    setCleanedValue(isReset ? starValue : null);
   };
 
   /**
@@ -271,7 +269,8 @@ export const useRate = ({
       onClick,
       onFocus,
       onHover,
-      onKeyDown
+      onKeyDown,
+      onMouseLeave
     },
     ref: {
       rate: rateRef,
