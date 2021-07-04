@@ -8,14 +8,13 @@ import {
   useState
 } from 'react';
 
-import { getOffsetLeft } from '@/helper/component.helper';
-
 import {
   IEventOnStarClicked,
   IEventOnStarHovered,
   IRateHooks,
   IRateProps
-} from '../interface';
+} from '@/component/molecules/rate/interface';
+import { getOffsetLeft } from '@/helper/component.helper';
 
 /**
  * Generate Method

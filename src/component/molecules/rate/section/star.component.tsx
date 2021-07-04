@@ -15,8 +15,7 @@ import {
   IStarDefaultExport,
   IStarProps
 } from '@/molecules/rate/interface';
-
-import styles from '../style/style.module.scss';
+import styles from '@/molecules/rate/style/style.module.scss';
 
 /**
  * Star Component
