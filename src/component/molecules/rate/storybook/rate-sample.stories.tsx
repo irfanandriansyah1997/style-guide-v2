@@ -23,8 +23,13 @@ const Template: Story<IRateProps> = (props) => <Rate {...props} />;
 export const SampleRate = Template.bind({});
 
 SampleRate.args = {
+  allowClear: true,
   allowHalf: true,
+  autoFocus: false,
+  character: `★`,
   count: 10,
   defaultValue: 7,
-  on: partialAction(`on`)
+  direction: `ltr`,
+  on: partialAction(`on`),
+  tabIndex: 1
 };

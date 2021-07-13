@@ -5,9 +5,11 @@ import { FC } from 'react';
 import { checkClassnameAvailable } from '@/helper/component.helper';
 import {
   IBasicSliderClassname as ClassNameList,
+  IHandleProps,
   ISliderProps
 } from '@/molecules/slider/interface';
 
+import 'rc-slider/assets/index.css';
 import Handler from './handle.component';
 
 /**
@@ -26,7 +28,7 @@ const Slider: FC<ISliderProps> = ({ className, ...res }) => (
     })}
     handle={(props) => (
       <Handler
-        {...props}
+        {...((props as unknown) as IHandleProps)}
         className={objToString({
           [props.className]: verifiedIsNotEmpty(props.className),
           [`${className?.handle}`]: checkClassnameAvailable<ClassNameList>(

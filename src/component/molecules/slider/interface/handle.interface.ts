@@ -4,9 +4,10 @@
  * @since 2021.07.13
  */
 export interface IHandleProps {
-  ariaLabel: string;
-  ariaLabelledBy: string;
-  ariaValueTextFormatter: string;
+  ariaLabel?: string;
+
+  ariaLabelledBy?: string;
+  ariaValueTextFormatter?: (val: number) => string;
   className: string;
   disabled?: boolean;
   dragging?: boolean;

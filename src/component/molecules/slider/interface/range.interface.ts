@@ -1,5 +1,7 @@
 import { GenerateHTMLAttribute, IBasicSliderProps } from './basic.interface';
 
+type IBaseProps = IBasicSliderProps<number[], true>;
+
 /**
  * Customize HTML Attribute on Slider Component
  * @author Irfan Andriansyah <irfan@99.co>
@@ -12,7 +14,7 @@ export type IRangeHTMLAttribute = GenerateHTMLAttribute<string[]>;
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.07.13
  */
-export interface IRangeProps extends IBasicSliderProps, IRangeHTMLAttribute {
+export interface IRangeProps extends IBaseProps, IRangeHTMLAttribute {
   defaultValue: [];
   pushAble: boolean | number;
   tabIndex: number[];

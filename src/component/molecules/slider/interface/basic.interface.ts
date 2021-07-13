@@ -37,10 +37,10 @@ export interface IBasicSliderData {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.07.13
  */
-export interface IBasicSliderEvent {
-  onAfterChange?: (value: number) => void;
-  onBeforeChange?: (value: number) => void;
-  onChange?: (value: number) => void;
+export interface IBasicSliderEvent<T> {
+  onAfterChange?: (value: T) => void;
+  onBeforeChange?: (value: T) => void;
+  onChange?: (value: T) => void;
 }
 
 /**
@@ -62,25 +62,31 @@ export interface IBasicSliderLayout {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.07.13
  */
-export type IBasicSliderProps = Partial<IBasicSliderData> &
-  Partial<IBasicSliderEvent> &
+export type IBasicSliderProps<T, IS_ARRAY = false> = Partial<IBasicSliderData> &
+  Partial<IBasicSliderEvent<T>> &
   Partial<IBasicSliderLayout> &
-  Partial<IBasicSliderStyling>;
+  Partial<IBasicSliderStyling<IS_ARRAY>>;
 
 /**
  * Basic Slider Styling Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.07.13
  */
-export interface IBasicSliderStyling {
-  activeDotStyle?: CSSProperties;
-  dotStyle?: CSSProperties;
-  handleStyle: CSSProperties;
-  maximumTrackStyle?: CSSProperties;
-  railStyle?: CSSProperties;
-  style?: CSSProperties;
-  trackStyle: CSSProperties;
-}
+export type IBasicSliderStyling<IS_ARRAY> = {
+  activeDotStyle: CSSProperties;
+  dotStyle: CSSProperties;
+  maximumTrackStyle: CSSProperties;
+  railStyle: CSSProperties;
+  style: CSSProperties;
+} & IS_ARRAY extends false
+  ? {
+      handleStyle: CSSProperties;
+      trackStyle: CSSProperties;
+    }
+  : {
+      handleStyle: CSSProperties[];
+      trackStyle: CSSProperties[];
+    };
 
 /**
  * Mark Props Interface
