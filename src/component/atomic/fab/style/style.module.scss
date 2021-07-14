@@ -1,0 +1,60 @@
+@import '../../../../style/import.scss';
+
+.a-fab {
+  cursor: pointer;
+  outline: 0;
+  text-decoration: none;
+
+  @include no-border();
+  @include box-shadow(default-1);
+  @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+
+  &:hover {
+    @include box-shadow(default-3);
+  }
+
+  &--theme-dark {
+    @include background-color(dark400);
+
+    .a-fab__text,
+    .a-fab__icon {
+      @include font-color(white);
+    }
+  }
+
+  &--theme-light {
+    @include background-color(light400);
+
+    .a-fab__text,
+    .a-fab__icon {
+      @include font-color(dark800);
+    }
+  }
+
+  &--type {
+    &-basic {
+      height: 56px;
+      width: 56px;
+
+      @include rounded(50%);
+    }
+
+    &-small {
+      height: 40px;
+      width: 40px;
+
+      @include rounded(50%);
+    }
+
+    &-extended {
+      height: 48px;
+
+      @include rounded(48px);
+      @include padding(all, 0 12px);
+
+      .a-fab__icon {
+        @include margin-right(8px);
+      }
+    }
+  }
+}

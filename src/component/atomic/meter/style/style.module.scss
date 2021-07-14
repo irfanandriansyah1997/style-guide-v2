@@ -1,9 +1,9 @@
 @import '../../../../style/import.scss';
 
-.r123-a-meter {
+.a-meter {
   &__value {
     width: 0%;
 
-    @include transition(0.3s cubic-bezier(0.7, 0.3, 0, 1));
+    @include transition(0.5s cubic-bezier(0.7, 0.3, 0, 1));
   }
 }

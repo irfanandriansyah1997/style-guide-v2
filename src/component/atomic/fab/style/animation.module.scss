@@ -1,0 +1,77 @@
+@import '../../../../style/import.scss';
+
+.fade-in,
+.fade-in-top,
+.fade-in-bottom,
+.fade-in-left,
+.fade-in-right {
+  @include transition(0.3s all);
+
+  &-entering {
+    display: flex;
+    opacity: 0;
+  }
+
+  &-entered {
+    display: flex;
+    opacity: 1;
+  }
+
+  &-exiting {
+    display: flex;
+    opacity: 0;
+  }
+
+  &-exited {
+    display: none;
+    opacity: 0;
+  }
+}
+
+.fade-in-top {
+  &-entering,
+  &-exiting,
+  &-exited {
+    @include transform-translate-y(100%);
+  }
+
+  &-entered {
+    @include transform-translate-y(0);
+  }
+}
+
+.fade-in-bottom {
+  &-entering,
+  &-exiting,
+  &-exited {
+    @include transform-translate-y(-100%);
+  }
+
+  &-entered {
+    @include transform-translate-y(0);
+  }
+}
+
+.fade-in-left {
+  &-entering,
+  &-exiting,
+  &-exited {
+    @include transform-translate-x(-100%);
+  }
+
+  &-entered {
+    @include transform-translate-x(0);
+  }
+}
+
+.fade-in-right {
+  &-entering,
+  &-exiting,
+  &-exited {
+    @include transform-translate-x(100%);
+  }
+
+  &-entered {
+    @include transform-translate-x(0);
+  }
+}
