@@ -15,7 +15,7 @@ import {
 import ReactDOM from 'react-dom';
 import { isFragment } from 'react-is';
 
-import { IDefaultText } from '@/interface/general';
+import { IDefaultText, NullAble, PartialNull } from '@/interface/general';
 
 /**
  * Get Scroll
@@ -68,7 +68,7 @@ const getClientPosition = (elem: HTMLElement) => {
  * @since 2021.05.13
  */
 export function checkClassnameAvailable<Props>(
-  className: Partial<Props> | undefined,
+  className: PartialNull<Props>,
   key: keyof Props
 ): boolean {
   return (
@@ -184,7 +184,7 @@ export function transformChildrenToArray<Output>(children: ReactNode) {
         | ReactPortal
         | null
         | undefined
-    ) => Output | undefined
+    ) => NullAble<Output>
   ): Output[] => {
     const result = flattenChildren(children)
       .map(callback)

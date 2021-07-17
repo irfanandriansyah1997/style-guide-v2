@@ -6,6 +6,7 @@ import {
 import { CSSProperties, Key, ReactElement, ReactNode } from 'react';
 
 import { transformChildrenToArray } from '@/helper/component.helper';
+import { PartialNull } from '@/interface/general';
 import {
   IBreadcrumbContent,
   IBreadcrumbContentType,
@@ -22,7 +23,7 @@ import BreadcrumbItem from '@/molecules/breadcrumbs/section/breadcrumb-item.comp
  * @since 2021.06.11
  */
 export const generateStyleItem = (
-  style: Partial<IBreadcrumbStyle> | undefined
+  style: PartialNull<IBreadcrumbStyle>
 ): CSSProperties => ({
   color: bulkVerifiedIsNotEmpty([style, style?.textColor])
     ? (style as IBreadcrumbStyle).textColor
@@ -46,7 +47,7 @@ export const generateStyleItem = (
  * @since 2021.06.11
  */
 export const generateStyleWrapper = (
-  style: Partial<IBreadcrumbStyle> | undefined
+  style: PartialNull<IBreadcrumbStyle>
 ): CSSProperties => ({
   backgroundColor: bulkVerifiedIsNotEmpty([style, style?.backgroundColor])
     ? (style as IBreadcrumbStyle).backgroundColor

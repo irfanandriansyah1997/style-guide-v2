@@ -7,6 +7,8 @@ import {
   ReactNode
 } from 'react';
 
+import { NullAble } from '@/interface/general';
+
 import {
   IEventOnStarClicked,
   IEventOnStarHovered,
@@ -63,7 +65,7 @@ export interface IRateHooks {
  * @since 2021.07.01
  */
 export interface IRateRefHooks {
-  rate: MutableRefObject<HTMLUListElement | undefined>;
+  rate: MutableRefObject<NullAble<HTMLUListElement>>;
   star: MutableRefObject<HTMLLIElement[]>;
 }
 

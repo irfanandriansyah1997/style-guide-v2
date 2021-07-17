@@ -7,6 +7,7 @@ import {
 import { IFabStyling } from '@/atomic/fab/interface';
 import { IFabHooks } from '@/atomic/fab/interface/fab-hooks.interface';
 import { shallowEquals } from '@/helper/component.helper';
+import { NullAble } from '@/interface/general';
 
 /**
  * FAB React Hooks
@@ -15,7 +16,7 @@ import { shallowEquals } from '@/helper/component.helper';
  */
 export const useFab = (
   stylingProps: Partial<IFabStyling>,
-  classNameProps: string | undefined
+  classNameProps: NullAble<string>
 ): IFabHooks => {
   const [className, setClassName] = useState(() =>
     generateFABClassName(stylingProps, classNameProps)

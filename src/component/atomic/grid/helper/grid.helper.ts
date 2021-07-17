@@ -8,6 +8,7 @@ import {
   IGridSpaceItem
 } from '@/atomic/grid/interface';
 import styles from '@/atomic/grid/style/style.module.scss';
+import { NullAble, PartialNull } from '@/interface/general';
 
 /**
  * Generate Spacing Size
@@ -91,8 +92,8 @@ export const generateClassNameWrapper = (className?: string): string =>
  * @since 2021.06.16
  */
 export const generateStyleItem = (
-  space: Partial<IGridSpaceItem> | number | undefined,
-  order: number | undefined
+  space: PartialNull<IGridSpaceItem | number>,
+  order: NullAble<number>
 ): CSSProperties => {
   const { horizontal, vertical } = generateSpacingSize(space);
 

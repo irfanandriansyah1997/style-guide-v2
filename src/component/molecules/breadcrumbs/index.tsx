@@ -4,6 +4,7 @@ import { Validator } from 'react';
 
 import List from '@/atomic/list';
 import { checkClassnameAvailable } from '@/helper/component.helper';
+import { NullAble } from '@/interface/general';
 
 import { useBreadcrumb } from './hooks/breadcrumb.hooks';
 import BreadcrumbDivider from './section/breadcrumb-divider.component';
@@ -93,7 +94,7 @@ const Breadcrumb: IBreadcrumbExportDefault = ({
                 <List.Item key={key}>
                   <BreadcrumbDivider
                     className={className?.separator}
-                    style={{ color: styleItem?.color as string | undefined }}
+                    style={{ color: styleItem?.color as NullAble<string> }}
                   >
                     {payload}
                   </BreadcrumbDivider>

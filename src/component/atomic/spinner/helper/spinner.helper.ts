@@ -11,6 +11,7 @@ import {
 } from '@/atomic/spinner/interface';
 import styles from '@/atomic/spinner/style/style.module.scss';
 import { checkClassnameAvailable } from '@/helper/component.helper';
+import { PartialNull } from '@/interface/general';
 
 /**
  * Generate Classname Container
@@ -20,7 +21,7 @@ import { checkClassnameAvailable } from '@/helper/component.helper';
  * @since 2021.06.11
  */
 export const generateClassnameContainer = (
-  className: Partial<ISpinnerClassnameList> | undefined,
+  className: PartialNull<ISpinnerClassnameList>,
   children?: ReactNode,
   isSpinning?: boolean
 ): string =>
@@ -37,9 +38,6 @@ export const generateClassnameContainer = (
 
 /**
  * Generate Classname Content
- * @param {Partial<ISpinnerClassnameList> | undefined} className - className
- * @param {ReactNode | undefined} children - children component
- * @param {ReactNode | undefined} children - children component
  * @returns {string}
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.11

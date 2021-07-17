@@ -2,6 +2,7 @@ import { objToString } from '@99/helper';
 import { CSSProperties } from 'react';
 
 import { IListStyle } from '@/atomic/list/interface';
+import { NullAble, PartialNull } from '@/interface/general';
 
 /**
  * Generate Classname Container
@@ -11,7 +12,7 @@ import { IListStyle } from '@/atomic/list/interface';
  * @since 2021.06.11
  */
 export const generateClassnameContainer = (
-  style: Partial<IListStyle> | undefined
+  style: PartialNull<IListStyle>
 ): string => {
   let className: Record<string, boolean> = {
     flex: true,
@@ -50,12 +51,12 @@ export const generateClassnameContainer = (
  * @since 2021.06.11
  */
 export const generateStyleItem = (
-  style: Partial<IListStyle> | undefined
+  style: PartialNull<IListStyle>
 ): CSSProperties => {
   if (style) {
     const { dividerColor: borderColor, orientation, outline, space } = style;
-    let padding: string | undefined;
-    let borderStyle: string | undefined;
+    let padding: NullAble<string>;
+    let borderStyle: NullAble<string>;
 
     if (space) {
       switch (orientation) {

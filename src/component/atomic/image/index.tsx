@@ -56,7 +56,7 @@ Image.propTypes = {
     `fill`,
     `none`,
     `scale-down`
-  ]) as Validator<Property.ObjectFit> | undefined,
+  ]) as Validator<Property.ObjectFit>,
   shape: PropTypes.oneOf([
     `circle`,
     `square`,

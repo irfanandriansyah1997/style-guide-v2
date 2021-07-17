@@ -85,7 +85,7 @@ Meter.propTypes = {
   borderRadius: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.oneOf([`rounded`, `square`])
-  ]) as Validator<IMeterShape | null | undefined>,
+  ]) as Validator<IMeterShape>,
   color: PropTypes.string,
   height: PropTypes.number,
   value: PropTypes.number.isRequired

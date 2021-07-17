@@ -15,6 +15,7 @@ import {
   IRateProps
 } from '@/component/molecules/rate/interface';
 import { getOffsetLeft } from '@/helper/component.helper';
+import { NullAble } from '@/interface/general';
 
 /**
  * Generate Method
@@ -36,7 +37,7 @@ export const useRate = ({
   const starRef = useRef<HTMLLIElement[]>([]);
   const [cleanedValue, setCleanedValue] = useState<number | null>(null);
   const [focused, setFocused] = useState<boolean>(false);
-  const [hoverValue, setHoverValue] = useState<number | undefined>(undefined);
+  const [hoverValue, setHoverValue] = useState<NullAble<number>>(undefined);
   const [value, setValue] = useState<number>(
     valueProps || (defaultValueProps as number)
   );
@@ -46,7 +47,7 @@ export const useRate = ({
    * @param {number} index - position index star on rate component
    * @returns {HTMLElement | undefined}
    */
-  const getStarDOM = (index: number): HTMLElement | undefined => {
+  const getStarDOM = (index: number): NullAble<HTMLElement> => {
     // eslint-disable-next-line react/no-find-dom-node
     const element = starRef.current?.[index];
 

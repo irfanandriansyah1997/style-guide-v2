@@ -3,6 +3,7 @@ import { TransitionStatus } from 'react-transition-group';
 
 import { ITooltipStyling as Styling } from '@/atomic/tooltip/interface';
 import styles from '@/atomic/tooltip/style/style.module.scss';
+import { NullAble } from '@/interface/general';
 
 interface ITooltipStyling extends Pick<Styling, 'position'> {
   className?: string;
@@ -19,7 +20,7 @@ export const generateClassName = ({
   position,
   state
 }: ITooltipStyling): string => {
-  let stateClassName: string | undefined;
+  let stateClassName: NullAble<string>;
   switch (state) {
     case `entered`:
       stateClassName = styles[`fade-entered`];

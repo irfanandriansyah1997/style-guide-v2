@@ -10,6 +10,7 @@ import {
 } from 'react';
 
 import { checkClassnameAvailable } from '@/helper/component.helper';
+import { NullAble } from '@/interface/general';
 import {
   IStarClassNameList,
   IStarDefaultExport,
@@ -151,7 +152,7 @@ const Star: IStarDefaultExport = (props) => {
   let component: ReactElement = (
     <li
       className={generateClassName()}
-      ref={refContainer as LegacyRef<HTMLLIElement> | undefined}
+      ref={refContainer as NullAble<LegacyRef<HTMLLIElement>>}
     >
       <div
         onClick={disabled ? undefined : onClick}

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import Text from '@/atomic/text';
+import { NullAble } from '@/interface/general';
 import { IBreadcrumbTextProps } from '@/molecules/breadcrumbs/interface';
 
 /**
@@ -10,9 +11,9 @@ import { IBreadcrumbTextProps } from '@/molecules/breadcrumbs/interface';
  */
 const BreadcrumbText: FC<IBreadcrumbTextProps> = ({ children, style }) => (
   <Text.Paragraph
-    fontSize={style?.fontSize as number | undefined}
-    fontWeight={style?.fontWeight as number | undefined}
-    color={style?.color as string | undefined}
+    fontSize={style?.fontSize as NullAble<number>}
+    fontWeight={style?.fontWeight as NullAble<number>}
+    color={style?.color as NullAble<string>}
   >
     {children}
   </Text.Paragraph>

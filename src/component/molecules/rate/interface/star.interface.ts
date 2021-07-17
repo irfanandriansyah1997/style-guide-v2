@@ -7,6 +7,7 @@ import React, {
   RefAttributes
 } from 'react';
 
+import { NullAble } from '@/interface/general';
 import { IEventComponent } from '@/interface/general/event.interface';
 
 import { IDefaultRateContent } from '.';
@@ -70,7 +71,7 @@ export interface IStarProps extends Partial<IStarStyling>, IDefaultRateContent {
   className?: Partial<IStarClassNameList>;
   index: number;
   on?: (param: IEventOnStarClicked | IEventOnStarHovered) => void;
-  refContainer?: MutableRefObject<HTMLLIElement | undefined>;
+  refContainer?: MutableRefObject<NullAble<HTMLLIElement>>;
   value: number;
 }
 

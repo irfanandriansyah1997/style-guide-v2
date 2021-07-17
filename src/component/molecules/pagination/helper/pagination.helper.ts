@@ -10,6 +10,7 @@ import {
   checkClassnameAvailable,
   transformChildrenToArray
 } from '@/helper/component.helper';
+import { PartialNull } from '@/interface/general';
 import { PAGINATION_CLASSNAME_LIST } from '@/molecules/pagination/constant';
 import {
   IPaginationClassnameList,
@@ -25,7 +26,7 @@ import PaginationItem from '@/molecules/pagination/section/pagination-item.compo
  * @since 2021.06.08
  */
 export const generateClassnamePagination = (
-  className: Partial<IPaginationClassnameList> | undefined
+  className: PartialNull<IPaginationClassnameList>
 ): IReactPaginationClassnameList =>
   PAGINATION_CLASSNAME_LIST.map(
     ({ cssClassName, paginationProps, reactPaginationProps }) => {

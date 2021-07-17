@@ -1,6 +1,7 @@
 import { ReactNode, useCallback, useEffect, useState } from 'react';
 
 import { shallowEquals } from '@/helper/component.helper';
+import { PartialNull } from '@/interface/general';
 import {
   generateClassnamePagination,
   transformChildrenToPaginationContent
@@ -17,7 +18,7 @@ import {
  * @returns {IReactPaginationClassnameList}
  */
 export const usePaginationClassName = (
-  classNameList: Partial<IPaginationClassnameList> | undefined
+  classNameList: PartialNull<IPaginationClassnameList>
 ): IReactPaginationClassnameList => {
   const [className, setClassName] = useState<IReactPaginationClassnameList>(
     generateClassnamePagination(classNameList)

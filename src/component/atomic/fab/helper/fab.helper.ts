@@ -5,6 +5,7 @@ import { TransitionStatus } from 'react-transition-group';
 import { IFabAnimation, IFabStyling } from '@/atomic/fab/interface';
 import animationStyles from '@/atomic/fab/style/animation.module.scss';
 import styles from '@/atomic/fab/style/style.module.scss';
+import { NullAble } from '@/interface/general';
 
 /**
  * Generate FAB Animation while fade in & fade out
@@ -15,7 +16,7 @@ import styles from '@/atomic/fab/style/style.module.scss';
  * @since 2021.07.14
  */
 export const generateFABAnimation = (
-  animation: IFabAnimation | undefined,
+  animation: NullAble<IFabAnimation>,
   state: TransitionStatus
 ): string => {
   let animationClassname = ``;
@@ -55,7 +56,7 @@ export const generateFABAnimation = (
  */
 export const generateFABClassName = (
   { position, rtl, shape, theme }: Partial<IFabStyling>,
-  className: string | undefined
+  className: NullAble<string>
 ): string =>
   objToString({
     flex: true,

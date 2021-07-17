@@ -8,6 +8,7 @@ import {
 } from 'react';
 
 import { shallowEquals } from '@/helper/component.helper';
+import { PartialNull } from '@/interface/general';
 import {
   generateStyleItem,
   generateStyleWrapper,
@@ -28,7 +29,7 @@ import {
  */
 export const useBreadcrumb = (
   children: ReactNode,
-  style: Partial<IBreadcrumbStyle> | undefined,
+  style: PartialNull<IBreadcrumbStyle>,
   separator: string | ReactNode
 ): IBreadcrumbHooks => {
   const [content, setContent] = useState<IBreadcrumbContent[]>(
