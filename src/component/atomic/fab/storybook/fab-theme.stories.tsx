@@ -9,7 +9,7 @@ import Builder from '@/modules/storybook';
 import { CUSTOM_ARGS_FAB_COMPONENT } from './storybook-args';
 
 export default new Builder()
-  .setModuleName(`Animation`)
+  .setModuleName(`Theme`)
   .setParentModuleName(`FAB Component`)
   .setType(`atomic`)
   .setComponent(FAB)
@@ -27,9 +27,9 @@ const Template: Story<IFabProps> = (props) => (
   </div>
 );
 
-export const FadeIn = Template.bind({});
+export const DarkTheme = Template.bind({});
 
-FadeIn.args = {
+DarkTheme.args = {
   animation: `fade-in`,
   icon: <div>★</div>,
   on: partialAction(`on`),
@@ -39,30 +39,9 @@ FadeIn.args = {
   theme: `dark`
 };
 
-export const FadeInTop = Template.bind({});
+export const LightTheme = Template.bind({});
 
-FadeInTop.args = {
-  ...FadeIn.args,
-  animation: `fade-in-top`
-};
-
-export const FadeInBottom = Template.bind({});
-
-FadeInBottom.args = {
-  ...FadeIn.args,
-  animation: `fade-in-bottom`
-};
-
-export const FadeInLeft = Template.bind({});
-
-FadeInLeft.args = {
-  ...FadeIn.args,
-  animation: `fade-in-left`
-};
-
-export const FadeInRight = Template.bind({});
-
-FadeInRight.args = {
-  ...FadeIn.args,
-  animation: `fade-in-right`
+LightTheme.args = {
+  ...DarkTheme.args,
+  theme: `light`
 };

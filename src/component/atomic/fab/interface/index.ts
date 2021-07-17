@@ -48,10 +48,10 @@ export interface IFabStyling {
   position: IFabPosition;
   right: number | string;
   rtl: boolean;
+  shape: IFabType;
   show: boolean;
   theme: IButtonThemeOption;
   top: number | string;
-  type: IFabType;
 }
 
 export type IFabType = 'basic' | 'small' | 'extended';

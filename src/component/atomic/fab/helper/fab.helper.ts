@@ -54,7 +54,7 @@ export const generateFABAnimation = (
  * @since 2021.07.14
  */
 export const generateFABClassName = (
-  { position, rtl, theme, type }: Partial<IFabStyling>,
+  { position, rtl, shape, theme }: Partial<IFabStyling>,
   className: string | undefined
 ): string =>
   objToString({
@@ -65,7 +65,7 @@ export const generateFABClassName = (
     'flex-row-reverse': rtl,
     [`${position}`]: verifiedIsNotEmpty(position),
     [styles[`a-fab`]]: true,
-    [styles[`a-fab--type-${type}`]]: true,
+    [styles[`a-fab--shape-${shape}`]]: true,
     [styles[`a-fab--theme-${theme}`]]: true,
     [`${className}`]: verifiedIsNotEmpty(className)
   });
@@ -80,13 +80,11 @@ export const generateFABClassName = (
 export const generateFABStyle = ({
   bottom,
   left,
-  position,
   right,
   top
 }: Partial<IFabStyling>): CSSProperties => ({
   bottom,
   left,
-  position,
   right,
   top
 });

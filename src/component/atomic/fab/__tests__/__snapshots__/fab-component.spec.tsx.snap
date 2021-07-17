@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing fab component Testing FAB Shape Customize Position 1`] = `"<div><button style=\\"bottom: 10px; left: 10px; right: 10px; top: 10px;\\" type=\\"button\\" class=\\"flex flex-align-center flex-justify-center flex-row flex-row-reverse fixed a-fab a-fab--shape-extended a-fab--theme-dark fade-in-entered\\"><div class=\\"flex flex-align-center flex-justify-center a-fab__icon\\"><div>★</div></div><span font-weight=\\"500\\" class=\\"a-text flex flex-align-center flex-justify-center a-fab__text\\">Sample Text</span></button></div>"`;
+
+exports[`Testing fab component Testing FAB Shape Testing Basic Shape With Light Theme 1`] = `"<div><button type=\\"button\\" class=\\"flex flex-align-center flex-justify-center flex-row absolute a-fab a-fab--shape-basic a-fab--theme-light fade-in-entered\\"><div class=\\"flex flex-align-center flex-justify-center a-fab__icon\\"><div>★</div></div></button></div>"`;
+
+exports[`Testing fab component Testing FAB Shape Testing Extended Shape With Dark Theme 1`] = `"<div><button type=\\"button\\" class=\\"flex flex-align-center flex-justify-center flex-row flex-row-reverse fixed a-fab a-fab--shape-extended a-fab--theme-dark fade-in-entered\\"><div class=\\"flex flex-align-center flex-justify-center a-fab__icon\\"><div>★</div></div><span font-weight=\\"500\\" class=\\"a-text flex flex-align-center flex-justify-center a-fab__text\\">Sample Text</span></button></div>"`;
+
+exports[`Testing fab component Testing FAB Shape Testing Small Shape With Dark Theme 1`] = `"<div><button type=\\"button\\" class=\\"flex flex-align-center flex-justify-center flex-row fixed a-fab a-fab--shape-small a-fab--theme-dark fade-in-entered\\"><div class=\\"flex flex-align-center flex-justify-center a-fab__icon\\"><div>★</div></div></button></div>"`;

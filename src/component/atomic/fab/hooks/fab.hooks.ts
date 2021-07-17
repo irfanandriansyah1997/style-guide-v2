@@ -17,10 +17,10 @@ export const useFab = (
   stylingProps: Partial<IFabStyling>,
   classNameProps: string | undefined
 ): IFabHooks => {
-  const [className, setClassName] = useState(
+  const [className, setClassName] = useState(() =>
     generateFABClassName(stylingProps, classNameProps)
   );
-  const [style, setStyle] = useState(generateFABStyle(stylingProps));
+  const [style, setStyle] = useState(() => generateFABStyle(stylingProps));
 
   useEffect(() => {
     const response = generateFABClassName(stylingProps, classNameProps);
@@ -36,7 +36,7 @@ export const useFab = (
 
   return {
     className,
-    isExtended: stylingProps.type === `extended`,
+    isExtended: stylingProps.shape === `extended`,
     style
   };
 };

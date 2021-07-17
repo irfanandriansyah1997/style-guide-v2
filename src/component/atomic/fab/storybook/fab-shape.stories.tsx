@@ -6,12 +6,14 @@ import { IFabProps } from '@/atomic/fab/interface';
 import { partialAction } from '@/helper/storybook.helper';
 import Builder from '@/modules/storybook';
 
+import { CUSTOM_ARGS_FAB_COMPONENT } from './storybook-args';
+
 export default new Builder()
   .setModuleName(`Shape`)
   .setParentModuleName(`FAB Component`)
   .setType(`atomic`)
   .setComponent(FAB)
-  .setMultipleArgs([])
+  .setMultipleArgs([...CUSTOM_ARGS_FAB_COMPONENT])
   .execute();
 
 /**
@@ -32,16 +34,16 @@ BasicShape.args = {
   icon: <div>★</div>,
   on: partialAction(`on`),
   position: `absolute`,
+  shape: `basic`,
   show: true,
-  theme: `light`,
-  type: `basic`
+  theme: `light`
 };
 
 export const SmallShape = Template.bind({});
 
 SmallShape.args = {
   ...BasicShape.args,
-  type: `small`
+  shape: `small`
 };
 
 export const ExtendedShape = Template.bind({});
@@ -50,7 +52,7 @@ ExtendedShape.args = {
   ...BasicShape.args,
   bottom: 15,
   right: 15,
+  shape: `extended`,
   text: `Sample`,
-  theme: `dark`,
-  type: `extended`
+  theme: `dark`
 };
