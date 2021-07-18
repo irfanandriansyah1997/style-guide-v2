@@ -1,10 +1,10 @@
 import type { Story } from '@storybook/react/types-6-0';
 
 import Expand from '@/atomic/expand';
+import { IExpandProps } from '@/atomic/expand/interface';
 import { partialAction } from '@/helper/storybook.helper';
 import Builder from '@/modules/storybook';
 
-import { IExpandProps } from '../interface';
 import { SampleContent, SampleToggle } from './storybook-template';
 
 export default new Builder()

@@ -1,8 +1,7 @@
 import { createContext } from 'react';
 
+import { IExpandHooks } from '@/atomic/expand/interface';
 import { NullAble } from '@/interface/general';
-
-import { IExpandHooks } from '../interface';
 
 /**
  * Expand Context

@@ -3,11 +3,11 @@ import type { Story } from '@storybook/react/types-6-0';
 import { useState } from 'react';
 
 import Grid from '@/atomic/grid';
+import { IGridSize } from '@/atomic/grid/interface';
 import Text from '@/atomic/text';
 import { STYLE_GUIDE_COLOR } from '@/constant/color';
 import Builder from '@/modules/storybook';
 
-import { IGridSize } from '../interface';
 import { CUSTOM_ARGS_GRID_COMPONENT } from './storybook-args';
 
 Grid.displayName = `Grid`;
