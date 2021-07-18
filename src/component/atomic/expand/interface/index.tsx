@@ -1,15 +1,16 @@
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 import { IEventComponent } from '@/interface/general/event.interface';
 
 export * from './expand-hooks.interface';
+export * from './expand-reducer.interface';
 
 /**
  * Event On Resize
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.06.08
  */
-export type IEventOnResizeComponent = IEventComponent<'on-resize', boolean>;
+export type IEventOnResizeComponent = IEventComponent<'on-resize', number>;
 
 /**
  * Event On Toggle Expand
@@ -36,7 +37,18 @@ export interface IExpandClassnameList {
  */
 export interface IExpandContentProps {
   children: ReactNode;
+  className?: string;
 }
+
+/**
+ * Expand Export Default Contract
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.07.18
+ */
+export type IExpandExportDefault = FC<IExpandProps> & {
+  Content: FC<IExpandContentProps>;
+  Selector: FC<IExpandContentProps>;
+};
 
 /**
  * Expand Props Interface
@@ -57,6 +69,6 @@ export type IExpandSelectorPosition = 'top' | 'bottom';
  */
 export interface IExpandStyling {
   initialHeight: number;
+  openned: boolean;
   selectorPosition: IExpandSelectorPosition;
-  show: boolean;
 }

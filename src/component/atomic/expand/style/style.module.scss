@@ -1,0 +1,22 @@
+@import '../../../../style/import.scss';
+
+.a-expand {
+  $c: &;
+
+  width: 100%;
+
+  &__content,
+  &__selector {
+    width: 100%;
+  }
+
+  &__selector {
+    cursor: pointer;
+  }
+
+  &__content {
+    overflow: hidden;
+
+    @include transition(max-height 0.3s cubic-bezier(0.7, 0.3, 0, 1));
+  }
+}
