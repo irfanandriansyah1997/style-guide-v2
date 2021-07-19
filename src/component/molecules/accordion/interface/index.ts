@@ -1,12 +1,10 @@
-import { ReactNode } from 'react';
+import { FC } from 'react';
 
-import { SingularOrPlural } from '@/interface/general';
+import { IAccordionItemProps } from './accordion-item.interface';
+import { IAccordionPanelStyling } from './accordion-panel.interface';
 
-interface IAccordionPanel {
-  expand: boolean;
-}
-
-type IAccordionPanelGenerator = (param: IAccordionPanel) => ReactNode;
+export * from './accordion-item.interface';
+export * from './accordion-panel.interface';
 
 /**
  * All Class Name Each Tag on Accordion Component
@@ -18,47 +16,25 @@ export interface IAccordionClassnameList {
   wrapper: string;
 }
 
+/**
+ * List Export Default Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.07.19
+ */
+export type IAccordionExportDefault = FC<IAccordionProps> & {
+  Item: FC<IAccordionItemProps>;
+};
+
 export type IAccordionIconPosition = 'left' | 'right';
-
-/**
- * Accordion Item Props Interface
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.07.18
- */
-export interface IAccordionItemProps {
-  children: ReactNode;
-  header: IAccordionPanelGenerator | ReactNode;
-  key: string | string;
-  showArrow?: boolean;
-}
-
-/**
- * IAccordion Panel Props
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.07.18
- */
-export type IAccordionPanelProps = IAccordionItemProps &
-  Partial<IAccordionPanelStyling>;
-
-/**
- * IAccordion Panel Styling
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.07.18
- */
-export interface IAccordionPanelStyling {
-  expandIcon: IAccordionPanelGenerator | ReactNode;
-  expandIconPosition: IAccordionIconPosition;
-}
 
 /**
  * Accordion Props Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.07.18
  */
-export interface IAccordionProps {
-  accordion: boolean;
-  className: string;
-  defaultActiveKey: SingularOrPlural<string> | SingularOrPlural<number>;
+export interface IAccordionProps extends Partial<IAccordionStyling> {
+  className?: string;
+  defaultActiveKey?: (string | number)[];
 }
 
 /**
@@ -70,4 +46,4 @@ export interface IAccordionStyling extends Partial<IAccordionPanelStyling> {
   accordion: boolean;
 }
 
-export type IAccordionTheme = 'ghost' | 'right';
+export type IAccordionTheme = 'ghost' | 'borderred';

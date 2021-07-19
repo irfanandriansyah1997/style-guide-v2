@@ -54,10 +54,10 @@ export const useToggle = ({
   const { current: initialState } = useRef<IExpandReducer>({
     className: generateClassnameContainer({
       className,
-      openned: openned || false,
+      openned: openned !== undefined ? openned : false,
       selectorPosition
     }),
-    expand: openned as boolean,
+    expand: openned !== undefined ? openned : false,
     height: initialHeight || 0
   });
   const [state, dispatch] = useReducer(expandReducer, initialState);
@@ -71,9 +71,7 @@ export const useToggle = ({
    */
   const dispatchWithOnChange = (action: IExpandActionType): void => {
     if (action.type === IExpandTypesEnum.toggleExpand) {
-      if (!onIsControlled) {
-        dispatch(action);
-      }
+      dispatch(action);
 
       on?.({
         event: `on-toggle`,
@@ -94,6 +92,17 @@ export const useToggle = ({
       type: IExpandTypesEnum.toggleExpand
     });
   }, [dispatchWithOnChange]);
+
+  /**
+   * @description Event Listened If Expand State Will Be Updated Via Props
+   */
+  useEffect(() => {
+    if (openned !== state.expand) {
+      dispatch({
+        type: IExpandTypesEnum.toggleExpand
+      });
+    }
+  }, [openned, state.expand]);
 
   useEffect((): void => {
     const response = generateClassnameContainer({

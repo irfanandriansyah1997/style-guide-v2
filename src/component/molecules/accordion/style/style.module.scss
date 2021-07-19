@@ -1,0 +1,44 @@
+@import '../../../../style/import.scss';
+
+.m-accordion {
+  &__toggle {
+    @include rounded(5px);
+    @include margin(all, 5px 0);
+    @include padding(all, 10px);
+    @include background-color(light300);
+
+    &--theme {
+      &-ghost {
+        @include background-color(transparent);
+      }
+
+      &-borderred {
+        @include border(all, 1px, solid, dark200);
+      }
+    }
+
+    &-icon {
+      &--left {
+        @include margin-right(10px);
+      }
+
+      &--right {
+        @include margin-left(10px);
+        @include margin-right(10px);
+      }
+    }
+  }
+
+  &__triangle {
+    height: 0;
+    width: 0;
+
+    @include border-left(8px, solid, transparent);
+    @include border-right(8px, solid, transparent);
+    @include border-top(8px, solid, dark200);
+
+    &--openned {
+      @include transform-rotate(180);
+    }
+  }
+}
