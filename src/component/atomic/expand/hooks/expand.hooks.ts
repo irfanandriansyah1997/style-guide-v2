@@ -97,12 +97,12 @@ export const useToggle = ({
    * @description Event Listened If Expand State Will Be Updated Via Props
    */
   useEffect(() => {
-    if (openned !== state.expand) {
+    if (showState !== state.expand) {
       dispatch({
         type: IExpandTypesEnum.toggleExpand
       });
     }
-  }, [openned, state.expand]);
+  }, [showState, state.expand]);
 
   useEffect((): void => {
     const response = generateClassnameContainer({
